@@ -1,0 +1,64 @@
+<template>
+ <header class="headerTop"> 
+   <slot name="left" class="header_left"></slot>
+   <slot name="center" class="header_center"></slot>
+   <div class="header_right">
+     <i class="iconfont icon-zhengzaibofang"></i>
+   </div>
+ </header>
+</template>
+
+<script>
+
+</script>
+
+<style>
+.headerTop{
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  background: rgb(45, 45, 45);
+  width: 100%;
+  height: 50px;
+  top:0;
+  left: 0;
+}
+
+
+.headerTop .header_left,.headerTop .header_right{
+  display: flex;
+  width: 50px;
+}
+
+.headerTop .header_center{
+  flex-grow: 1;
+  height: 30px;
+  align-self: center;
+  border-radius: 20px;
+  background: rgb(78, 78, 78);
+  display: flex;
+}
+
+
+.headerTop i{
+    padding-left: 15px;
+    font-size:25px;
+    color: rgb(225, 225, 225);
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+  } 
+
+.headerTop .header_center .iconfont{
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+.headerTop .header_center input{
+  background: rgb(78, 78, 78);
+  border: none;
+  outline: none;
+  color: rgb(184, 184, 184);
+}
+
+</style>
