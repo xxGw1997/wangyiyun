@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import MusicPlayer from './views/MusicPlayer/Player.vue'
-  import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+  import MusicPlayer from '@/views/MusicPlayer/Player.vue'
+  import FooterGuide from '@/components/FooterGuide/FooterGuide.vue'
 
   export default{
     name:'App',
