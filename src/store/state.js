@@ -1,6 +1,10 @@
+import { Number } from "core-js";
+
 const state = {
     searchBanner:[],
-    recommendMusicList:[]
+    recommendMusicList:[],
+    playListId:null,
+    playListDetail:{}
 }
 
 export default state

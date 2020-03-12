@@ -3,7 +3,7 @@
 
     <music-player/>
     <router-view/>
-    <footer-guide/>
+    <footer-guide v-show="this.$route.meta.showFooter"/>
   </div>
 </template>
 

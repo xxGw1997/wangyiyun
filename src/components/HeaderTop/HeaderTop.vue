@@ -31,12 +31,11 @@
 }
 
 .headerTop .header_center{
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
   height: 30px;
   align-self: center;
-  border-radius: 20px;
-  background: rgb(78, 78, 78);
-  display: flex;
 }
 
 
@@ -54,11 +53,6 @@
   padding-right: 15px;
 }
 
-.headerTop .header_center input{
-  background: rgb(78, 78, 78);
-  border: none;
-  outline: none;
-  color: rgb(184, 184, 184);
-}
+
 
 </style>

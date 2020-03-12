@@ -5,7 +5,9 @@
                 推荐歌单
             </div>
             <div class="list-content">
-                <div class="list-item" v-for="(item,index) in musicList" :key="index">
+                <div class="list-item" 
+                    v-for="(item,index) in musicList" 
+                    :key="index" @click="musicListClick(item.id)">
                     <div class="item-img">
                         <img :src="item.picUrl" alt="">
                     </div>
@@ -18,15 +20,19 @@
 
 <script>
  export default {
-     props:{
+    props:{
          musicList:{
             type:Array,
             default(){
                 return []
             }
          }
-     }
-
+    },
+    methods:{
+        musicListClick(id){
+            this.$emit('musicListClick',id)
+        }
+    }
  }
 </script>
 

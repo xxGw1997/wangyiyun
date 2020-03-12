@@ -12,11 +12,24 @@ const routes = [
   },{
     path:"/search",
     name:"search",
-    component:Search
+    component:Search,
+    meta:{
+      showFooter:true
+    }
   },{
     path:"/video",
     name:"video",
-    component: () => import('@/views/Video/Video')
+    component: () => import('@/views/Video/Video'),
+    meta:{
+      showFooter:true
+    }
+  },{
+    path:"/playlist",
+    name:"playlist",
+    component: () => import("@/views/PlayList/PlayList"),
+    meta:{
+      showFooter:true
+    }
   }
 ];
 

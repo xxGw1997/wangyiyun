@@ -12,8 +12,9 @@
     <scroll class="content">
         <search-swiper :banner="searchBanner" class="search-swiper"/>
         <search-category class="search-category"/>
-        <recommend-music-list :musicList="recommendMusicList" class="recommend-music-list"/>
-        
+        <recommend-music-list 
+        :musicList="recommendMusicList" 
+        class="recommend-music-list" @musicListClick="musicListClick"/>
     </scroll>
   </div>
 </template>
@@ -22,11 +23,12 @@
  import {mapState} from 'vuex'
 
  import HeaderTop from '@/components/HeaderTop/HeaderTop'
+ import Scroll from '@/components/Scroll/Scroll'
+ 
  import SearchSwiper from './ChildComps/SearchSwiper'
  import SearchCategory from './ChildComps/SearchCategory'
  import RecommendMusicList from './ChildComps/RecommendMusicList'
 
- import Scroll from '@/components/Scroll/Scroll'
 
  export default {
    data () {
@@ -46,12 +48,31 @@
      this.$store.dispatch('getRecommendMusicList')
    },
    computed:{
-     ...mapState(['searchBanner','recommendMusicList'])
+     ...mapState(['searchBanner','recommendMusicList','playListId'])
+   },
+   methods:{
+     musicListClick(id){
+       this.$store.dispatch('getPlayListDetail',id)
+       this.$router.push('/playlist')
+     }
    }
  }
 </script>
 
 <style scoped>
+.header_center{
+  border-radius: 20px;
+  background: rgb(78, 78, 78);
+}
+
+.header_center input{
+  background: rgb(78, 78, 78);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  color: rgb(184, 184, 184);
+}
+
 .search{
   height: 100vh;
   padding-top: 50px;
