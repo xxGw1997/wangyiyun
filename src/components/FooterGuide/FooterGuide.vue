@@ -50,7 +50,6 @@
   display: flex;
   flex-wrap: wrap;
   flex:auto;
-
 }
 
 .footer-guide .active{

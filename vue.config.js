@@ -1,4 +1,5 @@
 module.exports = {
+    lintOnSave:false,
     configureWebpack: {
         resolve: {
           extensions:['.js','.vue','.json'],
@@ -7,6 +8,7 @@ module.exports = {
             'components': '@/components',
             'network': '@/network',
             'views': '@/views',
+            'network':'@/network'
           }
         }
       }
