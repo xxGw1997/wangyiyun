@@ -15,7 +15,7 @@
 <style>
 .headerTop{
   position: fixed;
-  z-index: 10;
+  z-index: 9;
   display: flex;
   background: rgb(45, 45, 45);
   width: 100%;

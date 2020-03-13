@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-
-    <music-player/>
+    <music-player class="music-player" v-show="isPlay"/>
     <router-view/>
     <footer-guide v-show="this.$route.meta.showFooter"/>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+
   import MusicPlayer from '@/views/MusicPlayer/Player.vue'
   import FooterGuide from '@/components/FooterGuide/FooterGuide.vue'
 
@@ -16,6 +17,9 @@
     components:{
       MusicPlayer,
       FooterGuide
+    },
+    computed:{
+      ...mapState(['isPlay'])
     }
   }
 </script>
@@ -23,4 +27,5 @@
 <style>
 @import url("//at.alicdn.com/t/font_1500928_sh7hy7fw1o.css");
 @import url("./assets/css/reset.css");
+
 </style>

@@ -5,10 +5,18 @@ import {
 } from '@/network/search'
 
 import {
+    getSongDetail
+} from '@/network/song'
+
+import {
     SEARCH_BANNER,
     RECOMMEND_MUSIC_LIST,
     UPDATEPLAYLISTID,
-    PLAY_LIST_DETAIL
+    PLAY_LIST_DETAIL,
+    SONG_DETAIL,
+    UPDATE_MUSIC_LIST,
+    UPDATE_PLAY_STATUS,
+    PLAYER_SHOW
 } from './mutations-types'
 
 export default {
@@ -28,9 +36,9 @@ export default {
         }
     },
 
-    updataPlayListId({commit},id){
-        commit(UPDATEPLAYLISTID)
-    },
+    // updataPlayListId({commit},id){
+    //     commit(UPDATEPLAYLISTID)
+    // },
 
     async getPlayListDetail({commit},id){
         const res = await playListDetail(id)
@@ -38,5 +46,26 @@ export default {
         if(res.code === 200){
             commit(PLAY_LIST_DETAIL,{result})
         }
+    },
+
+    async getSongDetail({commit},songId){
+        const res = await getSongDetail(songId)
+        const songs = res.songs
+        if(res.code === 200){
+            commit(SONG_DETAIL,{songs})
+        }
+    },
+
+    updateMusicList({commit},musicList){
+        commit(UPDATE_MUSIC_LIST,{musicList})
+    },
+
+    updatePlayStatus({commit},play){
+        commit(UPDATE_PLAY_STATUS,{play})
+    },
+
+    playerShow({commit},show){
+        commit(PLAYER_SHOW,{show})
     }
+
 }

@@ -38,30 +38,39 @@
 
 <style scoped>
     .recommend-music-list{
-        margin-top: 30px;
+        margin-top: 15px;
+        height: 420px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .list-title{
+        width: 100%;
+        height: 5%;
+        font-size: 20px;
     }
     
     .list-content{
         width: 100%;
-        height: 300px;
+        height: 90%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: space-around;
-        margin-top: 10px;
     }
 
     .list-content .list-item{
         width: 31%;
-        height: 140px;
+        height: 45%;
         display: flex;
         flex-wrap: wrap;
-        align-content: space-between;
+        align-content: space-around;
     }
 
     .list-content .list-item .item-img{
         width: 100%;
-        height: 75%;
+        height: 70%;
         border-radius: 5px;
     }
 
@@ -73,7 +82,7 @@
         height: 20%;
         font-size: 13px;
         letter-spacing: 1px;
-        line-height: 14px;
+        line-height: 17px;
         text-overflow: -o-ellipsis-lastline;
         overflow: hidden;
         text-overflow: ellipsis;

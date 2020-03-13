@@ -3,17 +3,19 @@
       <div class="play-info">
         <div class="info">
           <div class="info-left">
-
+            <img :src="playListDetail.coverImgUrl" alt="">
           </div>
           <div class="info-right">
             <div class="info-title">{{playListDetail.name}}</div>
             <div class="info-author">
-              <div class="author-img"></div>
-              <div class="author-name">xxgw</div>
+              <div class="author-img">
+                <img :src="playListDetail.creator.avatarUrl" alt="">
+              </div>
+              <div class="author-name">{{playListDetail.creator.nickname}}</div>
               <div class="author-icon">></div>
             </div>
             <div class="info-intro">
-              <div class="intro">送回顾回顾热i和个别u的热狗热狗热狗热狗然后比俺是个发热管</div>
+              <div class="intro">{{playListDetail.description}}</div>
               <div class="intro-icon">></div>
             </div>
           </div>
@@ -24,7 +26,7 @@
               <i class="iconfont icon-comment"></i>
             </div>
             <div class="operation-info">
-              123
+              {{commentCount}}
             </div>
           </div>
           <div class="operation-item">
@@ -32,7 +34,7 @@
               <i class="iconfont icon-share"></i>
             </div>
             <div class="operation-info">
-              123
+              {{shareCount}}
             </div>
           </div>
           <div class="operation-item">
@@ -65,6 +67,14 @@
          return {}
        }
      }
+   },
+   computed:{
+     commentCount(){
+       return this.playListDetail.commentCount ? this.playListDetail.commentCount : '评论'
+     },
+     shareCount(){
+       return this.playListDetail.shareCount ? this.playListDetail.shareCount : '分享'
+     }
    }
  }
 </script>
@@ -92,6 +102,10 @@
     height: 100%;
   }
 
+  .play-info .info .info-left img{
+    width: 100%;
+  }
+
   .play-info .info .info-right{
     width: 55%;
     height: 100%;
@@ -117,37 +131,42 @@
 
   .play-info .info .info-right .info-author{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
 
   .play-info .info .info-right .info-author .author-img{
-    flex:0 1 20%;
+    flex:0 0 20%;
+  }
+
+  .play-info .info .info-right .info-author .author-img img{
+    width: 80%;
+    border-radius: 50%;
   }
 
   .play-info .info .info-right .info-author .author-name{
-    flex:0 1;
+    font-size: 14px;
     color: antiquewhite;
     padding-left: 5px;
   }
 
   .play-info .info .info-right .info-author .author-icon{
-    flex:1 0 10px;
+    flex:0 0 5%;
     color: antiquewhite;
-    padding-left: 5px;
   }
 
   .play-info .info .info-right .info-intro{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
 
   .play-info .info .info-right .info-intro .intro{
-    flex:0 0 85%;
-    height: 55%;
+    height: 80%;
     color: antiquewhite;
-    font-size: 12px;
+    font-size: 10px;
+    line-height: 18px;
+    letter-spacing: 1px;
     /* 2行省略 */
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
@@ -158,13 +177,11 @@
   } 
 
   .play-info .info .info-right .info-intro .intro-icon{
-    flex:1 0 10px;
     color: antiquewhite;
-    padding-left: 5px;
   }
 
 
-  .play-info .info .info-right div{
+  .play-info .info .info-right>div{
     width: 100%;
     height: 30%;
   }
