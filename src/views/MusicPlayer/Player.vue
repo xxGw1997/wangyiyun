@@ -1,9 +1,12 @@
 <template>
     <div>
+        <div class="backgroundImg">
+            <img :src="songDetail[0].al.picUrl" alt="">
+        </div>
         <div class="player">
             <player-header :songName="songDetail[0].name" 
                            :songSinger="songDetail[0].ar[0].name"/>
-            <player-content/>
+            <player-content :songCover="songDetail[0].al.picUrl"/>
             <player-footer/>
         </div>
     </div>
@@ -34,6 +37,25 @@
 </script>
 
 <style scoped>
+    .backgroundImg{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        z-index: 10;
+        background: rgb(0, 0, 0);
+    }
+
+    .backgroundImg img{
+        width: 200%;
+        height: 200%;
+        opacity:0.6;
+        filter: blur(50px);
+        position: relative;
+        left: -50%;
+        top:-50%;
+    }
+
     .player{
         width: 100%;
         height: 100%;
@@ -42,12 +64,10 @@
         z-index: 10;
         display: flex;
         flex-wrap: wrap;
-        background: gray;
     }
 
     .player>div{
         width: 100%;
-        background: palegreen;
     }
 
 

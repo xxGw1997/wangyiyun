@@ -51,7 +51,6 @@
 
     .playlist{
         height: 100vh;
-        padding-top: 50px;
     }
 
     .header_center{
@@ -65,6 +64,7 @@
         height: calc(100% - 110px);
         overflow: hidden;
         position: relative;
+        top: 50px;
         left: 50%;
         transform: translateX(-50%);
     }

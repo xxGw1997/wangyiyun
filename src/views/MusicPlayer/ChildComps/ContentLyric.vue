@@ -25,7 +25,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        background:rebeccapurple;
     }
 
     .content-lyric .volume{

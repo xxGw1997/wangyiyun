@@ -1,6 +1,8 @@
 <template>
  <div class="content-cover">
-    <div class="cover">1</div>
+    <div class="cover">
+        <img :src="songCover" alt="">
+    </div>
     <div class="operation">
         <div class="operation-item">
             <i class="iconfont icon-love"/>
@@ -20,14 +22,14 @@
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
-   }
+    props:{
+        songCover:{
+            type:String,
+            default(){
+                return ''
+            }
+        }
+    },
  }
 </script>
 
@@ -38,7 +40,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        background:rebeccapurple;
     }
 
     .content-cover .cover{
@@ -47,9 +48,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: olivedrab;
     }
     
+    .content-cover .cover img{
+        width: 70%;
+        border-radius: 50%;
+    }
+
     .content-cover .operation{
         width: 100%;
         height: 15%;

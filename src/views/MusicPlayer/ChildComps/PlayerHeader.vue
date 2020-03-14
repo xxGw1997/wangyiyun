@@ -1,6 +1,6 @@
 <template>
     <div class="player-header">
-        <div class="header-left">
+        <div class="header-left" @click="back">
             <i class="iconfont icon-back"/>
         </div>
         <div class="header-center">
@@ -28,6 +28,13 @@
              return 'xxGw'
          }
      }
+   },
+   methods:{
+       back(){
+           console.log("返回")
+           this.$router.back()
+           this.$store.dispatch('playerShow',false)
+       }
    }
  }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="player-content">
-        <content-cover v-show="true"/>
+        <content-cover v-show="true" :songCover="songCover"/>
         <content-lyric v-show="false"/>
     </div>
 </template>
@@ -9,10 +9,18 @@
  import ContentCover from './ContentCover'
  import ContentLyric from './ContentLyric'
  export default {
-   components: {
+    props:{
+        songCover:{
+            type:String,
+            default(){
+                return ''
+            }
+        }
+    },
+    components: {
        ContentCover,
        ContentLyric
-   }
+    }
  }
 </script>
 
