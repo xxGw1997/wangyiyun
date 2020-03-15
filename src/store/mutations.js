@@ -28,9 +28,10 @@ export default {
     },
 
     [SONG_DETAIL](state,{songs}){
-        state.songDetail = songs
+        state.songDetail = songs.song
+        state.songLyric = songs.lyric
+        state.songUrl = songs.url
         console.log("songs:",songs)
-        console.log("songDetail:",state.songDetail)
     },
 
     [UPDATE_MUSIC_LIST](state,{musicList}){

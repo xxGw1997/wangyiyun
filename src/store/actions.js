@@ -5,7 +5,9 @@ import {
 } from '@/network/search'
 
 import {
-    getSongDetail
+    getSongDetail,
+    getSongLyric,
+    getSongUrl
 } from '@/network/song'
 
 import {
@@ -49,9 +51,19 @@ export default {
     },
 
     async getSongDetail({commit},songId){
-        const res = await getSongDetail(songId)
-        const songs = res.songs
-        if(res.code === 200){
+        const resSong = await getSongDetail(songId)
+        const resLyric = await getSongLyric(songId)
+        const resSongUrl = await getSongUrl(songId)
+        const songs = {}
+        songs.song = resSong.songs
+        songs.url = resSongUrl.data[0].url
+        if(resLyric.nolyric){
+            //如果没有歌词
+            songs.lyric = 'nolyric'
+        }else{
+            songs.lyric = resLyric.lrc.lyric
+        }
+        if(resSong.code === 200 && resLyric.code === 200 && resSongUrl.code === 200){
             commit(SONG_DETAIL,{songs})
         }
     },

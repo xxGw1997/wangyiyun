@@ -1,9 +1,9 @@
 <template>
  <div class="player-footer">
     <div class="progess-bar">
-        <div class="bar-left">0:12</div>
+        <div class="bar-left">{{format(currentTime)}}</div>
         <div class="bar-center"></div>
-        <div class="bar-right">1:11</div>
+        <div class="bar-right">{{format(duration)}}</div>
     </div>
     <div class="music-operation">
         <div class="operation-item music-mode">
@@ -27,13 +27,33 @@
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
+   props:{
+        currentTime:{
+           type:Number,
+           default(){
+               return 0
+           }
+        },
+        duration:{
+            type:Number,
+            default(){
+                return 0
+            }
+        }
    },
-   components: {
-
+   methods:{
+       format(time){
+            time = time | 0
+            let minute = time / 60 | 0
+            if(minute < 10){
+                minute = '0' + minute
+            }
+            let second = time % 60
+            if (second < 10) {
+                second = '0' + second
+            }
+            return minute + ':' + second
+       }
    }
  }
 </script>

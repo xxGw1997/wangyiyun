@@ -1,19 +1,33 @@
 <template>
     <div>
         <div class="backgroundImg">
-            <img :src="songDetail[0].al.picUrl" alt="">
+            <img :src="songCover" alt="">
         </div>
         <div class="player">
-            <player-header :songName="songDetail[0].name" 
-                           :songSinger="songDetail[0].ar[0].name"/>
-            <player-content :songCover="songDetail[0].al.picUrl"/>
-            <player-footer/>
+            <player-header 
+                :songName="songName" 
+                :songSinger="songSinger"/>
+            <player-content 
+                :songCover="songCover"
+                :currentLyric="currentLyric"
+                :lyricIndex="lyricIndex"/>
+            <player-footer
+                :currentTime="currentTime"
+                :duration="duration"
+                @toggleMode="toggleMode"
+                @prev="prev"
+                @play_pause="play_pause"
+                @next="next"
+                @changeProgressBar="changeProgressBar"/>
+            <audio ref="audio" @play="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
         </div>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
+
+    import {lyric} from '@/utils/lyric'
 
     import PlayerHeader from './ChildComps/PlayerHeader'
     import PlayerContent from './ChildComps/PlayerContent'
@@ -27,11 +41,76 @@
         data(){
             return {
                 songName:'',
-                songSinger:''
+                songSinger:'',
+                songCover:'',
+                currentLyric:[],
+                lyricIndex:0,
+                currentTime:0,
+                duration:0
             }
         },
         computed:{
-            ...mapState(['songDetail'])
+            ...mapState(['songDetail','songLyric','songUrl'])
+        },
+        watch:{
+            songUrl(){
+                this.songName = this.songDetail[0].name
+                this.songSinger = this.songDetail[0].ar[0].name
+                this.songCover = this.songDetail[0].al.picUrl
+                this.currentLyric = lyric(this.songLyric)
+                //操作audio
+                this.$refs.audio.src = this.songUrl
+                this.$refs.audio.currentTime = 0
+                let timeStamp = setInterval(() => {
+                    this.duration = this.$refs.audio.duration;
+                    if (this.duration) {
+                        clearInterval(timeStamp)
+                    }
+                }, 20)
+            },
+
+        },
+        methods:{
+            ready(){
+
+            },
+            error(){
+
+            },
+            updateTime(e){
+                //通过音乐当前时间来更新歌词下标
+                let currentTime = e.target.currentTime
+                this.currentTime = currentTime
+                let i = 0
+                //判断是否有歌词
+                if(this.currentLyric.length === 0) return
+                this.currentLyric.forEach((ele,index)=>{
+                    if(currentTime > ele.time){
+                        i = index
+                    }
+                })
+                this.lyricIndex = i
+            },
+            end(){
+                this.next()
+            },
+            
+            /* footer操作 */
+            changeProgressBar(){
+
+            },
+            toggleMode(){
+
+            },
+            prev(){
+
+            },
+            play_pause(){
+
+            },
+            next(){
+
+            }
         }
     }
 </script>

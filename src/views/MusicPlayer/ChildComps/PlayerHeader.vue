@@ -31,8 +31,6 @@
    },
    methods:{
        back(){
-           console.log("返回")
-           this.$router.back()
            this.$store.dispatch('playerShow',false)
        }
    }

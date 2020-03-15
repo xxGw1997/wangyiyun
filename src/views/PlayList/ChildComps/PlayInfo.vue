@@ -9,9 +9,9 @@
             <div class="info-title">{{playListDetail.name}}</div>
             <div class="info-author">
               <div class="author-img">
-                <img :src="playListDetail.creator.avatarUrl" alt="">
+                <img :src="creatorImg" alt="">
               </div>
-              <div class="author-name">{{playListDetail.creator.nickname}}</div>
+              <div class="author-name">{{creatorNickname}}</div>
               <div class="author-icon">></div>
             </div>
             <div class="info-intro">
@@ -68,12 +68,24 @@
        }
      }
    },
+   data(){
+     return {
+       creatorImg:'',
+       creatorNickname:''
+     }
+   },
    computed:{
      commentCount(){
        return this.playListDetail.commentCount ? this.playListDetail.commentCount : '评论'
      },
      shareCount(){
        return this.playListDetail.shareCount ? this.playListDetail.shareCount : '分享'
+     }
+   },
+   watch:{
+     playListDetail(){
+       this.creatorImg = this.playListDetail.creator.avatarUrl
+       this.creatorNickname = this.playListDetail.creator.nickname
      }
    }
  }

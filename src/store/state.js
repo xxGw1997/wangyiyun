@@ -6,7 +6,9 @@ const state = {
     musicList:[],
     isPlay:false,
     songDetail:[],
-    playerShow:false,
+    songLyric:'',
+    songUrl:'',
+    playerShow:false
 }
 
 export default state
