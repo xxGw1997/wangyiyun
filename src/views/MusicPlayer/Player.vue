@@ -14,6 +14,7 @@
             <player-footer
                 :currentTime="currentTime"
                 :duration="duration"
+                :percent="percent"
                 @toggleMode="toggleMode"
                 @prev="prev"
                 @play_pause="play_pause"
@@ -46,7 +47,8 @@
                 currentLyric:[],
                 lyricIndex:0,
                 currentTime:0,
-                duration:0
+                duration:0,
+                percent:0
             }
         },
         computed:{
@@ -78,8 +80,13 @@
 
             },
             updateTime(e){
-                //通过音乐当前时间来更新歌词下标
                 let currentTime = e.target.currentTime
+                //更新播放进度条
+                if(!this.duration == 0){
+                    this.percent = currentTime/this.duration
+                }
+
+                //通过音乐当前时间来更新歌词下标
                 this.currentTime = currentTime
                 let i = 0
                 //判断是否有歌词
@@ -95,9 +102,10 @@
                 this.next()
             },
             
-            /* footer操作 */
-            changeProgressBar(){
 
+            /* footer操作 */
+            changeProgressBar(percent){
+                this.$refs.audio.currentTime = this.duration * percent
             },
             toggleMode(){
 

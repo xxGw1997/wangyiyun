@@ -2,7 +2,12 @@
  <div class="player-footer">
     <div class="progess-bar">
         <div class="bar-left">{{format(currentTime)}}</div>
-        <div class="bar-center"></div>
+        <div class="bar-center">
+            <progress-bar 
+                :percent="percent" 
+                progressBarName="music"
+                @updateProgress="updateProgress"/>
+        </div>
         <div class="bar-right">{{format(duration)}}</div>
     </div>
     <div class="music-operation">
@@ -26,6 +31,8 @@
 </template>
 
 <script>
+ import ProgressBar from '@/components/ProgressBar/ProgressBar'
+
  export default {
    props:{
         currentTime:{
@@ -39,9 +46,21 @@
             default(){
                 return 0
             }
+        },
+        percent:{
+            type:Number,
+            default(){
+                return 0
+            }
         }
    },
+   components:{
+       ProgressBar
+   },
    methods:{
+       updateProgress(percent){
+           this.$emit('changeProgressBar',percent)
+       },
        format(time){
             time = time | 0
             let minute = time / 60 | 0

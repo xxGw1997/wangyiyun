@@ -73,11 +73,11 @@
   color: rgb(184, 184, 184);
 }
 
+input::-webkit-input-placeholder{text-align: center;}
+ 
 .search{
   height: 100vh;
 }
-input::-webkit-input-placeholder{text-align: center;}
- 
 
 .content{
   width: 95%;
