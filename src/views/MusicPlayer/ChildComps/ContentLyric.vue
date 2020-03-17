@@ -3,8 +3,15 @@
     <div class="volume">
         <div class="volume-icon">
             <i class="iconfont icon-volume"/>
+            {{volume*100}}
         </div>
-        <div class="volume-proessbar">123</div>
+        <div class="volume-progressbar">
+            <progress-bar 
+                class="volume-bar"
+                :percent="volume"
+                progressBarName="volume"
+                @volume_updateProgress="volume_updateProgress"/>
+        </div>
     </div>
     <div class="lyric">
             <scroll  class="root" ref="lyricList" :data="currentLyric">
@@ -26,10 +33,14 @@
 </template>
 
 <script>
+ import {mapState} from 'vuex'
  import Scroll from '@/components/Scroll/Scroll'
+ import ProgressBar from '@/components/ProgressBar/ProgressBar'
+
  export default {
     components:{
-        Scroll
+        Scroll,
+        ProgressBar
     },
     props:{
         currentLyric: {
@@ -39,6 +50,10 @@
         lyricIndex: {
             type: Number,
             default: 0
+        },
+        currentVolume:{
+            type:Number,
+            default: 0.5
         }
     },
     watch:{
@@ -49,6 +64,15 @@
             }else {
                 this.$refs.lyricList.scrollTo(0, 0, 1000)
             }
+        }
+    },
+    computed:{
+        ...mapState(['volume'])
+    },
+    methods:{
+        volume_updateProgress(percent){
+            const volume = Math.round(percent*100)/100
+            this.$store.dispatch('updateVolume',volume)
         }
     }
  }
@@ -67,12 +91,12 @@
         width: 100%;
         height: 10%;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
     }
 
     .content-lyric .volume .volume-icon{
-        width: 10%;
+        width: 15%;
         color: aliceblue;
         text-align: center;
     }
@@ -81,8 +105,14 @@
         font-size: 20px;
     }
 
-    .content-lyric .volume .volume-proessbar{
-        flex: 1 0;
+    .content-lyric .volume .volume-progressbar{
+        flex: 0 0;
+        flex-basis: 85%;
+        width: 10px;
+    }
+
+    .content-lyric .volume .volume-progressbar .volume-bar{
+        width: 80%;
     }
 
     .content-lyric .lyric{

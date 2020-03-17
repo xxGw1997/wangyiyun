@@ -13,12 +13,14 @@ import {
 import {
     SEARCH_BANNER,
     RECOMMEND_MUSIC_LIST,
-    UPDATEPLAYLISTID,
+    UPDATE_PLAY_LIST_ID,
     PLAY_LIST_DETAIL,
     SONG_DETAIL,
     UPDATE_MUSIC_LIST,
+    UPDATE_MUSIC_INDEX,
     UPDATE_PLAY_STATUS,
-    PLAYER_SHOW
+    PLAYER_SHOW,
+    UPDATE_VOLUME
 } from './mutations-types'
 
 export default {
@@ -68,8 +70,15 @@ export default {
         }
     },
 
-    updateMusicList({commit},musicList){
-        commit(UPDATE_MUSIC_LIST,{musicList})
+    updateMusicList({commit},data){
+        const {id,list,index} = data
+        commit(UPDATE_PLAY_LIST_ID,{id})
+        commit(UPDATE_MUSIC_LIST,{list})
+        commit(UPDATE_MUSIC_INDEX,{index})
+    },
+
+    updateMusicIndex({commit},index){
+        commit(UPDATE_MUSIC_INDEX,{index})
     },
 
     updatePlayStatus({commit},play){
@@ -78,6 +87,10 @@ export default {
 
     playerShow({commit},show){
         commit(PLAYER_SHOW,{show})
+    },
+
+    updateVolume({commit},volume){
+        commit(UPDATE_VOLUME,{volume})
     }
 
 }

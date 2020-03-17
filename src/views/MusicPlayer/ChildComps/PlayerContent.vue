@@ -1,7 +1,7 @@
 <template>
     <div class="player-content" @click="toggleContent">
         <transition name="cover">
-            <content-cover 
+            <content-cover
                 v-show="coverShow" 
                 :songCover="songCover"/>
         </transition>
@@ -9,7 +9,8 @@
             <content-lyric 
                 v-show="!coverShow"
                 :currentLyric="currentLyric"
-                :lyricIndex="lyricIndex"/>
+                :lyricIndex="lyricIndex"
+                :currentVolume="currentVolume"/>
         </transition>
     </div>
 </template>
@@ -38,6 +39,12 @@
             default(){
                 return 0
             }
+        },
+        currentVolume:{
+            type:Number,
+            default(){
+                return 0.5
+            }
         }
     },
     components: {
@@ -52,7 +59,7 @@
     methods:{
         toggleContent(){
             this.coverShow = !this.coverShow
-        }
+        },
     }
  }
 </script>

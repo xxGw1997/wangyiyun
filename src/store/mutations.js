@@ -1,17 +1,18 @@
 import {
     SEARCH_BANNER,
     RECOMMEND_MUSIC_LIST,
-    UPDATEPLAYLISTID,
+    UPDATE_PLAY_LIST_ID,
     PLAY_LIST_DETAIL,
     SONG_DETAIL,
     UPDATE_MUSIC_LIST,
+    UPDATE_MUSIC_INDEX,
     UPDATE_PLAY_STATUS,
-    PLAYER_SHOW
+    PLAYER_SHOW,
+    UPDATE_VOLUME
 } from './mutations-types'
 
 export default {
     [SEARCH_BANNER](state,{banner}){
-        console.log("banner:",banner)
         state.searchBanner = banner
     },
 
@@ -19,8 +20,8 @@ export default {
         state.recommendMusicList = result
     },
 
-    [UPDATEPLAYLISTID](state){
-        state.playListId
+    [UPDATE_PLAY_LIST_ID](state,{id}){
+        state.playListId = id
     },
 
     [PLAY_LIST_DETAIL](state,{result}){
@@ -31,11 +32,14 @@ export default {
         state.songDetail = songs.song
         state.songLyric = songs.lyric
         state.songUrl = songs.url
-        console.log("songs:",songs)
     },
 
-    [UPDATE_MUSIC_LIST](state,{musicList}){
-        state.musicList = musicList
+    [UPDATE_MUSIC_LIST](state,{list}){
+        state.musicList = list
+    },
+
+    [UPDATE_MUSIC_INDEX](state,{index}){
+        state.currentMusicIndex = index
     },
 
     [UPDATE_PLAY_STATUS](state,{play}){
@@ -44,5 +48,9 @@ export default {
 
     [PLAYER_SHOW](state,{show}){
         state.playerShow = show
+    },
+
+    [UPDATE_VOLUME](state,{volume}){
+        state.volume = volume
     }
 }

@@ -49,6 +49,7 @@ import HeaderTop from '@/components/HeaderTop/HeaderTop'
 input::-webkit-input-placeholder{text-align: center;}
 
 .test{
+  width: 200px;
   margin-top: 200px;
 }
  

@@ -38,7 +38,8 @@
    watch:{
        percent(newVal){
            if(this.isOperation) return
-           const leftBarWidth = newVal * this.progressBarWidth
+           const progressBarWidth = this.$refs[this.progressBarName].getBoundingClientRect().width
+           const leftBarWidth = newVal * progressBarWidth
            this.$refs[this.leftBar].style.width = leftBarWidth + 'px'
        }
    },
@@ -61,7 +62,7 @@
            const leftBarWidth = this.$refs[this.leftBar].getBoundingClientRect().width
            const progressBarWidth = this.$refs[this.progressBarName].getBoundingClientRect().width
            const percent = leftBarWidth/progressBarWidth
-           this.$emit('updateProgress',percent)
+           this.$emit(this.progressBarName + '_updateProgress',percent)
        }
    }
  }
@@ -78,6 +79,7 @@
         height: 2px;
         background: aliceblue;
         display: flex;
+        align-items: center;
     }
 
     .progress-bar .left-bar{
@@ -87,14 +89,13 @@
     }
 
     .progress-bar .btn-bar{
-        width: 14px;
-        height: 14px;
-        flex-basis: 14px;
+        width: 8px;
+        height: 8px;
+        /* flex-basis: 8px; */
         flex-shrink: 0;
-        background: black;
+        background: white;
         border-radius: 50%;
         position: relative;
-        top:-2px;
     }
 
  

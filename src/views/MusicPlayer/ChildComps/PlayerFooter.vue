@@ -6,24 +6,24 @@
             <progress-bar 
                 :percent="percent" 
                 progressBarName="music"
-                @updateProgress="updateProgress"/>
+                @music_updateProgress="updateProgress"/>
         </div>
         <div class="bar-right">{{format(duration)}}</div>
     </div>
     <div class="music-operation">
-        <div class="operation-item music-mode">
+        <div class="operation-item music-mode" @click="toggleMode">
             <i class="iconfont icon-share"/>
         </div>
-        <div class="operation-item last">
+        <div class="operation-item last" @click="prev">
             <i class="iconfont icon-last"/>
         </div>
-        <div class="operation-item play">
+        <div class="operation-item play" @click="togglePlay">
             <i class="iconfont icon-play"/>
         </div>
-        <div class="operation-item next">
+        <div class="operation-item next" @click="next">
             <i class="iconfont icon-next"/>
         </div>
-        <div class="operation-item gedan">
+        <div class="operation-item gedan" @clic="showMusicList">
             <i class="iconfont icon-gedan"/>
         </div>
     </div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+ import {mapState} from 'vuex'
+
  import ProgressBar from '@/components/ProgressBar/ProgressBar'
 
  export default {
@@ -54,6 +56,9 @@
             }
         }
    },
+   computed:{
+       ...mapState(['musicList','currentMusicIndex'])
+   },
    components:{
        ProgressBar
    },
@@ -72,6 +77,29 @@
                 second = '0' + second
             }
             return minute + ':' + second
+       },
+
+       /*操作 */
+
+       toggleMode(){
+
+       },
+
+       prev(){
+           console.log('abvc:',this.musicList)
+           console.log('index:',this.currentMusicIndex)
+       },
+
+       togglePlay(){
+
+       },
+
+       next(){
+           
+       },
+
+       showMusicList(){
+
        }
    }
  }
@@ -99,10 +127,16 @@
         flex:0 0 15%;
         font-size: 12px;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .player-footer .progess-bar .bar-center{
-        flex:1 0;
+        flex:0 0 70%;
+        width: 100px;
+        display: flex;
+        align-items: center;
     }
 
     .player-footer .music-operation{

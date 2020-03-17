@@ -48,11 +48,11 @@
                 lyricIndex:0,
                 currentTime:0,
                 duration:0,
-                percent:0
+                percent:0,
             }
         },
         computed:{
-            ...mapState(['songDetail','songLyric','songUrl'])
+            ...mapState(['songDetail','songLyric','songUrl','volume'])
         },
         watch:{
             songUrl(){
@@ -67,9 +67,15 @@
                     this.duration = this.$refs.audio.duration;
                     if (this.duration) {
                         clearInterval(timeStamp)
+                        // console.log('dur:',this.$refs.audio.autoplay)
                     }
                 }, 20)
+                this.$refs.audio.volume = this.volume
+                this.$refs.audio.autoplay = true
             },
+            volume(newVal){
+                this.$refs.audio.volume = newVal
+            }
 
         },
         methods:{

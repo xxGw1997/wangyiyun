@@ -6,7 +6,7 @@
      <span>(共{{playlist.trackCount}}首)</span>
    </div>
    <div class="musics">
-     <div class="music" v-for="(item,index) in playlist.tracks" :key="index" @click="playMusic(playlist,item.id)">
+     <div class="music" v-for="(item,index) in playlist.tracks" :key="index" @click="playMusic(playlist,item.id,index)">
        <div class="music_no music_item">
          <span v-if="true">{{index+1}}</span>
           <i class="iconfont icon-volume" v-else></i>
@@ -43,7 +43,7 @@ import { constants } from 'zlib';
      }
    },
    computed:{
-     ...mapState(['musicList','songDetail']),
+     ...mapState(['playListId','musicList','songDetail']),
 
      singer(singers){
        console.log(typeof singers)
@@ -58,14 +58,14 @@ import { constants } from 'zlib';
      }
    },
    methods:{
-     playMusic(playlist,songId){
+     playMusic(playlist,songId,index){
        let list = []
-       playlist.trackIds.forEach((ele,index)=>{
+       playlist.trackIds.forEach(ele=>{
          list.push(ele.id)
        })
-       //把当前的音乐播放列表更新
-       if(!list.toString() === this.musicList.toString()){
-        this.$store.dispatch('updateMusicList',list)
+       //如果当前音乐列表id与点击音乐列表id不同，则把当前的音乐播放列表更新
+       if(this.playListId !== playlist.id){
+        this.$store.dispatch('updateMusicList',{id:playlist.id,list,index})
        }
        //把当前播放音乐更新
         this.$store.dispatch('getSongDetail',songId)
