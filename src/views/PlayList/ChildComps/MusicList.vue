@@ -6,13 +6,16 @@
      <span>(共{{playlist.trackCount}}首)</span>
    </div>
    <div class="musics">
-     <div class="music" v-for="(item,index) in playlist.tracks" :key="index" @click="playMusic(playlist,item.id,index)">
+     <div class="music" 
+          v-for="(item,index) in playlist.tracks" 
+          :key="index" 
+          @click="playMusic(playlist,item.id,index)">
        <div class="music_no music_item">
-         <span v-if="true">{{index+1}}</span>
+         <span v-if="!currentPlay(item.id)">{{index+1}}</span>
           <i class="iconfont icon-volume" v-else></i>
        </div>
-       <div class="music_info music_item">
-          <div class="music_name">{{item.name}}</div>
+       <div class="music_info music_item" >
+          <div class="music_name" :class="currentPlay(item.id)?'music_checked':''">{{item.name}}</div>
           <div class="singer_album">
             <span class="music_title">独家</span>
             <span class="music_title">SQ</span>
@@ -32,7 +35,6 @@
 
 <script>
  import {mapState} from 'vuex'
-import { constants } from 'zlib';
  export default {
    props:{
      playlist:{
@@ -40,6 +42,11 @@ import { constants } from 'zlib';
        default(){
          return {}
        }
+     }
+   },
+   data(){
+     return {
+
      }
    },
    computed:{
@@ -73,12 +80,20 @@ import { constants } from 'zlib';
         this.$store.dispatch('updatePlayStatus',true)
        //显示player
         this.$store.dispatch('playerShow',true)
-     }
+     },
+
+     currentPlay(ad){
+      if(this.songDetail.length){
+        return ad == this.songDetail[0].id
+      }
+        return false
+    }
    }
  }
 </script>
 
 <style scoped>
+
 .music_list .play_all{
   display: flex;
   align-items: center;

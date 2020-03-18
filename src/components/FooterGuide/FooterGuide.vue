@@ -44,12 +44,14 @@
   height: 60px;
   display: flex;
   flex:1;
+  background: rgba(40, 40, 40, 0.8);
 }
 
 .footer-guide .guide-item{
   display: flex;
   flex-wrap: wrap;
   flex:auto;
+  color: aliceblue;
 }
 
 .footer-guide .active{

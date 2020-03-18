@@ -92,14 +92,33 @@
 </script>
 
 <style scoped>
+  .backgroundImg{
+      width: 10px;
+      height: 250px;
+      overflow: hidden;
+      position: absolute;
+      z-index: 10;
+      background: rgb(0, 0, 0);
+  }
+
+  .backgroundImg>img{
+      width: 200%;
+      height: 200%;
+      opacity:0.6;
+      filter: blur(50px);
+      position: relative;
+      left: -50%;
+      top:-50%;
+  }
+
   .play-info{
     width: 100%;
     height: 250px;
-    background: gray;
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
     padding-top: 10px;
+    /* background: rgb(100, 100, 100); */
   }
 
   .play-info .info{

@@ -1,4 +1,5 @@
 <template>
+    <div>
         <div class="playlist">
             <header-top class="header-top">
                 <div class="header_left" slot="left" @click="$router.go(-1)">
@@ -13,6 +14,7 @@
                 <music-list :playlist="playListDetail"/>
             </scroll>
         </div>
+    </div>
 </template>
 
 <script>
@@ -51,6 +53,7 @@
 
     .playlist{
         height: 100vh;
+        background: rgb(60, 60, 60);
     }
 
     .header_center{

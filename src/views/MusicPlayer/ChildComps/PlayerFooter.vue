@@ -18,7 +18,8 @@
             <i class="iconfont icon-last"/>
         </div>
         <div class="operation-item play" @click="togglePlay">
-            <i class="iconfont icon-play"/>
+            <i class="iconfont icon-play" v-show="!isPlay"/>
+            <i class="iconfont icon-Pause" v-show="isPlay"/>
         </div>
         <div class="operation-item next" @click="next">
             <i class="iconfont icon-next"/>
@@ -57,7 +58,7 @@
         }
    },
    computed:{
-       ...mapState(['musicList','currentMusicIndex'])
+       ...mapState(['isPlay','musicList','currentMusicIndex'])
    },
    components:{
        ProgressBar
@@ -86,21 +87,33 @@
        },
 
        prev(){
-           console.log('abvc:',this.musicList)
-           console.log('index:',this.currentMusicIndex)
+           let index = this.currentMusicIndex - 1
+           if(this.currentMusicIndex <= 0){
+               index = this.musicList.length - 1
+           }
+           this._changeMusic(this.musicList[index],index)
        },
 
        togglePlay(){
-
+           this.$store.dispatch('updatePlayStatus',!this.isPlay)
        },
 
        next(){
-           
+           let index = this.currentMusicIndex + 1
+           if(this.currentMusicIndex >= this.musicList.length - 1){
+               index = 0
+           }
+           this._changeMusic(this.musicList[index],index)
        },
 
        showMusicList(){
 
-       }
+       },
+
+       _changeMusic(ids,index){
+           this.$store.dispatch('getSongDetail',ids)
+           this.$store.dispatch('updateMusicIndex',index)
+       }       
    }
  }
 </script>

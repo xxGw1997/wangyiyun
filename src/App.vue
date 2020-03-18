@@ -27,7 +27,7 @@
 </script>
 
 <style>
-@import url("//at.alicdn.com/t/font_1500928_sh7hy7fw1o.css");
+@import url("//at.alicdn.com/t/font_1500928_ia21gdtuuk9.css");
 @import url("./assets/css/reset.css");
 
 /* .player-enter-active, .player-leave-active{

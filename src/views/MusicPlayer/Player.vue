@@ -12,6 +12,7 @@
                 :currentLyric="currentLyric"
                 :lyricIndex="lyricIndex"/>
             <player-footer
+                ref="player-footer"
                 :currentTime="currentTime"
                 :duration="duration"
                 :percent="percent"
@@ -52,7 +53,7 @@
             }
         },
         computed:{
-            ...mapState(['songDetail','songLyric','songUrl','volume'])
+            ...mapState(['isPlay','songDetail','songLyric','songUrl','volume'])
         },
         watch:{
             songUrl(){
@@ -75,6 +76,11 @@
             },
             volume(newVal){
                 this.$refs.audio.volume = newVal
+            },
+            isPlay(newVal){
+                this.$nextTick(()=>{
+                    newVal ? this.$refs.audio.play() : this.$refs.audio.pause()
+                })
             }
 
         },
@@ -105,7 +111,7 @@
                 this.lyricIndex = i
             },
             end(){
-                this.next()
+                this.$refs['player-footer'].next()
             },
             
 

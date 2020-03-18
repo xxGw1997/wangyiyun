@@ -50,10 +50,6 @@
         lyricIndex: {
             type: Number,
             default: 0
-        },
-        currentVolume:{
-            type:Number,
-            default: 0.5
         }
     },
     watch:{
