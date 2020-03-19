@@ -11,6 +11,11 @@ import {
 } from '@/network/song'
 
 import {
+    login,
+    getUserDetail
+} from '@/network/user'
+
+import {
     SEARCH_BANNER,
     RECOMMEND_MUSIC_LIST,
     UPDATE_PLAY_LIST_ID,
@@ -20,7 +25,9 @@ import {
     UPDATE_MUSIC_INDEX,
     UPDATE_PLAY_STATUS,
     PLAYER_SHOW,
-    UPDATE_VOLUME
+    UPDATE_VOLUME,
+    /* 用户相关 */
+    LOGIN,
 } from './mutations-types'
 
 export default {
@@ -91,6 +98,24 @@ export default {
 
     updateVolume({commit},volume){
         commit(UPDATE_VOLUME,{volume})
-    }
+    },
+
+
+
+    /* 用户相关 */
+    async login({commit},data){
+        const {username,pwd} = data.userInfo
+        const callback = data.callback
+        const res = await login(username,pwd)
+        if(res.code !== 200){
+            callback()
+            return
+        }
+        const token = res.token
+        const userDetail = await getUserDetail(res.account.id)
+        if(userDetail.code === 200){
+            commit(LOGIN,{token,userDetail})
+        }
+    },
 
 }

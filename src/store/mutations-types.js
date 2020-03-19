@@ -8,3 +8,7 @@ export const UPDATE_MUSIC_INDEX = 'update_music_index'
 export const UPDATE_PLAY_STATUS = 'update_play_status'
 export const PLAYER_SHOW = 'player_show'
 export const UPDATE_VOLUME = 'update_volume'
+
+/**用户相关 */
+export const LOGIN = 'login'
+export const GET_USER_DETAIL = 'get_user_detail'

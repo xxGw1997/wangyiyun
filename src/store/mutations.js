@@ -8,7 +8,8 @@ import {
     UPDATE_MUSIC_INDEX,
     UPDATE_PLAY_STATUS,
     PLAYER_SHOW,
-    UPDATE_VOLUME
+    UPDATE_VOLUME,
+    LOGIN
 } from './mutations-types'
 
 export default {
@@ -52,5 +53,11 @@ export default {
 
     [UPDATE_VOLUME](state,{volume}){
         state.volume = volume
+    },
+
+    /**用户相关 */
+    [LOGIN](state,{token,userDetail}){
+        state.token = token
+        state.userDetail = userDetail
     }
 }
