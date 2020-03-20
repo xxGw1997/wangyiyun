@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
+import UserInfo from "../views/UserInfo/UserInfo";
 
 Vue.use(VueRouter);
 
@@ -13,7 +14,7 @@ const routes = [
   {
     path:"/search",
     name:"search",
-    component:Search,
+    component:UserInfo,
     meta:{
       showFooter:true
     }
@@ -46,6 +47,14 @@ const routes = [
     path:"/playlist",
     name:"playlist",
     component: () => import("@/views/PlayList/PlayList"),
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:"/userinfo",
+    name:"userinfo",
+    component: () => import("@/views/UserInfo/UserInfo"),
     meta:{
       showFooter:true
     }

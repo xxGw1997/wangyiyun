@@ -112,6 +112,7 @@ export default {
             return
         }
         const token = res.token
+        console.log('id:',res.account.id)
         const userDetail = await getUserDetail(res.account.id)
         if(userDetail.code === 200){
             commit(LOGIN,{token,userDetail})

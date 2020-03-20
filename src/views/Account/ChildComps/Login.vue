@@ -39,9 +39,6 @@
                console.log('登录失败')
            }
            this.$store.dispatch('login',{userInfo,callback})
-        //    const {phone,pwd} = this
-        //    let result = await login(phone,pwd)
-        //    console.log(result.code)
        }
    }
  }

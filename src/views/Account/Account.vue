@@ -15,13 +15,13 @@
     <div class="content">
       <div class="login" v-if="isLogin">
         <div class="login-up">
-          <div class="up-left">1
-            <img src="" alt="">
+          <div class="up-left">
+            <img :src="avatarUrl" alt="">
           </div>
           <div class="up-center">
-            <div class="username">xxgw</div>
+            <div class="username">{{nickname}}</div>
             <div class="lv">
-              <span>Lv. 9</span>
+              <span>Lv. {{level}}</span>
             </div>
           </div>
           <div class="up-right">
@@ -30,15 +30,15 @@
         </div>
         <div class="login-bottom">
           <div class="bottom-item">
-            <div class="item-up">0</div>
+            <div class="item-up">{{eventCount}}</div>
             <div class="item-title">动态</div>
           </div>
           <div class="bottom-item">
-            <div class="item-up">0</div>
+            <div class="item-up">{{follows}}</div>
             <div class="item-title">关注</div>
           </div>
           <div class="bottom-item">
-            <div class="item-up">0</div>
+            <div class="item-up">{{followers}}</div>
             <div class="item-title">粉丝</div>
           </div>
           <div class="bottom-item">
@@ -66,8 +66,18 @@
    data () {
      return {
        loginShow:false,
+       avatarUrl:'',
+       nickname:'',
+       level:0,
+       eventCount:0,
+       follows:0,
+       followers:0,
+
+
      }
    },
+   mounted(){
+     },
    components: {
      Login,
      HeaderTop
@@ -77,10 +87,18 @@
        if(newVal.length !== 0){
          this.loginShow = false
        }
+     },
+     userDetail(newVal){
+        this.avatarUrl = newVal.profile.avatarUrl
+        this.nickname = newVal.profile.nickname
+        this.level = newVal.level
+        this.eventCount = newVal.profile.eventCount
+        this.follows = newVal.profile.follows
+        this.followers = newVal.profile.followeds
      }
    },
    computed:{
-     ...mapState(['token']),
+     ...mapState(['token','userDetail']),
      isLogin(){
        return this.token.length !== 0
      }
@@ -154,6 +172,13 @@
 
 .account .content .login .login-up .up-left{
   width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.account .content .login .login-up .up-left>img{
+  width: 90%;
+  border-radius: 50%;
 }
 
 .account .content .login .login-up .up-center{

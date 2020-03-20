@@ -86,9 +86,9 @@ input::-webkit-input-placeholder{text-align: center;}
 .content{
   width: 95%;
   height: calc(100% - 110px);
+  position: relative;
   top: 50px;
   overflow: hidden;
-  position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
