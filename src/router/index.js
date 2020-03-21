@@ -9,54 +9,54 @@ const routes = [
   {
     path: "/",
     name: "/",
-    redirect:'/search'
+    redirect: "/search"
   },
   {
-    path:"/search",
-    name:"search",
-    component:UserInfo,
-    meta:{
-      showFooter:true
+    path: "/search",
+    name: "search",
+    component: UserInfo,
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/video",
-    name:"video",
-    component: () => import('@/views/Video/Video'),
-    meta:{
-      showFooter:true
+    path: "/video",
+    name: "video",
+    component: () => import("@/views/Video/Video"),
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/mine",
-    name:"mine",
-    component: () => import('@/views/Mine/Mine'),
-    meta:{
-      showFooter:true
+    path: "/mine",
+    name: "mine",
+    component: () => import("@/views/Mine/Mine"),
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/account",
-    name:"account",
-    component: () => import('@/views/Account/Account'),
-    meta:{
-      showFooter:true
+    path: "/account",
+    name: "account",
+    component: () => import("@/views/Account/Account"),
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/playlist",
-    name:"playlist",
+    path: "/playlist",
+    name: "playlist",
     component: () => import("@/views/PlayList/PlayList"),
-    meta:{
-      showFooter:true
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/userinfo",
-    name:"userinfo",
+    path: "/userinfo",
+    name: "userinfo",
     component: () => import("@/views/UserInfo/UserInfo"),
-    meta:{
-      showFooter:true
+    meta: {
+      showFooter: true
     }
   }
 ];

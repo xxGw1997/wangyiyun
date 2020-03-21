@@ -1,5 +1,5 @@
 <template>
- <div class="mine">
+  <div class="mine">
     <header-top>
       <div slot="left" class="header_left">
         <i class="iconfont icon-yun_l"></i>
@@ -61,44 +61,42 @@
       <li>49</li>
       <li>50</li>
     </scroll>
- </div>
+  </div>
 </template>
 
 <script>
- import HeaderTop from '@/components/HeaderTop/HeaderTop'
- import Scroll from '@/components/Scroll/Scroll'
- export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-     HeaderTop,
-     Scroll
-   }
- }
+import HeaderTop from "@/components/HeaderTop/HeaderTop";
+import Scroll from "@/components/Scroll/Scroll";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    HeaderTop,
+    Scroll
+  }
+};
 </script>
 
 <style scoped>
-.header_center{
+.header_center {
   color: aliceblue;
   height: 100%;
   line-height: 100%;
 }
 
-.header_center>span{
+.header_center > span {
   text-align: center;
   line-height: 50px;
   font-size: 16px;
   font-weight: 700;
 }
 
-.mine{
+.mine {
   height: 100vh;
 }
 
-.content{
+.content {
   background: goldenrod;
   width: 100%;
   height: calc(100% - 110px);
@@ -106,5 +104,4 @@
   overflow: hidden;
   position: relative;
 }
-
 </style>

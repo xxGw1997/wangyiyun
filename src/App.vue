@@ -1,31 +1,32 @@
 <template>
   <div id="app">
     <transition name="player">
-      <music-player class="music-player" v-show="playerShow"/>
+      <music-player class="music-player" v-show="playerShow" />
     </transition>
     <keep-alive>
-      <router-view/>
+      <router-view />
     </keep-alive>
-    <footer-guide v-show="this.$route.meta.showFooter"/>
+    <footer-guide v-show="this.$route.meta.showFooter" />
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
-  import MusicPlayer from '@/views/MusicPlayer/Player.vue'
-  import FooterGuide from '@/components/FooterGuide/FooterGuide.vue'
+import MusicPlayer from "@/views/MusicPlayer/Player.vue";
+import FooterGuide from "@/components/FooterGuide/FooterGuide.vue";
 
-  export default{
-    name:'App',
-    components:{
-      MusicPlayer,
-      FooterGuide
-    },
-    computed:{
-      ...mapState(['isPlay','playerShow'])
-    }
+
+export default {
+  name: "App",
+  components: {
+    MusicPlayer,
+    FooterGuide
+  },
+  computed: {
+    ...mapState(["isPlay", "playerShow"])
   }
+};
 </script>
 
 <style>
@@ -41,9 +42,8 @@
   opacity:0;
 } */
 
-.music-player{
+.music-player {
   height: 100vh;
   float: left;
 }
-
 </style>
