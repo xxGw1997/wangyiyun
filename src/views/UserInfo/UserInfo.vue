@@ -1,17 +1,23 @@
 <template>
   <div class="userInfo">
-    <div class="header">12321321</div>
+    <div class="header">
+        <div class="back">
+          <i class="iconfont icon-back"></i>
+        </div>
+        <div class="player-show">
+          <i class="iconfont icon-zhengzaibofang"></i>
+        </div>
+    </div>
     <scroll class="content">
       <div class="bg-img">
         <div class="bg"></div>
-        <img
-          src="http://p1.music.126.net/jClmkz6uoP9RQ0FwsMZbhQ==/18885211718778019.jpg"
-          alt=""
-        />
+        <img :src="userDetail.profile.backgroundUrl" alt="">
       </div>
       <div class="base-info">
         <div class="info-avatar">
-          <div class="avatar"></div>
+          <div class="avatar">
+            <img :src="userDetail.profile.avatarUrl" alt="">
+          </div>
           <div class="operation">
             <div class="operation-btn">
               <i class="iconfont icon-iconfonticonfontsousuo1"></i>编辑
@@ -19,14 +25,14 @@
           </div>
         </div>
         <div class="info-nickname">
-          轩轩国王
+          {{userDetail.profile.nickname}}
         </div>
         <div class="info-follow">
           <div class="follow-item">
-            关注 2
+            关注 {{userDetail.profile.follows}}
           </div>
           <div class="follow-item">
-            粉丝 3
+            粉丝 {{userDetail.profile.followeds}}
           </div>
         </div>
         <div class="info-tag">
@@ -42,6 +48,14 @@
         <cube-tab-bar v-model="selectedLabel" show-slider>
             <cube-tab-panels  class="tab-bar-content" v-model="selectedLabel">
               <cube-tab-panel :label="tabs[0].label" :key="tabs[0].label">
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
+                <list-item class="list-item" />
                 <list-item class="list-item" />
                 <list-item class="list-item" />
                 <list-item class="list-item" />
@@ -67,6 +81,8 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import Scroll from "@/components/Scroll/Scroll";
 import ListItem from "./ChildComps/ListItem"
 export default {
@@ -85,12 +101,25 @@ data () {
         label: '关于我',
         icon: 'cubeic-star',
         heroes: ['血魔', '影魔', '剃刀', '剧毒术士', '虚空假面', '幻影刺客', '冥界亚龙', '克林克兹', '育母蜘蛛', '编织者', '幽鬼', '司夜刺客', '米波']
-      }]
+      }],
+      avatarUrl:'',
+      nickname:'',
+      follows:0,
+      followers:0
     }
   },
   components: {
     Scroll,
     ListItem
+  },
+  computed:{
+    ...mapState(['userDetail'])
+  },
+  mounted(){
+    this.avatarUrl = this.userDetail.profile.avatarUrl
+    this.nickname = this.userDetail.profile.nickname
+    this.follows = this.userDetail.profile.follows;
+    this.followers = this.userDetail.profile.followeds;
   }
 };
 </script>
@@ -104,14 +133,33 @@ data () {
   width: 100%;
   height: 50px;
   position: absolute;
+  display: flex;
+  justify-content: space-between;
   z-index: 11;
 }
+
+.userInfo .header .back{
+  line-height: 50px;
+  margin-left: 20px;
+}
+
+.userInfo .header .player-show{
+  line-height: 50px;
+  margin-right: 15px;
+}
+
+.userInfo .header i{
+  color: aliceblue;
+  font-size: 30px;
+}
+
 
 .userInfo .content {
   width: 100%;
   height: calc(100% - 60px);
   position: relative;
   overflow: hidden;
+  /* background: gray; */
 }
 
 .userInfo .content .bg-img {
@@ -132,6 +180,7 @@ data () {
 .userInfo .content .bg-img > img {
   height: 50vh;
   position: absolute;
+  z-index: 99;
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
@@ -161,6 +210,11 @@ data () {
 .userInfo .content .base-info .info-avatar .avatar {
   width: 25%;
   margin-left: 20px;
+}
+
+.userInfo .content .base-info .info-avatar .avatar>img{
+  width: 90%;
+  border-radius: 50%;
 }
 
 .userInfo .content .base-info .info-avatar .operation {
@@ -224,7 +278,8 @@ data () {
 }
 
 .userInfo .music-info{
-  
+  position: relative;
+  top:-20px;
   background: gray;
 }
 

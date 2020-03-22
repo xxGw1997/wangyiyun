@@ -73,7 +73,6 @@ export default {
       followers: 0
     };
   },
-  mounted() {},
   components: {
     Login,
     HeaderTop
