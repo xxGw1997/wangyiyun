@@ -14,7 +14,10 @@ const state = {
 
   /* 用户相关 */
   token: "",
-  userDetail: {}
+  userDetail: {},
+
+  /*每日推荐歌单 */
+  recommendSongs:[]
 };
 
 export default state;

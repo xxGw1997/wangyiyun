@@ -7,6 +7,7 @@ export function request(url, data = {}, type = "GET") {
     timeout: 5000
   });
 
+  // instance.defaults.headers.common["token"] = '5be000a567176b36cc46355442e2ddc49bb6df86340c9ba6ea482867eead5c90e2761b99c8733a9b3da7b3d03a47db2941049cea1c6bb9b6'
   // //2.axios的拦截器
   // //2.1请求拦截的作用
   // instance.interceptors.request.use((config)=>{

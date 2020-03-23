@@ -9,7 +9,8 @@ import {
   UPDATE_PLAY_STATUS,
   PLAYER_SHOW,
   UPDATE_VOLUME,
-  LOGIN
+  LOGIN,
+  RECOMMEND_SONGS
 } from "./mutations-types";
 
 export default {
@@ -53,6 +54,10 @@ export default {
 
   [UPDATE_VOLUME](state, { volume }) {
     state.volume = volume;
+  },
+
+  [RECOMMEND_SONGS](state,{ recommend }){
+    state.recommendSongs = recommend
   },
 
   /**用户相关 */

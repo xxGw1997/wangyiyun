@@ -4,7 +4,7 @@ import {
   playListDetail
 } from "@/network/search";
 
-import { getSongDetail, getSongLyric, getSongUrl } from "@/network/song";
+import { getSongDetail, getSongLyric, getSongUrl, recommendSongs } from "@/network/song";
 
 import { login, getUserDetail } from "@/network/user";
 
@@ -19,6 +19,7 @@ import {
   UPDATE_PLAY_STATUS,
   PLAYER_SHOW,
   UPDATE_VOLUME,
+  RECOMMEND_SONGS,
   /* 用户相关 */
   LOGIN
 } from "./mutations-types";
@@ -74,6 +75,15 @@ export default {
     }
   },
 
+  async getRecommendSongs({commit}){
+    const res = await recommendSongs();
+    console.log("suc");
+    if(res.code === 200){
+      const recommend = res.recommend
+      commit(RECOMMEND_SONGS,{recommend});
+    }
+  },
+
   updateMusicList({ commit }, data) {
     const { id, list, index } = data;
     commit(UPDATE_PLAY_LIST_ID, { id });
@@ -107,6 +117,7 @@ export default {
       return;
     }
     const token = res.token;
+    console.log('token:',token)
     console.log("id:", res.account.id);
     const userDetail = await getUserDetail(res.account.id);
     if (userDetail.code === 200) {
