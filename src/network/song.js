@@ -10,4 +10,5 @@ export const getSongUrl = id => request("/song/url", { id });
 export const getSongLyric = id => request("/lyric", { id });
 
 //获取每日推荐歌曲列表
-export const recommendSongs = () => request("/recommend/songs");
+export const recommendSongs = (timestamp) => request("/recommend/songs",{timestamp});
+

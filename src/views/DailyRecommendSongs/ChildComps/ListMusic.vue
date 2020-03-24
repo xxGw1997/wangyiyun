@@ -1,14 +1,14 @@
 <template>
     <div class="list-music">
         <div class="music-img">
-          <img src="http://p2.music.126.net/UI_5fJZa9AHRfJ1AywjSog==/78065325577772.jpg" alt="">
+          <img :src="item.album.picUrl" alt="">
         </div>
         <div class="music-info">
           <div class="info-name">
-            惺惺惜惺惺
+            {{item.name}}
           </div>
           <div class="info-singer">
-            xxgwasdsadsadsadsadsadsadsadsadasadsad
+            {{item.artists[0].name}}
           </div>
         </div>
         <div class="music-video item">
@@ -22,6 +22,14 @@
 
 <script>
  export default {
+   props:{
+     item:{
+       type:Object,
+       default(){
+         return {}
+       }
+     }
+   },
    data () {
      return {
 
@@ -74,9 +82,9 @@
 
 .list-music .music-info .info-singer{
   width: 100%;
-  height:18px;
+  height:15px;
   line-height: 10px;
-  font-size: 15px;
+  font-size: 12px;
   letter-spacing: 1px;
   color: rgb(255, 255, 255,.4);
   overflow: hidden;

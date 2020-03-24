@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="drs-bg-black"></div>
-            <img :src="img" alt="">
+            <img :src="recommendSongs[0].album.picUrl" alt="" ref="daily-recommend-songs-bg-img">
         </div>
         <div class="scroll-list-wrap">
             <cube-sticky :pos="scrollY">
@@ -26,7 +26,7 @@
                         <div class="title-down">
                             <div class="recommend-word">根据你的音乐口味，为你推荐好音乐、好朋友</div>
                             <div class="recommend-user">
-                                <div><img :src="img" alt=""></div>
+                                <div @click="test"><img :src="img" alt=""></div>
                                 <div><img :src="img" alt=""></div>
                                 <div><img :src="img" alt=""></div>
                             </div>
@@ -49,17 +49,7 @@
                         </div>
                         <div class="content-list">
                             <div>
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
-                                <list-music />
+                                <list-music v-for="(item,index) in recommendSongs" :key="index" :item="item"/>
                             </div>
                         </div>
                     </div>
@@ -70,7 +60,7 @@
 </template>
 
 <script>
- import {mapState} from 'vuex'
+ import {mapState,mapGetters} from 'vuex'
  import ListMusic from "./ChildComps/ListMusic"
  export default {
    data () {
@@ -81,9 +71,10 @@
      }
    },
    created(){
-       this.$store.dispatch('getRecommendSongs')
+       
    },
    computed:{
+    //    ...mapGetters(['recommendSongs']),
        ...mapState(['recommendSongs']),
        dateMonth(){
            let month = new Date().getMonth() + 1
@@ -103,6 +94,12 @@
    watch:{
        recommendSongs(newVal){
 
+       },
+       scrollY(newVal){
+           let Multiple = 1 - newVal/100
+           if(newVal<0){
+               this.$refs['daily-recommend-songs-bg-img'].style.transform = `scale(${Multiple},${Multiple})`
+           }
        }
    },
    components: {
@@ -111,6 +108,9 @@
    methods:{
     scrollHandler({ y }) {
       this.scrollY = -y
+    },
+    test(){
+        this.$store.dispatch('getRecommendSongs')
     }
    }
  }
@@ -160,6 +160,7 @@
 .drs-bg>img{
     width: 100%;
     height: 100%;
+    transform: scale(1,1);
 }
 
 .scroll-list-wrap .drs-title{

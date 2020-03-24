@@ -76,9 +76,10 @@ export default {
   },
 
   async getRecommendSongs({commit}){
-    const res = await recommendSongs();
-    console.log("suc");
+    let timestamp = (new Date()).getTime();
+    const res = await recommendSongs(timestamp);
     if(res.code === 200){
+      console.log("suc");
       const recommend = res.recommend
       commit(RECOMMEND_SONGS,{recommend});
     }
@@ -111,7 +112,8 @@ export default {
   async login({ commit }, data) {
     const { username, pwd } = data.userInfo;
     const callback = data.callback;
-    const res = await login(username, pwd);
+    let timestamp = (new Date()).getTime();
+    const res = await login(username, pwd, timestamp);
     if (res.code !== 200) {
       callback();
       return;
