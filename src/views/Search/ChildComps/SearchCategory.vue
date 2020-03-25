@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search-category">
-      <div class="category-item">
+      <div class="category-item" @click="recommentSongs">
         <div class="item-i">
           <i class="iconfont icon-rili" />
         </div>
@@ -39,6 +39,11 @@
 export default {
   data() {
     return {};
+  },
+  methods:{
+    recommentSongs(){
+      this.$router.push('/dailyrecommendsongs')
+    }
   }
 };
 </script>

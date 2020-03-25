@@ -4,7 +4,7 @@
           <img :src="item.album.picUrl" alt="">
         </div>
         <div class="music-info">
-          <div class="info-name">
+          <div class="info-name" :class="currentPlay(item.id)?'music-checked':''">
             {{item.name}}
           </div>
           <div class="info-singer">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+ import { mapState } from "vuex";
  export default {
    props:{
      item:{
@@ -35,8 +36,16 @@
 
      }
    },
-   components: {
-
+   computed:{
+     ...mapState(['songDetail'])
+   },
+   methods: {
+     currentPlay(id) {
+      if (this.songDetail.length) {
+        return id == this.songDetail[0].id;
+      }
+      return false;
+    }
    }
  }
 </script>
@@ -77,7 +86,12 @@
   letter-spacing: 1px;
   color: rgb(255, 255, 255,.9);
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.list-music .music-info .music-checked{
+  color: red;
 }
 
 .list-music .music-info .info-singer{

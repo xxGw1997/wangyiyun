@@ -1,3 +1,5 @@
+import {getUserInfo} from '@/utils/cache'
+
 const state = {
   searchBanner: [],
   recommendMusicList: [],
@@ -13,8 +15,8 @@ const state = {
   volume: 0.5,
 
   /* 用户相关 */
-  token: "",
-  userDetail: {},
+  token: getUserInfo().token,
+  userDetail: getUserInfo().userDetail,
 
   /*每日推荐歌单 */
   recommendSongs:[]

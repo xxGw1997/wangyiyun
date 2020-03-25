@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
-import DailyRecommendSongs from "../views/DailyRecommendSongs/DailyRecommendSongs";
 
 Vue.use(VueRouter);
 
@@ -14,7 +13,7 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: DailyRecommendSongs,
+    component: Search,
     meta: {
       showFooter: true
     }

@@ -15,12 +15,12 @@
       <div class="login" v-if="isLogin">
         <div class="login-up">
           <div class="up-left">
-            <img :src="avatarUrl" alt="" />
+            <img :src="userInfo.avatarUrl" alt="" />
           </div>
           <div class="up-center">
-            <div class="username">{{ nickname }}</div>
+            <div class="username">{{ userInfo.nickname }}</div>
             <div class="lv">
-              <span>Lv. {{ level }}</span>
+              <span>Lv. {{ userInfo.level }}</span>
             </div>
           </div>
           <div class="up-right">
@@ -29,21 +29,24 @@
         </div>
         <div class="login-bottom">
           <div class="bottom-item">
-            <div class="item-up">{{ eventCount }}</div>
+            <div class="item-up">{{ userInfo.eventCount }}</div>
             <div class="item-title">动态</div>
           </div>
           <div class="bottom-item">
-            <div class="item-up">{{ follows }}</div>
+            <div class="item-up">{{ userInfo.follows }}</div>
             <div class="item-title">关注</div>
           </div>
           <div class="bottom-item">
-            <div class="item-up">{{ followers }}</div>
+            <div class="item-up">{{ userInfo.followers }}</div>
             <div class="item-title">粉丝</div>
           </div>
           <div class="bottom-item">
             <div class="item-up">0</div>
             <div class="item-title">编辑资料</div>
           </div>
+        </div>
+        <div class="logout" @click="logout">
+          退出登录
         </div>
       </div>
       <div class="unlogin" v-else>
@@ -56,11 +59,12 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 import Login from "./ChildComps/Login";
 import HeaderTop from "../../components/HeaderTop/HeaderTop";
 
+import {clearUserInfo} from "@/utils/cache"
 export default {
   data() {
     return {
@@ -79,28 +83,38 @@ export default {
   },
   watch: {
     token(newVal) {
-      if (newVal.length !== 0) {
+      if (newVal !== null) {
         this.loginShow = false;
       }
     },
-    userDetail(newVal) {
-      this.avatarUrl = newVal.profile.avatarUrl;
-      this.nickname = newVal.profile.nickname;
-      this.level = newVal.level;
-      this.eventCount = newVal.profile.eventCount;
-      this.follows = newVal.profile.follows;
-      this.followers = newVal.profile.followeds;
-    }
+    // userDetail(newVal) {
+    //   this.avatarUrl = newVal.profile.avatarUrl;
+    //   this.nickname = newVal.profile.nickname;
+    //   this.level = newVal.level;
+    //   this.eventCount = newVal.profile.eventCount;
+    //   this.follows = newVal.profile.follows;
+    //   this.followers = newVal.profile.followeds;
+    // }
   },
   computed: {
     ...mapState(["token", "userDetail"]),
-    isLogin() {
-      return this.token.length !== 0;
-    }
+    ...mapGetters(["userInfo"]),
+        isLogin() {
+          // console.log(this.token)
+          // console.log(this.userDetail)
+          return this.token !== null 
+        },
   },
+  // updated(){
+  //   console.log("updated:",this.token)
+  // },
   methods: {
     showLogin(isShow) {
       this.loginShow = isShow;
+    },
+    logout(){
+      this.$store.dispatch("logout")
+      this.$router.go(0)
     }
   }
 };
@@ -280,5 +294,16 @@ export default {
   line-height: 40px;
   border: 1px solid white;
   border-radius: 20px;
+}
+
+.account .content .login .logout{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  margin-top: 20px;
+  background: rgb(150, 149, 149);
 }
 </style>

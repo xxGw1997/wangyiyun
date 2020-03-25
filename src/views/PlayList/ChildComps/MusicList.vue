@@ -78,13 +78,13 @@ export default {
         list.push(ele.id);
       });
       //如果当前音乐列表id与点击音乐列表id不同，则把当前的音乐播放列表更新
-      if (this.playListId !== playlist.id) {
+      // if (this.playListId !== playlist.id) {
         this.$store.dispatch("updateMusicList", {
           id: playlist.id,
           list,
           index
         });
-      }
+      // }
       //把当前播放音乐更新
       this.$store.dispatch("getSongDetail", songId);
       //更新当前播放状态
@@ -93,9 +93,9 @@ export default {
       this.$store.dispatch("playerShow", true);
     },
 
-    currentPlay(ad) {
+    currentPlay(id) {
       if (this.songDetail.length) {
-        return ad == this.songDetail[0].id;
+        return id == this.songDetail[0].id;
       }
       return false;
     }

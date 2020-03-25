@@ -6,7 +6,9 @@ import {
 
 import { getSongDetail, getSongLyric, getSongUrl, recommendSongs } from "@/network/song";
 
-import { login, getUserDetail } from "@/network/user";
+import { login, getUserDetail, logout } from "@/network/user";
+
+import {saveUserInfo, clearUserInfo} from '@/utils/cache';
 
 import {
   SEARCH_BANNER,
@@ -123,7 +125,14 @@ export default {
     console.log("id:", res.account.id);
     const userDetail = await getUserDetail(res.account.id);
     if (userDetail.code === 200) {
-      commit(LOGIN, { token, userDetail });
+      commit(LOGIN, saveUserInfo(token, userDetail));
+    }
+  },
+
+  async logout(){
+    const res = await logout()
+    if(res.code === 200){
+      clearUserInfo()
     }
   }
 };
