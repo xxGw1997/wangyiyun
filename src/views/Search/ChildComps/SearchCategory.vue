@@ -36,13 +36,31 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
-  data() {
-    return {};
+  computed:{
+    ...mapState(['token'])
   },
   methods:{
     recommentSongs(){
-      this.$router.push('/dailyrecommendsongs')
+      this.$createDialog({
+        type:'confirm',
+        title:'zzw是只🐖',
+        content:'请先登录',
+        confirmBtn: {
+          text: '现在就去',
+        },
+        cancelBtn: {
+          text: '下次一定',
+        },
+        onConfirm:() => {
+          this.$router.push('/dailyrecommendsongs')
+        },
+        onCancel: () => {
+          return
+        }
+      }).show()
     }
   }
 };

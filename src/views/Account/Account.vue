@@ -87,27 +87,14 @@ export default {
         this.loginShow = false;
       }
     },
-    // userDetail(newVal) {
-    //   this.avatarUrl = newVal.profile.avatarUrl;
-    //   this.nickname = newVal.profile.nickname;
-    //   this.level = newVal.level;
-    //   this.eventCount = newVal.profile.eventCount;
-    //   this.follows = newVal.profile.follows;
-    //   this.followers = newVal.profile.followeds;
-    // }
   },
   computed: {
     ...mapState(["token", "userDetail"]),
     ...mapGetters(["userInfo"]),
         isLogin() {
-          // console.log(this.token)
-          // console.log(this.userDetail)
-          return this.token !== null 
+          return Object.keys(this.userInfo).length !== 0
         },
   },
-  // updated(){
-  //   console.log("updated:",this.token)
-  // },
   methods: {
     showLogin(isShow) {
       this.loginShow = isShow;

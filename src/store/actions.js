@@ -117,7 +117,7 @@ export default {
     let timestamp = (new Date()).getTime();
     const res = await login(username, pwd, timestamp);
     if (res.code !== 200) {
-      callback();
+      callback(res.msg);
       return;
     }
     const token = res.token;

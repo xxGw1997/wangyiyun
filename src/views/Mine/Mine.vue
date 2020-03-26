@@ -1,7 +1,7 @@
 <template>
   <div class="mine">
     <header-top>
-      <div slot="left" class="header_left">
+      <div slot="left" class="header_left" @click="test">
         <i class="iconfont icon-yun_l"></i>
       </div>
       <div class="header_center" slot="center">
@@ -9,7 +9,6 @@
       </div>
     </header-top>
     <scroll class="content">
-      213
       <li>1</li>
       <li>2</li>
       <li>3</li>
@@ -74,6 +73,39 @@ export default {
   components: {
     HeaderTop,
     Scroll
+  },
+  methods:{
+    test(){
+      this.$createDialog({
+        type:'confirm',
+        title:'zzw是只🐖',
+        content:'请先登录',
+        confirmBtn: {
+          text: '现在就去',
+          // active: true,
+          // disabled: false,
+          // href: 'javascript:;'
+        },
+        cancelBtn: {
+          text: '下次一定',
+          // active: false,
+          // disabled: false,
+          // href: 'javascript:;'
+        },
+        onConfirm: () => {
+          this.$createToast({
+            type: 'warn',
+            time: 1000,
+            txt: '点击确认按钮'
+          }).show()
+          this.$router.push('/dailyrecommendsongs')
+        },
+        onCancel: () => {
+          console.log("?")
+          return
+        }
+      }).show()
+    }
   }
 };
 </script>

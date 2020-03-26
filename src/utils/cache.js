@@ -8,10 +8,14 @@ export function saveUserInfo(token,userDetail){
 }
 
 export function getUserInfo(){
-    return storage.get(USER_INFO,[])
+    return storage.get(USER_INFO,{token:'',userDetail:{}})
+}
+
+export function getToken(){
+    return getUserInfo().token
 }
 
 export function clearUserInfo(){
 
-    storage.set(USER_INFO,{token:null,userDetail:null})
+    storage.set(USER_INFO,{token:'',userDetail:{}})
 }

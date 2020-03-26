@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
 
+import {getUserInfo} from "@/utils/cache"
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -63,7 +65,8 @@ const routes = [
     name: "dailyrecommendsongs",
     component: () => import("@/views/DailyRecommendSongs/DailyRecommendSongs"),
     meta: {
-      showFooter: true
+      showFooter: true,
+      needLogin:true
     }
   }
 ];
@@ -73,5 +76,20 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((to,from,next)=>{
+  if(to.meta.needLogin){
+    if(getUserInfo().token !== ''){
+      next()
+    }else{
+      // next({
+      //   path:'/account'
+      // },()=>{})
+      router.push('/account')
+    }
+  }else{
+    next()
+  }
+})
 
 export default router;
