@@ -97,7 +97,7 @@
 .list-music .music-info .info-singer{
   width: 100%;
   height:15px;
-  line-height: 10px;
+  line-height: 15px;
   font-size: 12px;
   letter-spacing: 1px;
   color: rgb(255, 255, 255,.4);

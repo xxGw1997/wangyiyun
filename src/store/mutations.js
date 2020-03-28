@@ -10,7 +10,9 @@ import {
   PLAYER_SHOW,
   UPDATE_VOLUME,
   LOGIN,
-  RECOMMEND_SONGS
+  RECOMMEND_SONGS,
+  GET_SINGER_LIST,
+  UPDATE_CAT
 } from "./mutations-types";
 
 export default {
@@ -64,5 +66,24 @@ export default {
   [LOGIN](state, { token, userDetail }) {
     state.token = token;
     state.userDetail = userDetail;
+  },
+
+  /**歌手相关 */
+  [GET_SINGER_LIST](state, obj){
+    state.artlist = obj
+    // if(state.artlist[cat] !== undefined){
+    //   //如果此列表已有当前分类歌手数据,则进行数据累加
+    //   console.log("undefined")
+      
+    //   // state.artlist[cat] = state.artlist[cat].concat(artists)
+    // }else{
+    //   //如果没有该歌手分类数据,则进行新加进去
+    //   state.artlist[cat] = artists
+    //   console.log('asd')
+    // }
+  },
+
+  [UPDATE_CAT](state,{code}){
+    state.cat = code
   }
 };

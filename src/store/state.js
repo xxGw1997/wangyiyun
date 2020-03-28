@@ -1,4 +1,4 @@
-import {getUserInfo} from '@/utils/cache'
+import {getUserInfo,getSingerList} from '@/utils/cache'
 
 const state = {
   searchBanner: [],
@@ -19,7 +19,11 @@ const state = {
   userDetail: getUserInfo().userDetail,
 
   /*每日推荐歌单 */
-  recommendSongs:[]
+  recommendSongs:[],
+
+  /* 歌手相关 */
+  artlist: getSingerList(),
+  cat:0,
 };
 
 export default state;

@@ -14,6 +14,20 @@ const getters = {
         return userInfo
     },
 
+    /*歌手相关 */
+    // singerList(state){
+    //     console.log("code:",state.cat)
+    //     console.log("keys:",Object.getOwnPropertyNames(state.artlist))
+    //     let code = state.cat
+    //     console.log("getters:",state.artlist[code])
+    //     return state.artlist[state.code]
+    // }
+
+    // singerList(state){
+    //     console.log("getters:",state.artlist)
+    //     return state.artlist[state.code].list
+    // }
+
     
 
 };

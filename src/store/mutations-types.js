@@ -13,3 +13,7 @@ export const RECOMMEND_SONGS = 'recommend_songs';
 /**用户相关 */
 export const LOGIN = "login";
 export const GET_USER_DETAIL = "get_user_detail";
+
+/**歌手相关 */
+export const GET_SINGER_LIST = "get_singer_list";
+export const UPDATE_CAT = "update_cat";

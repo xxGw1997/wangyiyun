@@ -44,23 +44,28 @@ export default {
   },
   methods:{
     recommentSongs(){
-      this.$createDialog({
-        type:'confirm',
-        title:'zzw是只🐖',
-        content:'请先登录',
-        confirmBtn: {
-          text: '现在就去',
-        },
-        cancelBtn: {
-          text: '下次一定',
-        },
-        onConfirm:() => {
-          this.$router.push('/dailyrecommendsongs')
-        },
-        onCancel: () => {
-          return
-        }
-      }).show()
+      if(this.token === ''){
+        this.$createDialog({
+          type:'confirm',
+          title:'zzw是只🐖',
+          content:'请先登录',
+          confirmBtn: {
+            text: '现在就去',
+          },
+          cancelBtn: {
+            text: '下次一定',
+          },
+          onConfirm:() => {
+            this.$router.push('/dailyrecommendsongs')
+            return
+          },
+          onCancel: () => {
+            return
+          }
+        }).show()
+      }else{
+        this.$router.push('/dailyrecommendsongs')
+      }
     }
   }
 };

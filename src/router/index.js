@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
+import SingerList from "../views/SingerList/SingerList";
 
 import {getUserInfo} from "@/utils/cache"
 
@@ -15,7 +16,7 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: Search,
+    component: SingerList,
     meta: {
       showFooter: true
     }
@@ -67,6 +68,22 @@ const routes = [
     meta: {
       showFooter: true,
       needLogin:true
+    }
+  },
+  {
+    path:"/singer",
+    name:"singer",
+    component: () => import("@/views/Singer/Singer"),
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:"/singerlist",
+    name:"singerlist",
+    component: () => import("@/views/SingerList/SingerList"),
+    meta:{
+      showFooter:true
     }
   }
 ];

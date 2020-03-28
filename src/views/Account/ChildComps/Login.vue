@@ -46,7 +46,7 @@ export default {
   watch:{
     phone(newVal){
       if (newVal.length > 11) {
-        newVal = newVal.slice(0, 10)
+        newVal = newVal.slice(0, 11)
         this.$nextTick(() => {
           this.phone = newVal
         })

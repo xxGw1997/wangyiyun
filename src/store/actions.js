@@ -8,7 +8,9 @@ import { getSongDetail, getSongLyric, getSongUrl, recommendSongs } from "@/netwo
 
 import { login, getUserDetail, logout } from "@/network/user";
 
-import {saveUserInfo, clearUserInfo} from '@/utils/cache';
+import {singerCategory,topSinger} from "@/network/singer"
+
+import {saveUserInfo, clearUserInfo,getListOffsetByCode,setSingerList} from '@/utils/cache';
 
 import {
   SEARCH_BANNER,
@@ -23,7 +25,10 @@ import {
   UPDATE_VOLUME,
   RECOMMEND_SONGS,
   /* 用户相关 */
-  LOGIN
+  LOGIN,
+  /* 歌手相关 */
+  GET_SINGER_LIST,
+  UPDATE_CAT
 } from "./mutations-types";
 
 export default {
@@ -121,8 +126,6 @@ export default {
       return;
     }
     const token = res.token;
-    console.log('token:',token)
-    console.log("id:", res.account.id);
     const userDetail = await getUserDetail(res.account.id);
     if (userDetail.code === 200) {
       commit(LOGIN, saveUserInfo(token, userDetail));
@@ -134,5 +137,29 @@ export default {
     if(res.code === 200){
       clearUserInfo()
     }
+  },
+
+
+  /* 歌手相关 */
+  async getSingerCategory({commit},data){
+    const {cat,offset} = data
+    console.log('ac:',cat+'-'+offset)
+    let currOffset = getListOffsetByCode(cat)
+    console.log('curr:',currOffset)
+    if(offset < currOffset) return//相同数据不需要再请求
+    let res = {}
+    if(cat == 0){//获取热门歌手数据
+      res = await topSinger(offset)
+    }else{
+      res = await singerCategory(cat,offset)
+    }
+    if(res.code === 200){
+      console.log('ac执行了')
+      commit(GET_SINGER_LIST,setSingerList(cat,offset,res.artists))
+    }
+  },
+
+  updateCat({commit},code){
+    commit(UPDATE_CAT,{code})
   }
 };
