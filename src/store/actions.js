@@ -8,7 +8,7 @@ import { getSongDetail, getSongLyric, getSongUrl, recommendSongs } from "@/netwo
 
 import { login, getUserDetail, logout } from "@/network/user";
 
-import {singerCategory,topSinger} from "@/network/singer"
+import {singerCategory,topSinger,singerInfo} from "@/network/singer"
 
 import {saveUserInfo, clearUserInfo,getListOffsetByCode,setSingerList} from '@/utils/cache';
 
@@ -28,7 +28,8 @@ import {
   LOGIN,
   /* 歌手相关 */
   GET_SINGER_LIST,
-  UPDATE_CAT
+  UPDATE_CAT,
+  GET_SINGER_INFO
 } from "./mutations-types";
 
 export default {
@@ -158,5 +159,15 @@ export default {
 
   updateCat({commit},code){
     commit(UPDATE_CAT,{code})
+  },
+
+  async getSingerInfo({commit},id){
+    console.log("id:",id)
+    const res = await singerInfo(id)
+    if(res.code === 200){
+      commit(GET_SINGER_INFO,res)
+    }
   }
+
+
 };

@@ -2,7 +2,7 @@
     <div class="singer-item">
         <div class="item">
             <div class="item-avatar">
-                <img :src="item.picUrl" alt="">
+                <img v-lazy="item.picUrl" alt="">
             </div>
             <div class="item-name">
                 <div>{{item.name}}</div>

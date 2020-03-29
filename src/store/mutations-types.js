@@ -17,3 +17,4 @@ export const GET_USER_DETAIL = "get_user_detail";
 /**歌手相关 */
 export const GET_SINGER_LIST = "get_singer_list";
 export const UPDATE_CAT = "update_cat";
+export const GET_SINGER_INFO = "get_singer_info"

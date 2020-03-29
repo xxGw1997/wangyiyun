@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: SingerList,
+    component: Search,
     meta: {
       showFooter: true
     }

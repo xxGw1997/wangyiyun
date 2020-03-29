@@ -1,7 +1,7 @@
 <template>
     <div class="singer-list">
         <div class="header">
-            <div class="header-left">
+            <div class="header-left" @click="back">
                 <i class="iconfont icon-back"></i>
             </div>
             <div class="header-center">歌手分类</div>
@@ -30,7 +30,8 @@
                 >
                 <singer-item v-for="(item,index) in artlist[code].list" 
                              :key="index"
-                             :item="item"/>
+                             :item="item"
+                             @click.native="singerInfo(item.id)"/>
             </cube-scroll>
         </div>
     </div>
@@ -90,17 +91,8 @@
      }
    },
    created(){
-       //第一次进入时,获取热门歌手列表
-    //    this.getSingerList(0)
-    //    let obj = this.artlist
-    //    this.currentList = this.singerList
-    //    this.currentList = this.artlist[0]
        this.$store.dispatch('getSingerCategory',{cat:0,offset:0})
    },
-   mounted(){
-        //   console.log("mounted:",this.singerList)
-       //    this.currentList = this.artlist[0]
-       },
    computed:{
        ...mapState(["artlist","cat"]),
        options(){
@@ -108,14 +100,6 @@
                 pullUpLoad: this.pullUpLoad
            }
        }
-    //    ...mapGetters(["singerList"])
-    //    currentList(){
-        //        let code = this.getSingerCodegetSingerCode(this.checkerLanguage,this.checkerSinger)
-    //     //    console.log('code',code)
-    //     //    console.log('b',this.artlist)
-    //     //    console.log('a',this.artlist[code])
-    //        return this.artlist[code]
-    //    }
    },
    watch:{
        checkerLanguage(newVal){
@@ -125,7 +109,7 @@
            //获取对应条件歌手列表...
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
-           console.log("language-change:",this.code + '-' + offset)
+        //    console.log("language-change:",this.code + '-' + offset)
            this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
        },
        checkerSinger(newVal){
@@ -135,7 +119,7 @@
            //获取对应条件歌手列表...
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
-           console.log("singer-change:",this.code + '-' + offset)
+        //    console.log("singer-change:",this.code + '-' + offset)
            this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
        }
    },
@@ -143,6 +127,13 @@
        SingerItem
    },
    methods:{
+    back(){
+        this.$router.go(-1)
+    },
+    singerInfo(id){
+        this.$store.dispatch("getSingerInfo",id)
+        this.$router.push("/singer");
+    },
     onPullingUp(){
         let cat = this.cat
         let offset = this.artlist[cat].offset
@@ -150,20 +141,9 @@
         console.log("offset:",offset)
         this.getSingerList(cat,offset)
         setTimeout(() => {
+            this.$refs.scroll.forceUpdate()
             this.$refs.scroll.refresh()
         }, 1000);
-        
-        console.log('更新')
-        // 模拟更新数据
-        // setTimeout(() => {
-            // if (Math.random() > 0.5) {
-                //     // 如果有新数据
-        // } else {
-            //     // 如果没有新数据
-        // this.$refs.scroll.forceUpdate()
-        //     console.log('不更新')
-        // }
-        // }, 1000)
     },
     scrollHandler({ y }) {
       this.scrollY = -y
@@ -173,7 +153,6 @@
         return singerCategoryCode(code)
     },
     getSingerList(cat,offset=0){
-        console.log("method:",cat+'-'+offset)
         this.$store.dispatch('getSingerCategory',{cat,offset})
     },
     setSingerCode(){
@@ -181,8 +160,6 @@
         this.$store.dispatch('updateCat',this.code)
     },
     getCurrOffset(code){
-        console.log("code:",code)
-        console.log("offset:",this.artlist[code])
         return this.artlist[code].offset
     }
    }

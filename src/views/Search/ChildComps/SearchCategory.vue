@@ -19,7 +19,7 @@
         </div>
         <div>排行榜</div>
       </div>
-      <div class="category-item">
+      <div class="category-item" @click="singer">
         <div class="item-i">
           <i class="iconfont icon-diantai" />
         </div>
@@ -66,6 +66,9 @@ export default {
       }else{
         this.$router.push('/dailyrecommendsongs')
       }
+    },
+    singer(){
+      this.$router.push('/singerlist')
     }
   }
 };

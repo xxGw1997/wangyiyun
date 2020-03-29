@@ -24,6 +24,9 @@ const state = {
   /* 歌手相关 */
   artlist: getSingerList(),
   cat:0,
+  singerInfo:{},
+  singerSongs:[],
+  singerAlbum:{}
 };
 
 export default state;
