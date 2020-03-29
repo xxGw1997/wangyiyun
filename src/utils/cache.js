@@ -23,8 +23,15 @@ export function clearUserInfo(){
 
 export function setSingerList(code,offset,list){
     let obj = getSingerList()
+    let listdata = []
+    let data = {}
     obj[code].offset = offset + 15
-    obj[code].list = obj[code].list.concat(list)
+    list.forEach(ele => {
+        //目前只需要存储歌手id，歌手name，歌手头像
+        data = {id:ele.id,name:ele.name,picUrl:ele.picUrl}
+        listdata.push(data)
+    });
+    obj[code].list = obj[code].list.concat(listdata)
     storage.set(SINGER_LIST,obj)
     return obj
 }

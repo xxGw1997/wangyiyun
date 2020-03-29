@@ -143,9 +143,7 @@ export default {
   /* 歌手相关 */
   async getSingerCategory({commit},data){
     const {cat,offset} = data
-    console.log('ac:',cat+'-'+offset)
     let currOffset = getListOffsetByCode(cat)
-    console.log('curr:',currOffset)
     if(offset < currOffset) return//相同数据不需要再请求
     let res = {}
     if(cat == 0){//获取热门歌手数据
@@ -154,7 +152,6 @@ export default {
       res = await singerCategory(cat,offset)
     }
     if(res.code === 200){
-      console.log('ac执行了')
       commit(GET_SINGER_LIST,setSingerList(cat,offset,res.artists))
     }
   },
