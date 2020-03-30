@@ -6,7 +6,7 @@
             </div>
             <div class="header-center">歌手分类</div>
             <div class="header-right">
-                <i class="iconfont icon-back"></i>
+                <i class="iconfont icon-zhengzaibofang"></i>
             </div>
         </div>
         <div class="filter">
@@ -169,7 +169,7 @@
 <style>
 /* 覆盖cube-ui组件css样式 */
 .singer-list .filter .cube-checker .cube-checker-item{
-    background: goldenrod;
+    background: rgb(77, 77, 77);
     color: rgb(255, 255, 255,.3);
 }
 
@@ -186,7 +186,7 @@
 <style scoped>
 .singer-list{
     height: 100vh;
-    background: goldenrod;
+    background: rgb(77, 77, 77);
 }
 
 .singer-list .header{
