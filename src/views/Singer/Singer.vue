@@ -1,6 +1,5 @@
 <template>
     <div class="singer">
-        <!-- {{singerInfo?singerInfo.name:''}} -->
         <div class="singer-bg">
             <div class="singer-header">
                 <div class="header-back">
@@ -33,8 +32,16 @@
                             <cube-sticky-ele>
                                     <div class="singer-title-sticky">
                                         <div class="singer-title-word">
-                                             <cube-tab-bar v-model="selectedLabel" show-slider>
-                                                <cube-tab v-for="(item, index) in tabs" :key="index" :label="item.label">
+                                             <cube-tab-bar 
+                                                v-model="selectedLabel" 
+                                                show-slider                        
+                                                >
+                                                <cube-tab 
+                                                    v-for="(item, index) in tabs" 
+                                                    :key="index" 
+                                                    :label="item"
+                                                    :value="index"
+                                                    >
                                                 </cube-tab>
                                             </cube-tab-bar>
                                         </div>
@@ -43,29 +50,18 @@
                         </div>
                         <div>
                             <cube-tab-panels v-model="selectedLabel">
-                                <cube-tab-panel label="热门单曲">
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />
-                                    <singer-songs />                                    
-                                </cube-tab-panel>
-                                <cube-tab-panel label="专辑">
-                                    专辑
-                                </cube-tab-panel>
-                                <cube-tab-panel label="艺人信息">
-                                    艺人信息
-                                </cube-tab-panel>
+                                    <cube-tab-panel label="热门单曲" :value="0">
+                                        <singer-hot-songs/>
+                                    </cube-tab-panel>
+                                    <cube-tab-panel label="专辑" :value="1">
+                                        <singer-albums/>
+                                    </cube-tab-panel>
+                                    <cube-tab-panel label="艺人信息" :value="2">
+                                        <singer-info/>
+                                    </cube-tab-panel>
                             </cube-tab-panels>
                         </div>
-                    </div>
+                    </div>  
                 </cube-scroll>
           </cube-sticky>
         </div>
@@ -75,40 +71,78 @@
 <script>
  import {mapState} from 'vuex'
  
- import SingerSongs from './ChildComps/SingerSongs'
+ const SingerHotSongs = () => import("./ChildComps/SingerHotSongs")
+ const SingerAlbums = () => import("./ChildComps/SingerAlbums")
+ const SingerInfo = () => import("./ChildComps/SingerInfo")
  export default {
    data () {
      return {
-        selectedLabel: '热门单曲',
-        tabs: [{
-            label: '热门单曲',
-            icon: 'cubeic-like',
-            heroes: ['敌法师', '卓尔游侠', '主宰', '米拉娜', '变体精灵', '幻影长矛手', '复仇之魂', '力丸', '矮人狙击手', '圣堂刺客', '露娜', '赏金猎人', '熊战士']
-        }, {
-            label: '专辑',
-            icon: 'cubeic-star',
-            heroes: ['血魔', '影魔', '剃刀', '剧毒术士', '虚空假面', '幻影刺客', '冥界亚龙', '克林克兹', '育母蜘蛛', '编织者', '幽鬼', '司夜刺客', '米波']
-        }, {
-            label: '艺人信息',
-            icon: 'cubeic-star',
-            heroes: ['血魔', '影魔', '剃刀', '剧毒术士', '虚空假面', '幻影刺客', '冥界亚龙', '克林克兹', '育母蜘蛛', '编织者', '幽鬼', '司夜刺客', '米波']
-        }],
-
-
+        selectedLabel: 0,
+        oldLabel:0,
+        tabs: [ '热门单曲', '专辑', '艺人信息'],
         scrollEvents: ['scroll'],
         scrollY:0,
+        singerData:{
+            songs:{
+                scrollY:0,
+                song:[]
+            },
+            albums:{
+                scrollY:0,
+                albums:[]
+            },
+            info:{
+                scrollY:0,
+                info:{}
+            }
+        }
      }
    },
    computed:{
      ...mapState(['singerInfo'])
    },
+   watch:{
+       scrollY(){
+           console.log(this.scrollY)
+       },
+       selectedLabel(newVal,oldVal){
+           console.log(oldVal + "--------->" + newVal)
+           this.oldLabel = oldVal
+           //记录切换前组件的scrollY的值
+           console.log("当前scrollY:",this.scrollY)
+           if(oldVal==0){
+               this.singerData.songs.scrollY = this.scrollY
+           }else if(oldVal==1){
+               this.singerData.albums.scrollY = this.scrollY
+           }else{
+               this.singerData.info.scrollY = this.scrollY
+           }
+           //更新切换后的组件的scrollY的值
+           if(newVal==0){
+           }else if(newVal==1){
+               this.singerData.albums.scrollY = this.scrollY
+           }else{
+               this.singerData.info.scrollY = this.scrollY
+           }
+       }
+   },
    components: {
-       SingerSongs
+       SingerHotSongs,
+       SingerAlbums,
+       SingerInfo
+    //    SingerSongs
    },
    methods:{
     scrollHandler({ y }) {
       this.scrollY = -y
-    }
+    },
+    // toggle(v){
+    //     //记录切换前组件当前的scrollY的值
+    //     console.log("当前scrollY:",this.scrollY)
+    //     console.log("之前label:",this.oldLabel)
+    //     console.log("当前label:",this.selectedLabel)
+    //     console.log("点击:",v)
+    // }
    }
  }
 </script>

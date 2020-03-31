@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
-import SingerList from "../views/SingerList/SingerList";
 
 import {getUserInfo} from "@/utils/cache"
 
@@ -74,6 +73,33 @@ const routes = [
     path:"/singer",
     name:"singer",
     component: () => import("@/views/Singer/Singer"),
+    // redirect:{name:"hotsongs"},
+    // children:[
+    //   {
+    //     path:"hotsongs",
+    //     name:"hotsongs",
+    //     commponent:() => import("@/views/Singer/ChildComps/SingerHotSongs"),
+    //     meta:{
+    //       showFooter:true
+    //     }
+    //   },
+    //   {
+    //     path:"album",
+    //     name:"album",
+    //     commponent:() => import("@/views/Singer/ChildComps/SingerAlbums"),
+    //     meta:{
+    //       showFooter:true
+    //     }
+    //   },
+    //   {
+    //     path:"info",
+    //     name:"info",
+    //     commponent:() => import("@/views/Singer/ChildComps/SingerInfo"),
+    //     meta:{
+    //       showFooter:true
+    //     }
+    //   }
+    // ],
     meta:{
       showFooter:true
     }
