@@ -26,7 +26,7 @@ const state = {
   cat:0,
   singerInfo:{},
   singerSongs:[],
-  singerAlbum:{}
+  singerAlbums:[],
 };
 
 export default state;

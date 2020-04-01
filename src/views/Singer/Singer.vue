@@ -2,15 +2,17 @@
     <div class="singer">
         <div class="singer-bg">
             <div class="singer-header">
-                <div class="header-back">
+                <div class="header-back" @click="back">
                     <i class="iconfont icon-back"></i>
                 </div>
                 <div>
-                    <i class="iconfont icon-zhengzaibofang"></i>
+                    <i class="iconfont icon-zhengzaibofang"
+                        v-show="songDetail[0]"
+                        @click="playerShow"/>
                 </div>
             </div>
             <div class="singer-bg-black"></div>
-            <img src="http://p2.music.126.net/UI_5fJZa9AHRfJ1AywjSog==/78065325577772.jpg" alt="" ref="daily-recommend-songs-bg-img">
+            <img :src="singerInfo.picUrl" alt="" ref="daily-recommend-songs-bg-img">
         </div>
         <div class="scroll-list-wrap">
           <cube-sticky :pos="scrollY">
@@ -20,7 +22,7 @@
                     :scroll-events="scrollEvents">
                     <div class="singer-info">
                         <div class="info-left">
-                            <div class="singer-name">赵小棠</div>
+                            <div class="singer-name">{{singerInfo.name}}</div>
                             <div class="singer-info">被收藏了11.2万次</div>
                         </div>
                         <div class="info-right">
@@ -99,17 +101,15 @@
      }
    },
    computed:{
-     ...mapState(['singerInfo'])
+     ...mapState(['singerInfo','songDetail'])
    },
    watch:{
-       scrollY(){
-           console.log(this.scrollY)
-       },
        selectedLabel(newVal,oldVal){
-           console.log(oldVal + "--------->" + newVal)
+           if(this.scrollY<240){
+               return
+           }
            this.oldLabel = oldVal
            //记录切换前组件的scrollY的值
-           console.log("当前scrollY:",this.scrollY)
            if(oldVal==0){
                this.singerData.songs.scrollY = this.scrollY
            }else if(oldVal==1){
@@ -118,31 +118,35 @@
                this.singerData.info.scrollY = this.scrollY
            }
            //更新切换后的组件的scrollY的值
+           let moveTo = 0
+           let obj = ''
            if(newVal==0){
+               obj = "songs"
            }else if(newVal==1){
-               this.singerData.albums.scrollY = this.scrollY
+               obj = "albums"
            }else{
-               this.singerData.info.scrollY = this.scrollY
+               obj = "info"
            }
+           moveTo = this.singerData[obj].scrollY < 240? -240 : -this.singerData[obj].scrollY
+           this.$refs.scroll.scrollTo(0,moveTo,0)
+           this.scrollY = -moveTo
        }
    },
    components: {
        SingerHotSongs,
        SingerAlbums,
        SingerInfo
-    //    SingerSongs
    },
    methods:{
+    back(){
+        this.$router.go(-1)
+    },
+    playerShow() {
+      this.$store.dispatch("playerShow", true);
+    },
     scrollHandler({ y }) {
       this.scrollY = -y
-    },
-    // toggle(v){
-    //     //记录切换前组件当前的scrollY的值
-    //     console.log("当前scrollY:",this.scrollY)
-    //     console.log("之前label:",this.oldLabel)
-    //     console.log("当前label:",this.selectedLabel)
-    //     console.log("点击:",v)
-    // }
+    }
    }
  }
 </script>

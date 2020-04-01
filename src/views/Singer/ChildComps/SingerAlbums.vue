@@ -1,29 +1,29 @@
 <template>
     <div>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
-        <album/>
+        <album
+          v-for="(item, index) in singerAlbums" 
+          :key="index"
+          :album="item"
+          @click.native="musicListClick(item.id)"/>
     </div>
 </template>
 
 <script>
+ import {mapState} from "vuex"
+
  import Album from "./Album"
  export default {
-   data () {
-     return {
-
-     }
-   },
    components: {
     Album
+   },
+   computed:{
+     ...mapState(["singerAlbums"])
+   },
+   methods:{
+     musicListClick(id){
+      // this.$store.dispatch("getPlayListDetail", id);
+      // this.$router.push("/playlist");
+     }
    }
  }
 </script>

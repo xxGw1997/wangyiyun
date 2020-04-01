@@ -6,7 +6,9 @@
             </div>
             <div class="header-center">歌手分类</div>
             <div class="header-right">
-                <i class="iconfont icon-zhengzaibofang"></i>
+                <i class="iconfont icon-zhengzaibofang"
+                        v-show="songDetail[0]"
+                        @click="playerShow"/>
             </div>
         </div>
         <div class="filter">
@@ -38,7 +40,7 @@
 </template>
 
 <script>
- import {mapState,mapGetters} from 'vuex'
+ import {mapState} from 'vuex'
 
  import SingerItem from './ChildComps/SingerItem'
 
@@ -94,7 +96,7 @@
        this.$store.dispatch('getSingerCategory',{cat:0,offset:0})
    },
    computed:{
-       ...mapState(["artlist","cat"]),
+       ...mapState(["artlist","cat","songDetail"]),
        options(){
            return{
                 pullUpLoad: this.pullUpLoad
@@ -130,8 +132,12 @@
     back(){
         this.$router.go(-1)
     },
+    playerShow() {
+      this.$store.dispatch("playerShow", true);
+    },
     singerInfo(id){
         this.$store.dispatch("getSingerInfo",id)
+        this.$store.dispatch("getSingerAlbums",id)
         this.$router.push("/singer");
     },
     onPullingUp(){

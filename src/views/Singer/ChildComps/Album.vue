@@ -1,25 +1,36 @@
 <template>
     <div class="album">
         <div class="album-img">
-            <img src="http://p2.music.126.net/UI_5fJZa9AHRfJ1AywjSog==/78065325577772.jpg" alt="">
+            <img :src="album.picUrl">
         </div>
         <div class="album-info">
-            <div class="album-name">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
-            <div class="album-time">2020-3-31</div>
+            <div class="album-name">{{album.name}}</div>
+            <div class="album-time">
+                <span>{{publishTime}}</span>
+                <span>{{album.size}}首</span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
-   }
+    props:{
+        album:{
+            type:Object,
+            default(){
+                return {}
+            }
+        }
+    },
+    computed:{
+        publishTime(){
+            let date = new Date(this.album.publishTime)
+            return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+        }
+    },
+    methods:{
+    }
  }
 </script>
 
@@ -70,6 +81,10 @@
     line-height: 15px;
     font-size: 12px;
     color: rgba(255, 255, 255,.3);
+}
+
+.album .album-info .album-time>span{
+    margin-right: 10px;
 }
 
 </style>

@@ -14,6 +14,7 @@ import {
   GET_SINGER_LIST,
   UPDATE_CAT,
   GET_SINGER_INFO,
+  GET_SINGER_ALBUMS
 } from "./mutations-types";
 
 export default {
@@ -81,5 +82,9 @@ export default {
   [GET_SINGER_INFO](state,result){
     state.singerInfo = result.artist
     state.singerSongs = result.hotSongs
+  },
+
+  [GET_SINGER_ALBUMS](state,result){
+    state.singerAlbums = result
   }
 };

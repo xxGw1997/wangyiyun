@@ -2,17 +2,18 @@
     <div class="singer-songs">
         <div class="song">
             <div class="song-index song-item">
-                <span v-if="true">1</span>
+                <span v-if="!currentPlay(id)">{{index + 1}}</span>
                 <i class="iconfont icon-volume" v-else></i>
             </div>
             <div class="song-info song-item">
-                <div class="song-name">
-                    赵小棠冲呀呀呀呀呀呀呀啊！呀呀呀呀呀呀啊！
+                <div class="song-name" 
+                    :class="currentPlay(id) ? 'music_checked' : ''">
+                    {{song.name}}
                 </div>
-                <div class="song-album">xxgw</div>
+                <div class="song-album">{{song.al.name}}</div>
             </div>
             <div class="song-video song-item">
-                <i class="iconfont icon-video"></i>
+                <i class="iconfont icon-video" v-if="song.mv>0"></i>
             </div>
             <div class="song-more song-item">
                 <i class="iconfont icon-domore"></i>
@@ -22,15 +23,40 @@
 </template>
 
 <script>
+ import {mapState} from "vuex"
+
  export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
-   }
+    props:{
+        song:{
+            type:Object,
+            default(){
+                return {}
+            }
+        },
+        index:{
+            type:Number,
+            default(){
+                return 0
+            }
+        },
+        id:{
+            type:Number,
+            default(){
+                return 0
+            }
+        }
+    },
+    computed:{
+        ...mapState(["songDetail"])
+    },
+    methods:{
+        currentPlay(id){
+            if (this.songDetail.length) {
+                return id == this.songDetail[0].id;
+            }
+            return false;
+        }
+    }
  }
 </script>
 
@@ -86,11 +112,14 @@
     height: 25px;
     line-height: 25px;
     font-size: 18px;
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: rgba(255, 255, 255,.8);
+}
+
+.singer-songs .song .song-info .music_checked{
+    color:red;
 }
 
 .singer-songs .song .song-info .song-album{

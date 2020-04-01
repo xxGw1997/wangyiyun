@@ -7,3 +7,5 @@ export const topSinger = (offset=0,limit=15) =>
                 request("/top/artists",{offset,limit})
 
 export const singerInfo = (id) => request("/artists",{id})
+
+export const singerAlbums = (id) => request("/artist/album",{id,limit:15})

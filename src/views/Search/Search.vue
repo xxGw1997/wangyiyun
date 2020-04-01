@@ -56,10 +56,6 @@ export default {
   },
   methods: {
     musicListClick(id) {
-      //  if(this.playListId === null){
-      //    console.log()
-      //    this.$store.dispatch('updateMusicList', id)
-      //  }
       this.$store.dispatch("getPlayListDetail", id);
       this.$router.push("/playlist");
     }
