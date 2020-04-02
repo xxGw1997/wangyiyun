@@ -140,6 +140,7 @@
    methods:{
     back(){
         this.$router.go(-1)
+        this.$refs.scroll.scrollTo(0,0,0)
     },
     playerShow() {
       this.$store.dispatch("playerShow", true);

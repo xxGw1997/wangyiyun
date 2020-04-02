@@ -19,3 +19,4 @@ export const GET_SINGER_LIST = "get_singer_list";
 export const UPDATE_CAT = "update_cat";
 export const GET_SINGER_INFO = "get_singer_info"
 export const GET_SINGER_ALBUMS = "get_singer_albums"
+export const ALBUMS_SONGS = "albums_songs"

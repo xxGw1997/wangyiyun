@@ -21,16 +21,16 @@
       </div>
       <div class="category-item" @click="singer">
         <div class="item-i">
-          <i class="iconfont icon-diantai" />
+          <i class="iconfont icon-singer" />
         </div>
-        <div>电台</div>
+        <div>歌手</div>
       </div>
-      <div class="category-item">
+      <!-- <div class="category-item">
         <div class="item-i">
           <i class="iconfont icon-live_icon" />
         </div>
         <div>直播</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
       if(this.token === ''){
         this.$createDialog({
           type:'confirm',
-          title:'zzw是只🐖',
+          title:'艾欧尼亚搜早点睡咯，一起打LOL',
           content:'请先登录',
           confirmBtn: {
             text: '现在就去',

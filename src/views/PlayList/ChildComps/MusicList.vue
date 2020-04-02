@@ -57,7 +57,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["playListId", "musicList", "songDetail"]),
+    ...mapState(["musicList", "songDetail"]),
 
     singer(singers) {
       console.log(typeof singers);
@@ -78,7 +78,6 @@ export default {
         list.push(ele.id);
       });
       //如果当前音乐列表id与点击音乐列表id不同，则把当前的音乐播放列表更新
-      // if (this.playListId !== playlist.id) {
         this.$store.dispatch("updateMusicList", {
           id: playlist.id,
           list,

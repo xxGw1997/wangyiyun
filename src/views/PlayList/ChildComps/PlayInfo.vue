@@ -9,7 +9,8 @@
           <div class="info-title">{{ playListDetail.name }}</div>
           <div class="info-author">
             <div class="author-img">
-              <img :src="creatorImg" alt="" />
+              <img :src="creatorImg" alt="" v-if="!playListDetail.type"/>
+              <div class="author-name" v-else>歌手:</div>
             </div>
             <div class="author-name">{{ creatorNickname }}</div>
             <div class="author-icon">></div>
@@ -174,20 +175,24 @@ export default {
   flex: 0 0 20%;
 }
 
-.play-info .info .info-right .info-author .author-img img {
+.play-info .info .info-right .info-author .author-img>img {
   width: 80%;
   border-radius: 50%;
 }
 
+.play-info .info .info-right .info-author .author-img>.author-name{
+  color: rgba(255, 255, 255,.5);
+}
+
 .play-info .info .info-right .info-author .author-name {
   font-size: 14px;
-  color: antiquewhite;
+  color: rgba(255, 255, 255,.9);
   padding-left: 5px;
 }
 
 .play-info .info .info-right .info-author .author-icon {
   flex: 0 0 5%;
-  color: antiquewhite;
+  color: rgba(255, 255, 255,.9);
 }
 
 .play-info .info .info-right .info-intro {
@@ -198,7 +203,7 @@ export default {
 
 .play-info .info .info-right .info-intro .intro {
   height: 80%;
-  color: antiquewhite;
+  color: rgba(255, 255, 255,.9);
   font-size: 10px;
   line-height: 18px;
   letter-spacing: 1px;
@@ -212,7 +217,7 @@ export default {
 }
 
 .play-info .info .info-right .info-intro .intro-icon {
-  color: antiquewhite;
+  color: rgba(255, 255, 255,.9);
 }
 
 .play-info .info .info-right > div {
@@ -229,7 +234,7 @@ export default {
 .play-info .operation .operation-item {
   width: 25%;
   height: 100%;
-  color: antiquewhite;
+  color: rgba(255, 255, 255,.9);
   display: flex;
   text-align: center;
   align-content: space-around;

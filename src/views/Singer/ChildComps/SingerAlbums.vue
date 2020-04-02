@@ -21,8 +21,8 @@
    },
    methods:{
      musicListClick(id){
-      // this.$store.dispatch("getPlayListDetail", id);
-      // this.$router.push("/playlist");
+      this.$store.dispatch("getAlbumSongs", id);
+      this.$router.push("/playlist");
      }
    }
  }
