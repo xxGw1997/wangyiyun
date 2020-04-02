@@ -21,6 +21,14 @@ const routes = [
     }
   },
   {
+    path: "/searchKeywords",
+    name: "searchKeywords",
+    component: () => import("@/views/Search/SearchKeywords"),
+    meta: {
+      showFooter: true
+    }
+  },
+  {
     path: "/video",
     name: "video",
     component: () => import("@/views/Video/Video"),

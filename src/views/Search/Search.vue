@@ -6,7 +6,9 @@
       </div>
       <div class="header_center" slot="center">
         <i class="iconfont icon-iconfonticonfontsousuo1"></i>
-        <input type="text" name="" placeholder="搜索歌曲、歌手" />
+        <div @click="searchKeywords">
+          搜索歌曲、歌手
+        </div>
       </div>
     </header-top>
     <scroll class="content">
@@ -58,6 +60,9 @@ export default {
     musicListClick(id) {
       this.$store.dispatch("getPlayListDetail", id);
       this.$router.push("/playlist");
+    },
+    searchKeywords(){
+      this.$router.push("/searchKeywords")
     }
   }
 };
@@ -66,14 +71,15 @@ export default {
 <style scoped>
 .header_center {
   border-radius: 20px;
+  height: 30px;
+  line-height: 30px;
   background: rgb(78, 78, 78);
 }
 
-.header_center input {
+.header_center div {
   background: rgb(78, 78, 78);
   border-radius: 15px;
   border: none;
-  outline: none;
   color: rgb(184, 184, 184);
 }
 
