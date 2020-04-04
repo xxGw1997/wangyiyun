@@ -1,6 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search/Search";
+import AllTypeResult from "@/views/SearchResult/ChildComps/AllTypeResult"
+
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 import {getUserInfo} from "@/utils/cache"
 
@@ -24,6 +30,40 @@ const routes = [
     path: "/searchKeywords",
     name: "searchKeywords",
     component: () => import("@/views/SearchKeywords/SearchKeywords"),
+    meta: {
+      showFooter: true
+    }
+  },
+  {
+    path: "/searchResult",
+    component: () => import("@/views/SearchResult/SearchResult"),
+    redirect:"/searchResult/allTypeResult",
+    children:[
+      {
+        path:"allTypeResult",
+        component:AllTypeResult
+      },
+      {
+        path:"songType",
+        name:"songType",
+        component:()=>import("@/views/SearchResult/ChildComps/SongType")
+      },
+      {
+        path:"singerType",
+        name:"singerType",
+        component:()=>import("@/views/SearchResult/ChildComps/SingerType")
+      },
+      {
+        path:"albumType",
+        name:"albumType",
+        component:()=>import("@/views/SearchResult/ChildComps/AlbumType")
+      },
+      {
+        path:"musicListType",
+        name:"musicListType",
+        component:()=>import("@/views/SearchResult/ChildComps/MusicListType")
+      },
+    ],
     meta: {
       showFooter: true
     }

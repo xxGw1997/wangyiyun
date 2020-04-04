@@ -43,14 +43,16 @@
                   <i class="iconfont icon-delete"></i>
                 </div>
               </div>
-              <history-item :searchHistory="historyItem"/>
+              <history-item 
+                :searchHistory="historyItem"
+                @searchKeyword="searchKeyword"/>
             </div>
             <div class="search-recommend">
               <div class="recommend-title">
                 热搜榜
               </div>
               <div class="recommend-item">
-                <recommend-item/>
+                <recommend-item @searchKeyword="searchKeyword"/>
               </div>
             </div>
           </cube-scroll>
@@ -100,7 +102,9 @@
        this.$router.go(-1)
      },
      searchKeyword(keyword){
+       console.log("搜索:",keyword)
        this.$store.dispatch("searchKeyword",keyword)
+       this.$router.push("/searchResult")
      },
      clearHistory(){
        this.$createDialog({

@@ -7,7 +7,8 @@
             <ul class="list-wrapper">
                 <li class="list-item" 
                   v-for="(item,index) in searchHistory"
-                  :key="index">
+                  :key="index"
+                  @click="searchKeyword(item)">
                   {{item}}
                 </li>                 
             </ul>
@@ -26,14 +27,11 @@
       }
      }
    },
-   data () {
-     return {
-
+   methods:{
+     searchKeyword(keyword){
+       this.$emit("searchKeyword",keyword)
      }
-   },
-  //  computed:{
-  //    ...mapState(["searchHistory"])
-  //  }
+   }
  }
 </script>
 

@@ -34,7 +34,7 @@
                             <cube-sticky-ele>
                                     <div class="singer-title-sticky">
                                         <div class="singer-title-word">
-                                             <cube-tab-bar 
+                                            <cube-tab-bar 
                                                 v-model="selectedLabel" 
                                                 show-slider                        
                                                 >

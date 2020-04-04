@@ -33,7 +33,7 @@
    },
    methods:{
        searchKeyword(keyword){
-            this.$store.dispatch("searchKeyword",keyword)
+            this.$emit("searchKeyword",keyword)
        }
    }
  }
