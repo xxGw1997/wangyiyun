@@ -15,7 +15,10 @@ import {
   UPDATE_CAT,
   GET_SINGER_INFO,
   GET_SINGER_ALBUMS,
-  ALBUMS_SONGS
+  ALBUMS_SONGS,
+  SEARCH_SUGGEST,
+  UPDATE_TIME,
+  SEARCH_TOP
 } from "./mutations-types";
 
 export default {
@@ -91,5 +94,17 @@ export default {
 
   [ALBUMS_SONGS](state,result){
     state.playListDetail = result
+  },
+
+  [SEARCH_SUGGEST](state,result){
+    state.searchSuggest = result
+  },
+
+  [UPDATE_TIME](state){
+    state.searchHistoryUpdateTime = Date.now()
+  },
+  
+  [SEARCH_TOP](state,result){
+    state.searchHot = result
   }
 };

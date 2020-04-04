@@ -23,3 +23,32 @@ export function transToPlayListDetail(obj){
         tracks
     }
 }
+
+/* 节流函数 */
+export function throttle(func,delay){
+    let prev = Date.now()
+    return function(){
+        let _this = this
+        let args = arguments
+        let now = Date.now()
+        if(now - prev >= delay){
+            func.apply(_this,args)
+            prev = Date.now()
+        }
+    }
+}
+
+/* 防抖函数 */
+export function debounce(func,delay){
+    let timer = null
+    return function(){
+        let _this = this
+        let args = arguments
+        if(!timer){
+            timer = setTimeout(()=>{
+                func.apply(_this,args)
+            },delay)
+        }
+        clearTimeout(timer)
+    }
+}

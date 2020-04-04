@@ -1,7 +1,10 @@
 import {
   searchBanner,
   recommendMusicList,
-  playListDetail
+  playListDetail,
+  searchSuggest,
+  searchAllTypeKeyword,
+  searchHot
 } from "@/network/search";
 
 import { getSongDetail, getSongLyric, getSongUrl, recommendSongs ,albumSongs} from "@/network/song";
@@ -10,7 +13,7 @@ import { login, getUserDetail, logout } from "@/network/user";
 
 import {singerCategory,topSinger,singerInfo , singerAlbums} from "@/network/singer";
 
-import {saveUserInfo, clearUserInfo,getListOffsetByCode,setSingerList} from "@/utils/cache";
+import {saveUserInfo, clearUserInfo,getListOffsetByCode,setSingerList,saveSearchHistory} from "@/utils/cache";
 
 import {transToPlayListDetail} from "@/utils/util"
 
@@ -33,7 +36,11 @@ import {
   UPDATE_CAT,
   GET_SINGER_INFO,
   GET_SINGER_ALBUMS,
-  ALBUMS_SONGS
+  ALBUMS_SONGS,
+  /* 搜索相关 */
+  SEARCH_SUGGEST,
+  UPDATE_TIME,
+  SEARCH_TOP
 } from "./mutations-types";
 
 export default {
@@ -185,6 +192,38 @@ export default {
     const res = await albumSongs(id)
     if(res.code === 200){
       commit(ALBUMS_SONGS,transToPlayListDetail(res))
+    }
+  },
+
+  /* 搜索相关 */
+  async getSearchSuggest({commit},keyword){
+    const res = await searchSuggest(keyword)
+    if(res.code === 200){
+      let result = []
+      if(res.result.allMatch){
+        res.result.allMatch.forEach(ele=>{
+          result.push(ele.keyword)
+        })
+      }
+      commit(SEARCH_SUGGEST,result)
+    }else{
+      return
+    }
+  },
+
+  async searchKeyword({commit},keyword){
+    const res = await searchAllTypeKeyword(keyword)
+    saveSearchHistory(keyword)
+    if(res.code === 200){
+      commit(UPDATE_TIME)
+    }
+  },
+
+  async getSearchHot({commit}){
+    const res = await searchHot()
+    if(res.code === 200){
+      let result = res.data
+      commit(SEARCH_TOP,result)
     }
   }
 

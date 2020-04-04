@@ -1,4 +1,4 @@
-import {getUserInfo,getSingerList} from '@/utils/cache'
+import {getUserInfo,getSingerList,getSearchHistory,getSearchHistoryUpdateTime} from '@/utils/cache'
 
 const state = {
   searchBanner: [],
@@ -27,6 +27,12 @@ const state = {
   singerInfo:{},
   singerSongs:[],
   singerAlbums:[],
+
+  /* 搜索相关 */
+  searchSuggest:[],
+  searchHistory:getSearchHistory(),
+  searchHistoryUpdateTime:0,
+  searchHot:[]
 };
 
 export default state;

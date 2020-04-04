@@ -20,3 +20,8 @@ export const UPDATE_CAT = "update_cat";
 export const GET_SINGER_INFO = "get_singer_info"
 export const GET_SINGER_ALBUMS = "get_singer_albums"
 export const ALBUMS_SONGS = "albums_songs"
+
+/**搜索相关 */
+export const SEARCH_SUGGEST = "search_suggest"
+export const UPDATE_TIME = "update_time"
+export const SEARCH_TOP = "search_top"

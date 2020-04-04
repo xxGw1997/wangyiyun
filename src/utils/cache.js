@@ -3,6 +3,8 @@ import storage from 'good-storage'
 const USER_INFO = '__user_info__'
 const SINGER_LIST = '__singer_list__'
 
+const SEARCH_HISTORY = '__search_history__'
+
 export function saveUserInfo(token,userDetail){
     storage.set(USER_INFO,{token,userDetail})
     return {token,userDetail}
@@ -59,4 +61,22 @@ export function getSingerList(){
 
 export function getListOffsetByCode(code){
     return getSingerList()[code].offset
+}
+
+export function getSearchHistory(){
+    return storage.get(SEARCH_HISTORY,[])
+}
+
+export function saveSearchHistory(keyword){
+    let historys = storage.get(SEARCH_HISTORY,[])
+    let index = historys.indexOf(keyword)
+    if(index !== -1){
+        historys.splice(index,1)
+    }
+    historys.unshift(keyword)
+    storage.set(SEARCH_HISTORY,historys)
+}
+
+export function clearSearchHistory(){
+    storage.set(SEARCH_HISTORY,[])
 }

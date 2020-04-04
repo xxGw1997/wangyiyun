@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/searchKeywords",
     name: "searchKeywords",
-    component: () => import("@/views/Search/SearchKeywords"),
+    component: () => import("@/views/SearchKeywords/SearchKeywords"),
     meta: {
       showFooter: true
     }

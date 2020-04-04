@@ -1,0 +1,68 @@
+<template>
+    <div class="history-item">
+        <cube-scroll
+            ref="scroll"
+            direction="horizontal"
+            class="horizontal-scroll-list-wrap">
+            <ul class="list-wrapper">
+                <li class="list-item" 
+                  v-for="(item,index) in searchHistory"
+                  :key="index">
+                  {{item}}
+                </li>                 
+            </ul>
+        </cube-scroll>
+    </div>
+</template>
+
+<script>
+ import {mapState} from 'vuex'
+ export default {
+   props:{
+     searchHistory:{
+      type:Array,
+      default(){
+        return []
+      }
+     }
+   },
+   data () {
+     return {
+
+     }
+   },
+  //  computed:{
+  //    ...mapState(["searchHistory"])
+  //  }
+ }
+</script>
+
+<style>
+.history-item{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.history-item .horizontal-scroll-list-wrap .cube-scroll-content{
+  display: inline-block;
+}
+
+.history-item .horizontal-scroll-list-wrap .list-wrapper{
+  line-height: 30px;
+  white-space: nowrap;
+}
+
+.history-item .horizontal-scroll-list-wrap .list-item{
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  margin: 0 10px 0 0;
+  background: rgb(155, 155, 155);
+  color: white;
+  border-radius: 30px;
+  font-size: 13px;
+}
+ 
+</style>

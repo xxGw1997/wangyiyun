@@ -14,6 +14,11 @@ const getters = {
         return userInfo
     },
 
+    /* 搜索历史 */
+    // searchHistoryUpdateTime(state){
+    //     return state.searchHistory
+    // }
+
     /*歌手相关 */
     // singerList(state){
     //     console.log("code:",state.cat)
