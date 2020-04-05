@@ -1,10 +1,23 @@
 <template>
-    <div>
-        单曲
+    <div class="song-type">
+      <cube-scroll 
+        ref="scroll"
+        :scroll-events="['scroll']">
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+        <song-item/>
+      </cube-scroll>
     </div>
 </template>
 
 <script>
+ import SongItem from "@/components/TypeItem/SongItem"
  export default {
    data () {
      return {
@@ -12,12 +25,14 @@
      }
    },
    components: {
-
+     SongItem
    }
  }
 </script>
 
-<style>
-
+<style scoped>
+.song-type{
+  height: 100%;
+}
  
 </style>

@@ -41,27 +41,42 @@ const routes = [
     children:[
       {
         path:"allTypeResult",
-        component:AllTypeResult
+        component:AllTypeResult,
+        meta: {
+          showFooter: true
+        }
       },
       {
         path:"songType",
         name:"songType",
-        component:()=>import("@/views/SearchResult/ChildComps/SongType")
+        component:()=>import("@/views/SearchResult/ChildComps/SongType"),
+        meta: {
+          showFooter: true
+        }
       },
       {
         path:"singerType",
         name:"singerType",
-        component:()=>import("@/views/SearchResult/ChildComps/SingerType")
+        component:()=>import("@/views/SearchResult/ChildComps/SingerType"),
+        meta: {
+          showFooter: true
+        }
       },
       {
         path:"albumType",
         name:"albumType",
-        component:()=>import("@/views/SearchResult/ChildComps/AlbumType")
+        component:()=>import("@/views/SearchResult/ChildComps/AlbumType"),
+        meta: {
+          showFooter: true
+        }
       },
       {
         path:"musicListType",
         name:"musicListType",
-        component:()=>import("@/views/SearchResult/ChildComps/MusicListType")
+        component:()=>import("@/views/SearchResult/ChildComps/MusicListType"),
+        meta: {
+          showFooter: true
+        }
       },
     ],
     meta: {

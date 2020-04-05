@@ -81,9 +81,8 @@
 }
 
 .result-content{
-  margin: 10px;
-  height: calc(100vh - 171px);
-  background: sandybrown;
+  margin: 15px;
+  height: calc(100vh - 175px);
 }
 
 </style>
