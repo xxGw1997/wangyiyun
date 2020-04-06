@@ -4,7 +4,8 @@ import {
   playListDetail,
   searchSuggest,
   searchAllTypeKeyword,
-  searchHot
+  searchHot,
+  searchKeywordByType,
 } from "@/network/search";
 
 import { getSongDetail, getSongLyric, getSongUrl, recommendSongs ,albumSongs} from "@/network/song";
@@ -40,7 +41,9 @@ import {
   /* 搜索相关 */
   SEARCH_SUGGEST,
   UPDATE_TIME,
-  SEARCH_TOP
+  SEARCH_TOP,
+  SEARCH_ALL_TYPE,
+  SEARCH_KEYWORD_BY_TYPE
 } from "./mutations-types";
 
 export default {
@@ -215,7 +218,31 @@ export default {
     const res = await searchAllTypeKeyword(keyword)
     saveSearchHistory(keyword)
     if(res.code === 200){
-      commit(UPDATE_TIME)
+      let result = res.result
+      commit(UPDATE_TIME,keyword)
+      commit(SEARCH_ALL_TYPE,result)
+    }
+  },
+
+  async searchKeywordType({commit},data){
+    let {type,keyword} = data
+    switch(type){
+      case 1: break
+      case 2:
+        type = 100
+        break
+      case 3:
+        type = 10
+        break
+      case 4:
+        type = 1000
+        break
+      default: break
+    }
+    const res = await searchKeywordByType(keyword,type)
+    if(res.code === 200){
+      let result =  res.result
+      commit(SEARCH_KEYWORD_BY_TYPE,{result,type})
     }
   },
 
@@ -225,7 +252,7 @@ export default {
       let result = res.data
       commit(SEARCH_TOP,result)
     }
-  }
+  },
 
 
 };

@@ -1,8 +1,8 @@
 <template>
     <div class="song-item">
         <div class="song-info">
-            <div class="info-name">小情歌</div>
-            <div class="info-singer">赵小棠</div>
+            <div class="info-name" :class="isChecked?'checked':''">{{item.name}}</div>
+            <div class="info-singer">{{item.ar[0].name}}</div>
         </div>
         <div class="song-more">
             <i class="iconfont icon-domore"></i>
@@ -12,13 +12,19 @@
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
+   props:{
+       item:{
+           type:Object,
+           default(){
+               return {}
+           }
+       },
+       isChecked:{
+           type:Boolean,
+           default(){
+               return false
+           }
+       }
    }
  }
 </script>
@@ -43,6 +49,13 @@
     color: rgb(255, 255, 255,.8);
     font-size: 18px;
     letter-spacing: 1px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.song-item .song-info .checked{
+    color: red;
 }
 
 .song-item .song-info .info-singer{
@@ -50,6 +63,9 @@
     color: rgba(255, 255, 255,.3);
     font-size: 13px;
     letter-spacing: 1px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .song-item .song-more{

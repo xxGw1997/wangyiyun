@@ -3,15 +3,19 @@
         <div class="back" @click="back">
             <i class="iconfont icon-back"/>
         </div>
-        <div class="search-keyword">
+        <div class="search-keyword" @click="back">
             <i class="iconfont icon-iconfonticonfontsousuo1"/>
-            <span>哈哈哈</span>
+            <span>{{searchKeyword}}</span>
         </div>
     </div>
 </template>
 
 <script>
+ import {mapState} from "vuex"
  export default {
+   computed:{
+     ...mapState(["searchKeyword"])
+   },
    methods:{
        back(){
            this.$router.go(-1)

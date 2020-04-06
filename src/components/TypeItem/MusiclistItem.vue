@@ -1,14 +1,14 @@
 <template>
     <div class="musiclist-item">
         <div class="musiclist-avatar">
-            <img src="http://p1.music.126.net/Umy9RllboQslHMGkPlPVOA==/109951163720162979.jpg" alt="">
+            <img :src="item.coverImgUrl" alt="">
         </div>
         <div class="musiclist-info">
-            <div class="musiclist-name">歌单名字</div>
+            <div class="musiclist-name">{{item.name}}</div>
             <div class="musiclist-singer">
-                <span>50首音乐</span>
-                <span>by 赵小棠</span>
-                <span>播放666次</span>
+                <span>{{item.trackCount}}首音乐</span>
+                <span>by {{item.creator.nickname}}</span>
+                <span>播放{{item.playCount}}次</span>
             </div>
         </div>
     </div>
@@ -16,14 +16,14 @@
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
-   }
+    props:{
+        item:{
+            type:Object,
+            default(){
+                return {}
+            }
+        }
+    }
  }
 </script>
 
@@ -55,19 +55,25 @@
 }
 
 .musiclist-item .musiclist-info .musiclist-name{
-    width: 100%;
+    width: 90%;
     height: 20px;
     font-size: 18px;
     color: rgba(255, 255, 255,.8);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 
 .musiclist-item .musiclist-info .musiclist-singer{
-    width: 100%;
+    width: 90%;
     height: 20px;
     margin-top: 5px;
     font-size: 12px;
     color: rgba(255, 255, 255,.3);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .musiclist-item .musiclist-info .musiclist-singer>span{

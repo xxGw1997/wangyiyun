@@ -29,10 +29,20 @@ const state = {
   singerAlbums:[],
 
   /* 搜索相关 */
+  searchKeyword:'',
   searchSuggest:[],
   searchHistory:getSearchHistory(),
   searchHistoryUpdateTime:0,
-  searchHot:[]
+  searchHot:[],
+  //综合
+  allTypeSong:[],
+  allTypeSinger:[],
+  allTypeAlbum:[],
+  allTypeMusiclist:[],
+  typeSong:[],  //单曲
+  typeSinger:[],  //歌手
+  typeAlbum:[], //专辑
+  typeMusiclist:[]  //歌单
 };
 
 export default state;

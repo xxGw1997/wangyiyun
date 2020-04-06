@@ -1,3 +1,4 @@
+/* 数据结构转换 */
 export function transToPlayListDetail(obj){
     let trackIds = []
     let tracks = obj.songs
@@ -21,6 +22,18 @@ export function transToPlayListDetail(obj){
         trackCount:obj.songs.length,
         trackIds,
         tracks
+    }
+}
+
+/* 搜索音乐结构转换 */
+export function transToSongItem(obj){
+    return {
+        name:obj.name,
+        ar:[
+            {
+                name:obj.artists[0].name
+            }
+        ]
     }
 }
 

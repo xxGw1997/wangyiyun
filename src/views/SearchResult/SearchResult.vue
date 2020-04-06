@@ -23,6 +23,8 @@
 </template>
 
 <script>
+ import {mapState} from "vuex"
+
  import ResultHeader from "./ChildComps/ResultHeader"
 
  export default {
@@ -41,6 +43,9 @@
        this.oldVal = oldVal
      }
    },
+   computed:{
+     ...mapState(["typeSong","typeSinger","typeAlbum","typeMusiclist","searchKeyword"])
+   },
    methods:{
      changeType(index){
       //解决路由切换报错
@@ -51,15 +56,27 @@
           this.$router.replace("/searchResult/allTypeResult")
          break
          case 1:
+          if(this.typeSong.length === 0){
+            this.$store.dispatch("searchKeywordType",{type:1,keyword:this.searchKeyword})
+          }
           this.$router.replace("/searchResult/songType")
          break
          case 2:
+          if(this.typeSinger.length === 0){
+            this.$store.dispatch("searchKeywordType",{type:2,keyword:this.searchKeyword})
+          }
           this.$router.replace("/searchResult/singerType")
          break
          case 3:
+          if(this.typeAlbum.length === 0){
+            this.$store.dispatch("searchKeywordType",{type:3,keyword:this.searchKeyword})
+          }
           this.$router.replace("/searchResult/albumType")
          break
          case 4:
+          if(this.typeMusiclist.length === 0){
+            this.$store.dispatch("searchKeywordType",{type:4,keyword:this.searchKeyword})
+          }
           this.$router.replace("/searchResult/musicListType")
          break
        }

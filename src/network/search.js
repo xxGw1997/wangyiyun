@@ -18,6 +18,9 @@ export const searchSuggest = keywords => request("/search/suggest",{ keywords,ty
 //搜索关键字(综合搜索)
 export const searchAllTypeKeyword = keywords => request("/search",{keywords,type:1018});
 
+//搜索关键字(类型搜索)
+export const searchKeywordByType = (keywords,type) => request("/search",{keywords,type,limit:15});
+
 //热搜榜
 export const searchHot = () => request("/search/hot/detail");
 

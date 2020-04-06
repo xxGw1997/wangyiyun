@@ -154,7 +154,7 @@
 
 <style scoped>
 .singer{
-  background: aquamarine;
+  background:rgb(77, 77, 77);
   height: 100vh;
 }
 

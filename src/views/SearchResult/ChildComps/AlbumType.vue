@@ -3,29 +3,31 @@
       <cube-scroll 
         ref="scroll"
         :scroll-events="['scroll']">
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
-        <album-item/>
+        <album-item
+          v-for="(item,index) in typeAlbum"
+          :key="index"
+          :item="item"
+          @click.native="AlbumClick(item.id)"/>
       </cube-scroll>
     </div>
 </template>
 
 <script>
+ import {mapState} from "vuex"
+
  import AlbumItem from "@/components/TypeItem/AlbumItem"
  export default {
-   data () {
-     return {
-
-     }
-   },
    components: {
      AlbumItem
+   },
+   computed:{
+    ...mapState(["typeAlbum"])
+   },
+   methods:{
+     AlbumClick(id){
+      this.$store.dispatch("getAlbumSongs", id);
+      this.$router.push("/playlist");
+     }
    }
  }
 </script>

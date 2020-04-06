@@ -1,16 +1,24 @@
 <template>
     <div class="singer-item">
         <div class="singer-avatar">
-            <img src="http://p1.music.126.net/Umy9RllboQslHMGkPlPVOA==/109951163720162979.jpg" alt="">
+            <img :src="item.picUrl" alt="">
         </div>
         <div class="singer-name">
-            赵小棠
+            {{item.name}}
         </div>
     </div>
 </template>
 
 <script>
  export default {
+   props:{
+       item:{
+           type:Object,
+           default(){
+               return {}
+           }
+       }
+   },
    data () {
      return {
 

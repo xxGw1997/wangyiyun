@@ -28,8 +28,6 @@
             let date = new Date(this.album.publishTime)
             return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
         }
-    },
-    methods:{
     }
  }
 </script>

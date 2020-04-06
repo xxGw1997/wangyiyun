@@ -1,13 +1,13 @@
 <template>
     <div class="album-item">
         <div class="album-avatar">
-            <img src="http://p1.music.126.net/Umy9RllboQslHMGkPlPVOA==/109951163720162979.jpg" alt="">
+            <img :src="item.picUrl" alt="">
         </div>
         <div class="album-info">
-            <div class="album-name">专辑名字</div>
+            <div class="album-name">{{item.name}}</div>
             <div class="album-singer">
-                <span>赵小棠</span>
-                <span>2013-6-8</span>
+                <span>{{item.artist.name}}</span>
+                <span>{{publishTime}}</span>
             </div>
         </div>
     </div>
@@ -15,14 +15,20 @@
 
 <script>
  export default {
-   data () {
-     return {
-
-     }
+   props:{
+       item:{
+           type:Object,
+           default(){
+               return {}
+           }
+       }
    },
-   components: {
-
-   }
+    computed:{
+        publishTime(){
+            let date = new Date(this.item.publishTime)
+            return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+        }
+    }
  }
 </script>
 
@@ -58,6 +64,9 @@
     height: 20px;
     font-size: 18px;
     color: rgba(255, 255, 255,.8);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 

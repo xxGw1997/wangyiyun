@@ -18,8 +18,12 @@ import {
   ALBUMS_SONGS,
   SEARCH_SUGGEST,
   UPDATE_TIME,
-  SEARCH_TOP
+  SEARCH_TOP,
+  SEARCH_ALL_TYPE,
+  SEARCH_KEYWORD_BY_TYPE
 } from "./mutations-types";
+
+
 
 export default {
   [SEARCH_BANNER](state, { banner }) {
@@ -100,11 +104,38 @@ export default {
     state.searchSuggest = result
   },
 
-  [UPDATE_TIME](state){
+  [UPDATE_TIME](state,keyword){
+    state.searchKeyword = keyword
     state.searchHistoryUpdateTime = Date.now()
   },
   
   [SEARCH_TOP](state,result){
     state.searchHot = result
+  },
+
+  [SEARCH_ALL_TYPE](state,result){
+    state.allTypeSong = result.song.songs
+    state.allTypeSinger = result.artist.artists
+    state.allTypeAlbum = result.album.albums
+    state.allTypeMusiclist = result.playList.playLists
+  },
+
+  [SEARCH_KEYWORD_BY_TYPE](state,data){
+    let {result,type} = data
+    switch(type){
+      case 1: 
+        state.typeSong = result.songs
+        break
+      case 100:
+        state.typeSinger = result.artists
+        break
+      case 10:
+        state.typeAlbum = result.albums
+        break
+      case 1000:
+        state.typeMusiclist = result.playlists
+        break
+      default: break
+    }
   }
 };
