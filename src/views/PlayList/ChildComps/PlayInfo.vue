@@ -22,7 +22,8 @@
         </div>
       </div>
       <div class="operation">
-        <div class="operation-item">
+        <div class="operation-item"
+             @click="comment()">
           <div class="operation-icon">
             <i class="iconfont icon-comment"></i>
           </div>
@@ -91,6 +92,11 @@ export default {
     playListDetail() {
       this.creatorImg = this.playListDetail.creator.avatarUrl;
       this.creatorNickname = this.playListDetail.creator.nickname;
+    }
+  },
+  methods:{
+    comment(){
+      this.$router.push("/comment")
     }
   }
 };

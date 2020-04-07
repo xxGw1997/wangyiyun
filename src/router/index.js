@@ -136,33 +136,6 @@ const routes = [
     path:"/singer",
     name:"singer",
     component: () => import("@/views/Singer/Singer"),
-    // redirect:{name:"hotsongs"},
-    // children:[
-    //   {
-    //     path:"hotsongs",
-    //     name:"hotsongs",
-    //     commponent:() => import("@/views/Singer/ChildComps/SingerHotSongs"),
-    //     meta:{
-    //       showFooter:true
-    //     }
-    //   },
-    //   {
-    //     path:"album",
-    //     name:"album",
-    //     commponent:() => import("@/views/Singer/ChildComps/SingerAlbums"),
-    //     meta:{
-    //       showFooter:true
-    //     }
-    //   },
-    //   {
-    //     path:"info",
-    //     name:"info",
-    //     commponent:() => import("@/views/Singer/ChildComps/SingerInfo"),
-    //     meta:{
-    //       showFooter:true
-    //     }
-    //   }
-    // ],
     meta:{
       showFooter:true
     }
@@ -173,6 +146,14 @@ const routes = [
     component: () => import("@/views/SingerList/SingerList"),
     meta:{
       showFooter:true
+    }
+  },
+  {
+    path:"/comment",
+    name:"comment",
+    component: () => import("@/views/Comment/Comment"),
+    meta:{
+      showFooter:false
     }
   }
 ];
