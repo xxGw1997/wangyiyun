@@ -10,6 +10,9 @@ export const PLAYER_SHOW = "player_show";
 export const UPDATE_VOLUME = "update_volume";
 export const RECOMMEND_SONGS = 'recommend_songs';
 
+/** 评论 */
+export const COMMENTS = "comments";
+
 /**用户相关 */
 export const LOGIN = "login";
 export const GET_USER_DETAIL = "get_user_detail";

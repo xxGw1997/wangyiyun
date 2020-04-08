@@ -12,7 +12,7 @@
           @click="musicListClick(item.id)"
         >
           <div class="item-img">
-            <img :src="item.picUrl" alt="" />
+            <img :src="item.picUrl" alt="" @load="load" />
           </div>
           <div class="item-name">{{ item.name }}</div>
         </div>
@@ -34,6 +34,9 @@ export default {
   methods: {
     musicListClick(id) {
       this.$emit("musicListClick", id);
+    },
+    load(){
+      this.$emit("load")
     }
   }
 };

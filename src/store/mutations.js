@@ -20,7 +20,9 @@ import {
   UPDATE_TIME,
   SEARCH_TOP,
   SEARCH_ALL_TYPE,
-  SEARCH_KEYWORD_BY_TYPE
+  SEARCH_KEYWORD_BY_TYPE,
+  /* 评论 */
+  COMMENTS,
 } from "./mutations-types";
 
 
@@ -137,5 +139,12 @@ export default {
         break
       default: break
     }
-  }
+  },
+
+  /* 评论 */
+  [COMMENTS](state,result){
+    const {comments,commentsCount} = result
+    state.comments = comments
+    state.commentsCount = commentsCount
+  },
 };

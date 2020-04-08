@@ -5,7 +5,7 @@
     </div>
     <div class="header-center">
       <div class="music-name">{{ songName }}</div>
-      <div class="music-author">{{ songSinger }}</div>
+      <div class="music-author" @click="singerDetail">{{ songSinger }}  ></div>
     </div>
     <div class="header-right">
       <i class="iconfont icon-share" />
@@ -27,11 +27,23 @@ export default {
       default() {
         return "xxGw";
       }
+    },
+    songSingerId:{
+      type:Number,
+      default(){
+        return 0;
+      }
     }
   },
   methods: {
     back() {
       this.$store.dispatch("playerShow", false);
+    },
+    singerDetail(){
+      this.$store.dispatch("getSingerInfo",this.songSingerId)
+      this.$store.dispatch("getSingerAlbums",this.songSingerId)
+      this.$store.dispatch("playerShow", false);
+      this.$router.push("/singer");
     }
   }
 };

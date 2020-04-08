@@ -1,28 +1,38 @@
 <template>
     <div class="comment-item">
         <div class="item-avatar">
-            <img src="https://p3.music.126.net/OuRKD7ET0qHSJWsI-_0upA==/109951162930818823.jpg" alt="">
+            <img :src="item.picUrl" alt="">
         </div>
         <div class="item-info">
             <div class="info-name">
-                哈哈哈哈哈广佛i让回归热胡歌和如果还
+                {{item.name}}
             </div>
             <div class="info-creator">
-                by <span>赵小棠</span>
+                by <span>{{item.author}}</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+ import {mapState} from "vuex"
+
  export default {
+    props:{
+        item:{
+            type:Object,
+            default(){
+                return {}
+            }
+        }
+    },
    data () {
      return {
 
      }
    },
-   components: {
-
+   computed:{
+       ...mapState([""])
    }
  }
 </script>

@@ -11,13 +11,14 @@
         </div>
       </div>
     </header-top>
-    <scroll class="content">
+    <scroll class="content" ref="search_scroll">
       <search-swiper :banner="searchBanner" class="search-swiper" />
       <search-category class="search-category" />
       <recommend-music-list
         :musicList="recommendMusicList"
         class="recommend-music-list"
         @musicListClick="musicListClick"
+        @load="load"
       />
     </scroll>
   </div>
@@ -63,6 +64,9 @@ export default {
     },
     searchKeywords(){
       this.$router.push("/searchKeywords")
+    },
+    load(){
+      this.$refs.search_scroll.refresh()
     }
   }
 };

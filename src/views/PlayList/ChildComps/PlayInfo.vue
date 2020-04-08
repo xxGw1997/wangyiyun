@@ -23,7 +23,7 @@
       </div>
       <div class="operation">
         <div class="operation-item"
-             @click="comment()">
+             @click.stop.prevent="comment">
           <div class="operation-icon">
             <i class="iconfont icon-comment"></i>
           </div>
@@ -96,7 +96,18 @@ export default {
   },
   methods:{
     comment(){
-      this.$router.push("/comment")
+      let id = this.playListDetail.id
+      let type = ''
+      if(this.playListDetail.type){
+        this.$store.dispatch("getAlbumComments",id)
+        type = 'album'
+      }else{
+        this.$store.dispatch("getMusiclistComments",id)
+        type = 'musiclist'
+      }
+      this.$router.push({
+        path:`/comment/${type}`
+      })
     }
   }
 };

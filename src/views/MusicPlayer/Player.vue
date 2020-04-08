@@ -4,7 +4,10 @@
       <img :src="songCover" alt="" />
     </div>
     <div class="player">
-      <player-header :songName="songName" :songSinger="songSinger" />
+      <player-header 
+        :songName="songName" 
+        :songSinger="songSinger"
+        :songSingerId="songSingerId" />
       <player-content
         :songCover="songCover"
         :currentLyric="currentLyric"
@@ -50,6 +53,7 @@ export default {
     return {
       songName: "",
       songSinger: "",
+      songSingerId:0,
       songCover: "",
       currentLyric: [],
       lyricIndex: 0,
@@ -63,8 +67,10 @@ export default {
   },
   watch: {
     songUrl() {
+      console.log("songDetail:",this.songDetail)
       this.songName = this.songDetail[0].name;
       this.songSinger = this.songDetail[0].ar[0].name;
+      this.songSingerId = this.songDetail[0].ar[0].id
       this.songCover = this.songDetail[0].al.picUrl;
       this.currentLyric = lyric(this.songLyric);
       //操作audio

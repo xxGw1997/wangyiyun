@@ -13,5 +13,14 @@ export const getSongLyric = id => request("/lyric", { id });
 export const recommendSongs = () => request("/recommend/songs");
 
 //获取专辑歌曲列表
-export const albumSongs = (id) => request("/album",{id})
+export const albumSongs = (id) => request("/album",{id});
+
+//获取专辑评论信息
+export const commentAlbum = (id) => request("/comment/album",{id});
+
+//获取歌单评论信息
+export const commentMusiclist = (id) => request("/comment/playlist",{id});
+
+//获取歌曲评论信息
+export const commentSong = (id) => request("/comment/music",{id})
 

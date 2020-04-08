@@ -1,19 +1,19 @@
 <template>
     <div class="comments">
         <div class="comments-avatar">
-            <img src="https://p3.music.126.net/OuRKD7ET0qHSJWsI-_0upA==/109951162930818823.jpg" alt="">
+            <img :src="comment.user.avatarUrl" alt="">
         </div>
         <div class="comments-info">
             <div class="info-name">
                 <div class="name">
-                    <div class="username">赵小棠</div>
-                    <div class="time">2017年9月26日</div>
+                    <div class="username">{{comment.user.nickname}}</div>
+                    <div class="time">{{publishTime}}</div>
                 </div>
                 <div class="like">
-                    1234<i class="iconfont icon-like"/>
+                    {{comment.likedCount}}<i class="iconfont icon-like"/>
                 </div>
             </div>
-            <div class="info-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+            <div class="info-content">{{comment.content}}</div>
             <div class="info-reply">123条回复 ></div>
         </div>
     </div>
@@ -21,6 +21,20 @@
 
 <script>
  export default {
+   props:{
+       comment:{
+           type:Object,
+           default(){
+               return {}
+           }
+       }
+   },
+   computed:{
+       publishTime(){
+            let date = new Date(this.comment.time)
+            return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日'
+        }
+   },
    data () {
      return {
 
@@ -89,7 +103,9 @@
 .comments-info .info-content{
     margin-top: 5px;
     color: rgba(255, 255, 255,.7);
+    line-height: 25px;
     font-size: 14px;
+    letter-spacing: 1px;
 }
 
 .comments-info .info-reply{

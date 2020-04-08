@@ -10,7 +10,8 @@
       <div class="operation-item">
         <i class="iconfont icon-download" />
       </div>
-      <div class="operation-item">
+      <div class="operation-item"
+           @click.stop="comment">
         <i class="iconfont icon-comment" />
       </div>
       <div class="operation-item">
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
+
 export default {
   props: {
     songCover: {
@@ -28,6 +31,20 @@ export default {
       default() {
         return "";
       }
+    }
+  },
+  computed:{
+    ...mapState(["songDetail"])
+  },
+  methods:{
+    comment(){
+      let id = this.songDetail[0].id
+      let type = 'song'
+      this.$store.dispatch("getSongComments",id)
+      this.$router.push({
+        path:`/comment/${type}`
+      })
+      this.$store.dispatch("playerShow", false);
     }
   }
 };

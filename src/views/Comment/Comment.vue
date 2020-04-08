@@ -7,7 +7,7 @@
                         @click="$router.go(-1)"/>
                 </div>
                 <div slot="center" class="center-title">
-                    <span>评论(1234)</span>
+                    <span>评论({{commentsCount}})</span>
                 </div>
                 <div slot="right">
                     <i  class="iconfont icon-zhengzaibofang"
@@ -23,7 +23,8 @@
                     :scroll-events="scrollEvents"
                     @scroll="scrollHandler">
                     <div class="comment-item">
-                        <comment-item/>
+                        <comment-item 
+                            :item="item"/>
                     </div>
                     <div class="comment-line"></div>
                     <div class="comment-title">
@@ -34,14 +35,10 @@
                         </cube-sticky-ele>
                     </div>
                     <div class="comments">
-                        <comments/>
-                        <comments/>
-                        <comments/>
-                        <comments/>
-                        <comments/>
-                        <comments/>
-                        <comments/>
-                        <comments/>
+                        <comments 
+                            v-for="(comment,index) in comments"
+                            :key="index"
+                            :comment="comment"/>
                     </div>
                 </cube-scroll>
             </cube-sticky>
@@ -72,7 +69,24 @@
        Comments
     },
     computed:{
-        ...mapState(["songDetail"])
+        ...mapState(["songDetail","playListDetail","commentsCount","comments"]),
+        item(){
+            let obj = {}
+            if(this.$route.params.type == 'song'){
+                obj = {
+                        picUrl:this.songDetail[0].al.picUrl,
+                        name:this.songDetail[0].name,
+                        author:this.songDetail[0].ar[0].name
+                    }
+            }else{
+                obj = {
+                        picUrl:this.playListDetail.coverImgUrl,
+                        name:this.playListDetail.name,
+                        author:this.playListDetail.creator.nickname
+                    }
+            }
+            return obj
+        }
     },
     methods: {
         scrollHandler({ y }) {

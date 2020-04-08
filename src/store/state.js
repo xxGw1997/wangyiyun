@@ -14,6 +14,9 @@ const state = {
   playerShow: false,
   volume: 0.5,
 
+  /* 评论信息 */
+  comments:[],
+  commentsCount:0,
   /* 用户相关 */
   token: getUserInfo().token,
   userDetail: getUserInfo().userDetail,

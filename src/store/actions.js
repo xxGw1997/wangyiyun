@@ -8,7 +8,8 @@ import {
   searchKeywordByType,
 } from "@/network/search";
 
-import { getSongDetail, getSongLyric, getSongUrl, recommendSongs ,albumSongs} from "@/network/song";
+import { getSongDetail, getSongLyric, getSongUrl, recommendSongs, albumSongs,
+        commentAlbum, commentMusiclist, commentSong} from "@/network/song";
 
 import { login, getUserDetail, logout } from "@/network/user";
 
@@ -30,6 +31,8 @@ import {
   PLAYER_SHOW,
   UPDATE_VOLUME,
   RECOMMEND_SONGS,
+  /* 评论 */
+  COMMENTS,
   /* 用户相关 */
   LOGIN,
   /* 歌手相关 */
@@ -69,9 +72,42 @@ export default {
 
   async getPlayListDetail({ commit }, id) {
     const res = await playListDetail(id);
-    const result = res.playlist;
     if (res.code === 200) {
+      const result = res.playlist;
       commit(PLAY_LIST_DETAIL, { result });
+    }
+  },
+
+  async getAlbumComments({commit},id){
+    const res = await commentAlbum(id);
+    if(res.code === 200){
+      const hotComments = res.hotComments
+      const length = 20 - hotComments.length
+      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const commentsCount = res.total
+      commit(COMMENTS,{comments,commentsCount})
+    }
+  },
+
+  async getMusiclistComments({commit},id){
+    const res = await commentMusiclist(id);
+    if(res.code === 200){
+      const hotComments = res.hotComments
+      const length = 20 - hotComments.length
+      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const commentsCount = res.total
+      commit(COMMENTS,{comments,commentsCount})
+    }
+  },
+
+  async getSongComments({commit},id){
+    const res = await commentSong(id);
+    if(res.code === 200){
+      const hotComments = res.hotComments
+      const length = 20 - hotComments.length
+      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const commentsCount = res.total
+      commit(COMMENTS,{comments,commentsCount})
     }
   },
 

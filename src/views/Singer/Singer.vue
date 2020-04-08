@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="singer-bg-black"></div>
-            <img :src="singerInfo.picUrl" alt="" ref="daily-recommend-songs-bg-img">
+            <img :src="singerInfo.picUrl" alt="" ref="singer-bg-img">
         </div>
         <div class="scroll-list-wrap">
           <cube-sticky :pos="scrollY">
@@ -104,6 +104,12 @@
      ...mapState(['singerInfo','songDetail'])
    },
    watch:{
+       scrollY(newVal){
+           let Multiple = 1 - newVal/200
+           if(newVal<0){
+               this.$refs['singer-bg-img'].style.transform = `scale(${Multiple},${Multiple})`
+           }
+       },
        selectedLabel(newVal,oldVal){
            if(this.scrollY<240){
                return
@@ -190,7 +196,6 @@
 
 .singer-bg>img{
     width: 110%;
-    height: 100%;
     transform: scale(1.1,1.1);
 }
 
