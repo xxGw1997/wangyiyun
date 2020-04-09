@@ -11,7 +11,10 @@
         </div>
       </div>
     </header-top>
-    <scroll class="content" ref="search_scroll">
+    <div v-if="recommendMusicList.length === 0" class="loading">
+      <loading/>
+    </div>
+    <scroll class="content" ref="search_scroll" v-else>
       <search-swiper :banner="searchBanner" class="search-swiper" />
       <search-category class="search-category" />
       <recommend-music-list
@@ -29,6 +32,7 @@ import { mapState } from "vuex";
 
 import HeaderTop from "@/components/HeaderTop/HeaderTop";
 import Scroll from "@/components/Scroll/Scroll";
+import Loading from "@/components/Loading/Loading";
 
 import SearchSwiper from "./ChildComps/SearchSwiper";
 import SearchCategory from "./ChildComps/SearchCategory";
@@ -41,6 +45,7 @@ export default {
   components: {
     HeaderTop,
     Scroll,
+    Loading,
     SearchSwiper,
     SearchCategory,
     RecommendMusicList
@@ -73,6 +78,11 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+  position: absolute;
+  top:25%;
+}
+
 .header_center {
   border-radius: 20px;
   height: 30px;

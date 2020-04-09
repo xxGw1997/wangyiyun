@@ -5,6 +5,9 @@
       <span>播放全部</span>
       <span>(共{{ playlist.trackCount }}首)</span>
     </div>
+    <!-- <div v-if="playlist.tracks.length === 0">
+      <loading/>
+    </div> -->
     <div class="musics">
       <div
         class="music"
@@ -44,6 +47,8 @@
 
 <script>
 import { mapState } from "vuex";
+
+import Loading from "@/components/Loading/Loading"
 export default {
   props: {
     playlist: {
@@ -53,8 +58,8 @@ export default {
       }
     }
   },
-  data() {
-    return {};
+  components:{
+    Loading
   },
   computed: {
     ...mapState(["musicList", "songDetail"]),

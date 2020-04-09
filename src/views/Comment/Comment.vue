@@ -17,7 +17,10 @@
                 </div>
             </header-top>
         </div>
-        <div class="comment-content">
+        <div v-if="comments.length === 0">
+            <loading/>
+        </div>
+        <div class="comment-content" v-else>
             <cube-sticky :pos="scrollY">
                 <cube-scroll
                     :scroll-events="scrollEvents"
@@ -51,7 +54,7 @@
 
 <script>
  import {mapState} from "vuex"
-
+ import Loading from "@/components/Loading/Loading"
  import HeaderTop from "@/components/HeaderTop/Header"
  import CommentItem from "./ChildComps/CommentItem"
  import Comments from "./ChildComps/Comments"
@@ -64,6 +67,7 @@
         }
     },
     components: {
+       Loading,
        HeaderTop,
        CommentItem,
        Comments
