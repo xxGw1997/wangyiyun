@@ -69,6 +69,7 @@ export default {
 .list-content .list-item {
   width: 31%;
   height: 45%;
+
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
@@ -77,11 +78,11 @@ export default {
 .list-content .list-item .item-img {
   width: 100%;
   height: 70%;
-  border-radius: 5px;
 }
 
 .list-content .list-item .item-img img {
   width: 100%;
+  border-radius: 5px;
 }
 
 .list-content .list-item .item-name {

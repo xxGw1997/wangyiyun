@@ -69,14 +69,14 @@ export default {
   height: 60px;
   display: flex;
   flex: 1;
-  background: rgba(40, 40, 40, 0.8);
+  background: rgb(240, 240, 240);
 }
 
 .footer-guide .guide-item {
   display: flex;
   flex-wrap: wrap;
   flex: auto;
-  color: aliceblue;
+  color: rgb(100, 100, 100);
 }
 
 .footer-guide .active {

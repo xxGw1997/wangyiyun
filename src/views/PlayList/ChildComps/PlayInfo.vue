@@ -114,28 +114,10 @@ export default {
 </script>
 
 <style scoped>
-.backgroundImg {
-  width: 10px;
-  height: 250px;
-  overflow: hidden;
-  position: absolute;
-  z-index: 10;
-  background: rgb(0, 0, 0);
-}
-
-.backgroundImg > img {
-  width: 200%;
-  height: 200%;
-  opacity: 0.6;
-  filter: blur(50px);
-  position: relative;
-  left: -50%;
-  top: -50%;
-}
-
 .play-info {
-  width: 100%;
+  width: 90%;
   height: 250px;
+  margin: 0 15px;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
@@ -152,11 +134,11 @@ export default {
 
 .play-info .info .info-left {
   width: 40%;
-  height: 100%;
 }
 
 .play-info .info .info-left img {
   width: 100%;
+  border-radius: 5px;
 }
 
 .play-info .info .info-right {
@@ -169,7 +151,7 @@ export default {
 
 .play-info .info .info-right .info-title {
   color: aliceblue;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 22px;
   font-weight: bolder;
   letter-spacing: 2px;
@@ -202,7 +184,7 @@ export default {
 }
 
 .play-info .info .info-right .info-author .author-name {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255,.9);
   padding-left: 5px;
 }
@@ -262,8 +244,20 @@ export default {
   width: 100%;
 }
 
-.play-info .operation .operation-item .operation-icon i {
-  font-size: 30px;
+.play-info .operation .operation-item:nth-of-type(1) .operation-icon i {
+  font-size: 25px;
+}
+
+.play-info .operation .operation-item:nth-of-type(2) .operation-icon i {
+  font-size: 25px;
+}
+
+.play-info .operation .operation-item:nth-of-type(3) .operation-icon i {
+  font-size: 20px;
+}
+
+.play-info .operation .operation-item:nth-of-type(4) .operation-icon i {
+  font-size: 20px;
 }
 
 .play-info .operation .operation-item .operation-info {

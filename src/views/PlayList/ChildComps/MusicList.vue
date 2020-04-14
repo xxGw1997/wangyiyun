@@ -29,9 +29,9 @@
           <div class="singer_album">
             <span class="music_title">独家</span>
             <span class="music_title">SQ</span>
-            <span class="singer"
-              >{{ item.ar[0].name }} - {{ item.al.name }}</span
-            >
+            <span class="singer">
+              {{ item.ar[0].name }} - {{ item.al.name }}
+            </span>
           </div>
         </div>
         <div class="music_video music_item">
@@ -108,11 +108,19 @@ export default {
 </script>
 
 <style scoped>
+.music_list{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: white;
+}
+
 .music_list .play_all {
+  width: 90%;
+  height: 30px;
+  padding-top: 15px;
+  margin: 0 10px;
   display: flex;
   align-items: center;
-  height: 30px;
-  color: aliceblue;
 }
 
 .music_list .play_all i {
@@ -128,8 +136,13 @@ export default {
 }
 
 .music_list .play_all span:nth-of-type(2) {
-  color: rgb(196, 196, 196);
+  color: rgb(119, 119, 119);
   font-size: 13px;
+}
+
+.music_list .musics{
+  width: 90%;
+  margin: 0 10px;
 }
 
 .music_list .musics .music {
@@ -138,13 +151,13 @@ export default {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  margin-top: 5px;
+  margin: 15px 0;
 }
 
 .music_list .musics .music_no {
   width: 10%;
   text-align: center;
-  color: rgb(196, 196, 196);
+  color: rgb(119, 119, 119);
 }
 
 .music_list .musics .music_no > i {
@@ -158,11 +171,13 @@ export default {
 
 .music_list .musics .music_info .singer_album span {
   font-size: 10px;
+  margin-right: 5px;
 }
 
 .music_list .musics .music_info .music_name {
   line-height: 25px;
-  color: aliceblue;
+  color: rgb(51, 51, 51);
+  letter-spacing: 1px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -173,13 +188,13 @@ export default {
 }
 
 .music_list .musics .music_info .singer_album {
-  line-height: 10px;
+  line-height: 15px;
   display: flex;
   flex-wrap: nowrap;
 }
 
 .music_list .musics .music_info .singer_album .singer {
-  color: rgb(196, 196, 196);
+  color: rgb(121, 121, 121);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -192,7 +207,7 @@ export default {
   color: red;
   font-weight: bold;
   border-radius: 2px;
-  margin: 0 1px;
+  margin-right: 5px;
   text-align: center;
   white-space: nowrap;
 }

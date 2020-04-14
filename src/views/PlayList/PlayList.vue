@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="playlist">
+      <div class="backgroundImg">
+        <img :src="playListDetail.coverImgUrl" alt="">
+      </div>
       <header-top class="header-top">
         <div class="header_left" slot="left" @click="$router.go(-1)">
           <i class="iconfont icon-back"></i>
@@ -41,17 +44,26 @@ export default {
 </script>
 
 <style scoped>
-/* .playlist-enter-active, .playlist-leave-active{
-        transition: all 2s;
-    }
-
-    .playlist-enter, .playlist-leave-active{
-        transition: all 2s;
-    } */
-
 .playlist {
   height: 100vh;
-  background: rgb(60, 60, 60);
+}
+
+.backgroundImg {
+  height: 60%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  background: rgb(0, 0, 0);
+}
+
+.backgroundImg > img {
+  width: 200%;
+  height: 200%;
+  opacity: 0.6;
+  filter: blur(50px);
+  position: relative;
+  left: -50%;
+  top: -50%;
 }
 
 .header_center {
@@ -61,7 +73,7 @@ export default {
 }
 
 .content {
-  width: 95%;
+  width: 100%;
   height: calc(100% - 110px);
   overflow: hidden;
   position: relative;

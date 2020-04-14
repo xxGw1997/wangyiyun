@@ -31,7 +31,7 @@ export default {
   position: fixed;
   z-index: 9;
   display: flex;
-  background: rgb(45, 45, 45);
+  /* background: rgb(45, 45, 45); */
   width: 100%;
   height: 50px;
   top: 0;
