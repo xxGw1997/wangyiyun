@@ -117,11 +117,10 @@
   }
 
   .all-type-result .container .container-title{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 19px;
     letter-spacing: 1px;
     padding: 10px 0;
-    /* border-bottom: 1px solid rgba(255, 255, 255,.2); */
   }
 
  

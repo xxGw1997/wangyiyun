@@ -7,13 +7,13 @@
         </div>
         <div>每日推荐</div>
       </div>
-      <div class="category-item">
+      <div class="category-item" @click="playlist">
         <div class="item-i">
           <i class="iconfont icon-gedan" />
         </div>
         <div>歌单</div>
       </div>
-      <div class="category-item">
+      <div class="category-item" @click="rank">
         <div class="item-i">
           <i class="iconfont icon-paixingbang" />
         </div>
@@ -66,6 +66,18 @@ export default {
       }else{
         this.$router.push('/dailyrecommendsongs')
       }
+    },
+    playlist(){
+      this.$createToast({
+        type: 'txt',
+        txt: '这个还没做'
+      }).show()
+    },
+    rank(){
+      this.$createToast({
+        type: 'txt',
+        txt: '这个也没做'
+      }).show()
     },
     singer(){
       this.$router.push('/singerlist')

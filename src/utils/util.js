@@ -57,11 +57,11 @@ export function debounce(func,delay){
     return function(){
         let _this = this
         let args = arguments
-        if(!timer){
-            timer = setTimeout(()=>{
-                func.apply(_this,args)
-            },delay)
+        if(timer){
+            clearTimeout(timer)
         }
-        clearTimeout(timer)
+        timer = setTimeout(()=>{
+            func.apply(_this,args)
+        },delay)
     }
 }

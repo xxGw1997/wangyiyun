@@ -69,8 +69,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 18px;
-    color: rgba(255, 255, 255,.9);
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .album .album-info .album-time{
@@ -78,7 +78,7 @@
     height: 15px;
     line-height: 15px;
     font-size: 12px;
-    color: rgba(255, 255, 255,.3);
+    color: rgba(100, 100, 100, 0.7);
 }
 
 .album .album-info .album-time>span{

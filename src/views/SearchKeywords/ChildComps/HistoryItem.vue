@@ -42,6 +42,10 @@
   line-height: 50px;
 }
 
+.history-item .horizontal-scroll-list-wrap{
+  border: none;
+}
+
 .history-item .horizontal-scroll-list-wrap .cube-scroll-content{
   display: inline-block;
 }
@@ -57,8 +61,8 @@
   line-height: 30px;
   padding: 0 10px;
   margin: 0 10px 0 0;
-  background: rgb(155, 155, 155);
-  color: white;
+  background: rgb(223, 223, 223);
+  color: rgb(0, 0, 0);
   border-radius: 30px;
   font-size: 13px;
 }

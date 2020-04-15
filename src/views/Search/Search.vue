@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <header-top>
-      <div slot="left" class="header_left">
+      <div slot="left" class="header_left" @click="mic">
         <i class="iconfont icon-maikefeng-xue"></i>
       </div>
       <div class="header_center" slot="center">
@@ -72,6 +72,12 @@ export default {
     },
     load(){
       this.$refs.search_scroll.refresh()
+    },
+    mic(){
+      this.$createToast({
+        type: 'txt',
+        txt: '这个做不了'
+      }).show()
     }
   }
 };
@@ -118,6 +124,11 @@ input::-webkit-input-placeholder {
   overflow: hidden;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.search-swiper{
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 </style>

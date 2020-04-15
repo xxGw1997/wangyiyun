@@ -145,7 +145,7 @@
 .searchKeywords{
   width: 100%;
   height: 100vh;
-  background: rgb(100, 100, 100);
+  background: rgb(255, 255, 255);
 }
 
 .searchKeywords .header{
@@ -154,14 +154,17 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(40, 40, 40, 0.8);
+  background: rgb(255, 255, 255);
 }
 
 .searchKeywords .header .search-input{
   margin-left: 15px;
   width: 70%;
   height: 35px;
+}
 
+.searchKeywords .header .search-input .iconfont{
+  color: rgba(0, 0, 0,.5);
 }
 
 .searchKeywords .header .cancel{
@@ -169,7 +172,7 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 18px;
 }
 
@@ -178,7 +181,7 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .searchKeywords .header .singer>i{
@@ -191,7 +194,7 @@
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  background: gray;
+  background: rgb(255, 255, 255);
 }
 
 .searchKeywords .search-suggest .search-content{
@@ -214,21 +217,21 @@
 .searchKeywords .search-suggest .suggests .suggest{
   width: 100%;
   height: 40px;
-  line-height: 40px;
-  margin: 0px 0px 5px 15px;
+  line-height: 35px;
+  margin: 0px 0px 10px 15px;
   display: flex;
 }
 
 .searchKeywords .search-suggest .suggests .suggest>i{
-  color: rgba(255, 255, 255,.7);
+  color: rgba(0, 0, 0, 0.7);
   font-size: 16px;
 }
 
 .searchKeywords .search-suggest .suggests .suggest>div{
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255,.1);
-  margin-left: 5px;
-  color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  color: rgb(0, 0, 0);
 }
 
 .searchKeywords .search-hot{
@@ -247,14 +250,14 @@
   line-height: 50px;
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 15px;
   letter-spacing: 1px;
 }
 
 .searchKeywords .search-hot .search-history .history-title i{
-  color: rgba(255, 255, 255,.7);
-  font-size: 18px;
+  color: rgb(151, 151, 151);
+  font-size: 20px;
 }
 
 .searchKeywords .search-hot .search-recommend{
@@ -263,7 +266,7 @@
 
 .searchKeywords .search-hot .search-recommend .recommend-title{
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 15px;
   letter-spacing: 1px;
 }
@@ -274,14 +277,15 @@
 /*覆盖原始样式*/
 .cube-input{
   border-radius: 40px;
-  background: rgba(122, 122, 122);
+  background: rgb(222, 222, 222);
 }
 
 .cube-input .cube-input-field{
   border-radius: 40px;
   padding: 0px 5px;
   height: 35px;
-  color:white;
+  color:black;
+  font-size:14px;
   letter-spacing: 1px;
 }
 

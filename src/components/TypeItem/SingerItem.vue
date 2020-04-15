@@ -55,7 +55,7 @@
     height: 70px;
     line-height: 70px;
     margin-left: 10px;
-    color: rgba(255, 255, 255,.7);
+    color: rgba(0, 0, 0);
 }
  
 </style>

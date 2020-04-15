@@ -32,6 +32,9 @@
         <li class="list-item">1231</li>
       </ul>
     </cube-scroll>
+    <div class="loading">
+      <loading />
+    </div>
     </div>
   </div>
 </template>
@@ -39,13 +42,15 @@
 <script>
 import HeaderTop from "@/components/HeaderTop/HeaderTop";
 import Scroll from "@/components/Scroll/Scroll";
+import Loading from "@/components/Loading/Loading";
 export default {
   data() {
     return {};
   },
   components: {
     HeaderTop,
-    Scroll
+    Scroll,
+    Loading
   },
   methods:{
     test(){
@@ -83,36 +88,12 @@ export default {
 };
 </script>
 
-<style>
-.test{
-  margin-top: 50px;
-}
-
-.horizontal-scroll-list-wrap{
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-}
-
-.horizontal-scroll-list-wrap .cube-scroll-content{
-  display: inline-block;
-}
-
-.horizontal-scroll-list-wrap .list-wrapper{
-  padding: 0 10px;
-  line-height: 60px;
-  white-space: nowrap;
-}
-
-.horizontal-scroll-list-wrap .list-item{
-  display: inline-block;
-  margin-left: 10px;
-}
-</style>
 
 <style scoped>
 
-
-
+.loading{
+  background: white;
+}
 
 .header_center {
   color: aliceblue;
@@ -139,4 +120,29 @@ export default {
   overflow: hidden;
   position: relative;
 } */
+</style>
+<style>
+.test{
+  margin-top: 50px;
+}
+
+.horizontal-scroll-list-wrap{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.horizontal-scroll-list-wrap .cube-scroll-content{
+  display: inline-block;
+}
+
+.horizontal-scroll-list-wrap .list-wrapper{
+  padding: 0 10px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
+.horizontal-scroll-list-wrap .list-item{
+  display: inline-block;
+  margin-left: 10px;
+}
 </style>

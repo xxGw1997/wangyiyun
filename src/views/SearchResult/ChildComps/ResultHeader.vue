@@ -31,7 +31,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(40, 40, 40, 0.8);
+  background: rgb(255, 255, 255);
 }
 
 .header .back{
@@ -39,7 +39,7 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .header .back>i{
@@ -51,20 +51,20 @@
   height: 35px;
   line-height: 35px;
   border-radius: 35px;
-  background: gray;
+  background: rgb(226, 226, 226);
 }
 
 .header .search-keyword>i{
   margin-left: 15px;
   vertical-align:text-bottom;
   font-size: 20px;
-  color: rgba(255, 255, 255,.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .header .search-keyword>span{
   margin-left: 10px;
   vertical-align:text-bottom;
-  color: rgba(255, 255, 255,.7);
+  color: rgba(0, 0, 0, 0.7);
   letter-spacing: 1px;
 }
  

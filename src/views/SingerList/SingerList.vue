@@ -45,6 +45,7 @@
  import SingerItem from './ChildComps/SingerItem'
 
  import {singerCategoryCode} from '@/utils/singerCategoryCode'
+ import {debounce} from '@/utils/util'
  export default {
    data () {
      return {
@@ -112,7 +113,9 @@
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
         //    console.log("language-change:",this.code + '-' + offset)
-           this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
+           if(newVal == 1 && this.checkerSinger == 1) return
+           debounce(this.firstSingerList,500)(this.code,offset)
+        //    this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
        },
        checkerSinger(newVal){
            if(newVal.length !== 0 && this.checkerLanguage.length === 0){
@@ -122,7 +125,8 @@
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
         //    console.log("singer-change:",this.code + '-' + offset)
-           this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
+        //    this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
+            debounce(this.firstSingerList,500)(this.code,offset)
        }
    },
    components: {
@@ -158,7 +162,11 @@
         let code = code1 + '-' + code2
         return singerCategoryCode(code)
     },
+    firstSingerList(code,offset){
+        this.$store.dispatch('getSingerCategory',{cat:code,offset})
+    },
     getSingerList(cat,offset=0){
+        offset += 15
         this.$store.dispatch('getSingerCategory',{cat,offset})
     },
     setSingerCode(){
@@ -172,27 +180,13 @@
  }
 </script>
 
-<style>
-/* 覆盖cube-ui组件css样式 */
-.singer-list .filter .cube-checker .cube-checker-item{
-    background: rgb(77, 77, 77);
-    color: rgb(255, 255, 255,.3);
-}
 
-.singer-list .filter .cube-checker .cube-checker-item_active{
-    color: rgb(255, 0, 0,.8);
-}
-
-.singer-list .filter .cube-checker .cube-checker-item:after{
-    border: none;
-}
-</style>
 
 
 <style scoped>
 .singer-list{
     height: 100vh;
-    background: rgb(77, 77, 77);
+    background: rgb(255, 255, 255);
 }
 
 .singer-list .header{
@@ -200,13 +194,13 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background: rgb(45, 45, 45);
+    background: rgb(255, 255, 255);
 }
 
 .singer-list .header .header-left,
 .singer-list .header .header-right{
     width: 15%;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     line-height: 50px;
     text-align: center;
 }
@@ -216,7 +210,7 @@
 }
 
 .singer-list .header .header-center{
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     font-size: 20px;
     font-weight: bolder;
     letter-spacing: 1px;
@@ -236,9 +230,28 @@
     height: 25px;
     line-height:25px;
     font-size:12px;
-    color:rgb(255, 255, 255,.3);
+    color:rgba(100, 100, 100);
+    letter-spacing: 1px;
     padding-left:10px;
-    background: gray;
+    background: rgb(202, 202, 202);
+
 }
 
+</style>
+
+
+<style>
+/* 覆盖cube-ui组件css样式 */
+.singer-list .filter .cube-checker .cube-checker-item{
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.singer-list .filter .cube-checker .cube-checker-item_active{
+    color: rgb(255, 0, 0);
+    background: white;
+}
+
+.singer-list .filter .cube-checker .cube-checker-item:after{
+    border: none;
+}
 </style>

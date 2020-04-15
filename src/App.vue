@@ -3,9 +3,11 @@
     <transition name="player">
       <music-player class="music-player" v-show="playerShow" />
     </transition>
-    <keep-alive>
-      <router-view />
-    </keep-alive>
+    <transition name="page">
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
     <footer-guide v-show="this.$route.meta.showFooter" />
   </div>
 </template>
@@ -32,18 +34,38 @@ export default {
 <style>
 @import url("//at.alicdn.com/t/font_1500928_ia21gdtuuk9.css");
 @import url("./assets/css/reset.css");
-
-/* .player-enter-active, .player-leave-active{
-  transition: all .5s ease;
-}
-
-.player-enter, .player-leave-to{
-  transform: translateX(50px);
-  opacity:0;
-} */
-
 .music-player {
   height: 100vh;
   float: left;
+}
+
+/* .player-enter,
+.player-leave-to{
+  transform: translate3d(0,100%,0);
+} 
+
+.player-enter-to,
+.player-leave{
+  transform: translate3d(0,0,0);
+}
+
+.player-enter-active, 
+.player-leave-active{
+  transition: all 1s;
+} */
+
+.page-enter,
+.page-leave-to{
+  opacity: 0;
+}
+
+.page-leave,
+.page-enter-to{
+  opacity: 1;
+}
+
+.page-enter-active,
+.page-leave-active{
+  transition: all .2s;
 }
 </style>

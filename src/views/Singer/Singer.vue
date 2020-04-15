@@ -254,7 +254,7 @@
 
 .singer .scroll-list-wrap .singer-content{
     margin-top: 10px;
-    background:rgb(77, 77, 77);
+    background:rgb(255, 255, 255);
 }
 
 .singer .scroll-list-wrap .singer-content .singer-title{
@@ -264,7 +264,7 @@
 
 .singer-title-sticky{
     height: 40px;
-    background: rgb(77, 77, 77);
+    background: rgb(255, 255, 255);
 }
  
 </style>
@@ -279,7 +279,7 @@
 
 .singer-title-sticky .singer-title-word .cube-tab-bar .cube-tab{
     padding:10px 0px;
-    color:white;
+    color:rgb(0, 0, 0);
     font-weight: bolder;
     border-bottom:1px solid rgba(255, 255, 255,.2);
 }
@@ -292,9 +292,4 @@
     height:3px;
     background-color:red;
 }
-
-/* .singer-title-sticky .singer-title-word .cube-tab-bar .cube-tab>div{
-    width:80%;
-    text-align: center;
-} */
 </style>

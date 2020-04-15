@@ -1,6 +1,7 @@
 <template>
     <div>
-        艺人信息
+        自己去百度
+        以后闲的没事再写......
     </div>
 </template>
 

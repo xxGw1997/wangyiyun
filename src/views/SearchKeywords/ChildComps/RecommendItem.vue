@@ -55,7 +55,7 @@
     width: 10%;
     height: 50px;
     line-height: 50px;
-    color: rgba(255, 255, 255,.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .recommend-item .item .top3{
@@ -74,12 +74,12 @@
 }
 
 .info-searchword{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .info-searchword>span{
     display: inline-block;
-    color: rgba(255, 255, 255,.6);
+    color: rgba(0, 0, 0, 0.5);
     font-size: 12px;
     margin: 0 10px;
 }
@@ -97,7 +97,7 @@
 }
 
 .info-content{
-    color: rgba(255, 255, 255,.6);
+    color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

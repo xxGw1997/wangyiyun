@@ -31,7 +31,7 @@
             {{ commentCount }}
           </div>
         </div>
-        <div class="operation-item">
+        <div class="operation-item" @click="share">
           <div class="operation-icon">
             <i class="iconfont icon-share"></i>
           </div>
@@ -39,7 +39,7 @@
             {{ shareCount }}
           </div>
         </div>
-        <div class="operation-item">
+        <div class="operation-item" @click="download">
           <div class="operation-icon">
             <i class="iconfont icon-download"></i>
           </div>
@@ -47,7 +47,7 @@
             下载
           </div>
         </div>
-        <div class="operation-item">
+        <div class="operation-item" @click="checkmore">
           <div class="operation-icon">
             <i class="iconfont icon-checks"></i>
           </div>
@@ -108,6 +108,24 @@ export default {
       this.$router.push({
         path:`/comment/${type}`
       })
+    },
+    share(){
+      this.$createToast({
+        type: 'txt',
+        txt: '以后有机会可以试试'
+      }).show()
+    },
+    download(){
+      this.$createToast({
+        type: 'txt',
+        txt: '下不了'
+      }).show()
+    },
+    checkmore(){
+      this.$createToast({
+        type: 'txt',
+        txt: '多选也不能干嘛'
+      }).show()
     }
   }
 };

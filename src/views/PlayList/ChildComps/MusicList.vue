@@ -1,6 +1,6 @@
 <template>
   <div class="music_list">
-    <div class="play_all">
+    <div class="play_all" @click="playAll">
       <i class="iconfont icon-play"></i>
       <span>播放全部</span>
       <span>(共{{ playlist.trackCount }}首)</span>
@@ -96,7 +96,12 @@ export default {
       //显示player
       this.$store.dispatch("playerShow", true);
     },
-
+    playAll(){
+      this.$createToast({
+        type: 'txt',
+        txt: '这个简单,以后有时间就做'
+      }).show()
+    },
     currentPlay(id) {
       if (this.songDetail.length) {
         return id == this.songDetail[0].id;

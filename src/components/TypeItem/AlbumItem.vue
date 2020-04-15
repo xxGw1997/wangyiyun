@@ -63,7 +63,7 @@
     width: 100%;
     height: 20px;
     font-size: 18px;
-    color: rgba(255, 255, 255,.8);
+    color: rgba(0, 0, 0);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -75,7 +75,7 @@
     height: 20px;
     margin-top: 5px;
     font-size: 12px;
-    color: rgba(255, 255, 255,.3);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .album-item .album-info .album-singer>span{

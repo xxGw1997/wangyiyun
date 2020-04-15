@@ -6,7 +6,7 @@
             </div>
             <div class="item-name">
                 <div>{{item.name}}</div>
-                <div class="item-icon"><i class="iconfont icon-back"></i></div>
+                <div class="item-icon"><i class="iconfont icon-singer"></i></div>
             </div>
         </div>
     </div>
@@ -30,12 +30,12 @@
     height: 60px;
     display: flex;
     align-items: center;
-    margin: 5px 10px;
+    margin: 20px 10px;
 }
 
 .item .item-avatar{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 .item .item-avatar img{
@@ -50,20 +50,25 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-left: 10px;
-    font-size: 20px;
-    color: rgb(255, 255, 255,.9);
+    margin-left: 20px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.9);
     letter-spacing: 1px;
 }
 
 .item .item-name .item-icon{
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    line-height: 18px;
     transform: scale(.8);
     text-align: center;
     background: red;
     border-radius: 50%;
+}
+
+.item .item-name .item-icon>i{
+    color: white;
 }
  
 </style>

@@ -80,7 +80,7 @@
     line-height: 50px;
     text-align: center;
     flex-shrink: 0;
-    color: rgba(255, 255, 255,.3);
+    color: rgb(100, 100, 100,.7);
 }
 
 .singer-songs .song .song-item>span{
@@ -115,7 +115,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: rgba(255, 255, 255,.8);
+    color: rgba(0, 0, 0);
 }
 
 .singer-songs .song .song-info .music_checked{
@@ -126,6 +126,6 @@
     width: 100%;
     height: 20px;
     line-height: 20px;
-    font-size: 14px;
+    font-size: 13px;
 }
 </style>

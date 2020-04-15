@@ -195,7 +195,9 @@ export default {
   async getSingerCategory({commit},data){
     const {cat,offset} = data
     let currOffset = getListOffsetByCode(cat)
-    if(offset < currOffset) return//相同数据不需要再请求
+    console.log("offset:",offset)
+    console.log("currOffset:",currOffset)
+    if(offset <= currOffset && offset!=0) return//相同数据不需要再请求
     let res = {}
     if(cat == 0){//获取热门歌手数据
       res = await topSinger(offset)

@@ -36,7 +36,7 @@
     justify-content: space-between;
     margin: 10px 0;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgb(255, 255, 255,.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .song-item .song-info{
@@ -46,7 +46,7 @@
 
 .song-item .song-info .info-name{
     height: 60%;
-    color: rgb(255, 255, 255,.8);
+    color: rgba(0, 0, 0);
     font-size: 18px;
     letter-spacing: 1px;
     overflow: hidden;
@@ -60,7 +60,7 @@
 
 .song-item .song-info .info-singer{
     height: 40%;
-    color: rgba(255, 255, 255,.3);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 13px;
     letter-spacing: 1px;
     overflow: hidden;
@@ -75,6 +75,6 @@
 
 .song-item .song-more>i{
     font-size: 30px;
-    color: rgb(255, 255, 255,.3);
+    color: rgba(0, 0, 0, 0.3);
 }
 </style>
