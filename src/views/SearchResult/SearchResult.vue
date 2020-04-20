@@ -1,7 +1,7 @@
 <template>
     <div class="search-result">
         <div class="header">
-          <result-header/>
+          <result-header @back="back"/>
         </div>
         <div class="tab-bar">
           <cube-tab-bar 
@@ -47,10 +47,13 @@
      ...mapState(["typeSong","typeSinger","typeAlbum","typeMusiclist","searchKeyword"])
    },
    methods:{
+     back(){
+      this.selectedLabel = 0
+     },
      changeType(index){
       //解决路由切换报错
        if(this.oldVal === index) return
-       this.oldVal =index
+       this.oldVal = index
        switch(index){
          case 0:
           this.$router.replace("/searchResult/allTypeResult")

@@ -18,7 +18,9 @@
    },
    methods:{
        back(){
-           this.$router.go(-1)
+        this.$store.commit("clear_search_keyword_by_type")
+        this.$emit('back')
+        this.$router.go(-1)
        }
    }
  }

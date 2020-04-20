@@ -102,7 +102,6 @@
        this.$router.go(-1)
      },
      searchKeyword(keyword){
-       console.log("搜索:",keyword)
        this.$store.dispatch("searchKeyword",keyword)
        this.$router.push("/searchResult")
      },

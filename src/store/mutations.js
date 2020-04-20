@@ -141,6 +141,13 @@ export default {
     }
   },
 
+  clear_search_keyword_by_type(state){
+    state.typeSong = []
+    state.typeSinger = []
+    state.typeAlbum = []
+    state.typeMusiclist = []
+  },
+
   /* 评论 */
   [COMMENTS](state,result){
     const {comments,commentsCount} = result
