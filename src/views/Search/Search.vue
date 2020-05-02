@@ -64,8 +64,7 @@ export default {
   },
   methods: {
     musicListClick(id) {
-      this.$store.dispatch("getPlayListDetail", id);
-      this.$router.push("/playlist");
+      this.$router.push({ path: 'playlist', query: { id }})
     },
     searchKeywords(){
       this.$router.push("/searchKeywords")

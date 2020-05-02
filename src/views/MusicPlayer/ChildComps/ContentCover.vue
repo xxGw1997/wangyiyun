@@ -39,10 +39,12 @@ export default {
   methods:{
     comment(){
       let id = this.songDetail[0].id
-      let type = 'song'
-      this.$store.dispatch("getSongComments",id)
       this.$router.push({
-        path:`/comment/${type}`
+        path:'comment',
+        query:{
+          type:'song',
+          id
+        }
       })
       this.$store.dispatch("playerShow", false);
     }

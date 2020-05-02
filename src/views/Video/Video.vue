@@ -26,7 +26,6 @@ export default {
   components: {
     HeaderTop,
     ProgressBar,
-    CubePage
   }
 };
 </script>

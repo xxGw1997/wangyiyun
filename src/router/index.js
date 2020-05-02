@@ -149,7 +149,7 @@ const routes = [
     }
   },
   {
-    path:"/comment/:type",
+    path:"/comment",
     name:"comment",
     component: () => import("@/views/Comment/Comment"),
     meta:{

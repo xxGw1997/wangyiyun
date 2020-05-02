@@ -102,8 +102,9 @@
        this.$router.go(-1)
      },
      searchKeyword(keyword){
-       this.$store.dispatch("searchKeyword",keyword)
-       this.$router.push("/searchResult")
+      //  this.$store.dispatch("searchKeyword",keyword)
+       this.$router.push({ path: 'searchResult', query: { keyword }})
+      //  this.$router.push("/searchResult")
      },
      clearHistory(){
        this.$createDialog({

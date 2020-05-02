@@ -52,9 +52,35 @@
 
 <script>
 export default {
+  data(){
+    return {
+      footerPath:'/search'
+    }
+  },
+  computed:{
+    path(){
+      return this.$route.path
+    }
+  },
+  watch:{
+    path(newVal){
+      switch(newVal){
+        case '/search':this.footerPath = newVal
+        break
+        case '/video':this.footerPath = newVal
+        break
+        case '/mine':this.footerPath = newVal
+        break
+        case '/friends':this.footerPath = newVal
+        break
+        case '/account':this.footerPath = newVal
+        break
+      }
+    }
+  },
   methods: {
     isActive(currentPath) {
-      return this.$route.path === currentPath;
+      return this.footerPath === currentPath;
     }
   }
 };

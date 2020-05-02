@@ -35,6 +35,26 @@
        tabs: [ '综合', '单曲', '歌手','专辑','歌单'],
      }
    },
+   mounted(){
+     this.$store.dispatch("searchKeyword", this.$route.query.keyword)
+     switch(this.$route.name){
+       case 'songType':
+        this.selectedLabel = 1
+       break
+       case 'singerType':
+        this.selectedLabel = 2
+       break
+       case 'albumType':
+        this.selectedLabel = 3
+       break
+       case 'musicList':
+        this.selectedLabel = 4
+       break
+       default:
+        this.selectedLabel = 0
+       break
+     }
+   },
    components: {
      ResultHeader
    },
@@ -56,31 +76,31 @@
        this.oldVal = index
        switch(index){
          case 0:
-          this.$router.replace("/searchResult/allTypeResult")
+          this.$router.replace({ path: 'allTypeResult', query: { keyword:this.searchKeyword }})
          break
          case 1:
           if(this.typeSong.length === 0){
             this.$store.dispatch("searchKeywordType",{type:1,keyword:this.searchKeyword})
           }
-          this.$router.replace("/searchResult/songType")
+          this.$router.replace({ path: 'songType', query: { keyword:this.searchKeyword }})
          break
          case 2:
           if(this.typeSinger.length === 0){
             this.$store.dispatch("searchKeywordType",{type:2,keyword:this.searchKeyword})
           }
-          this.$router.replace("/searchResult/singerType")
+          this.$router.replace({ path: 'singerType', query: { keyword:this.searchKeyword }})
          break
          case 3:
           if(this.typeAlbum.length === 0){
             this.$store.dispatch("searchKeywordType",{type:3,keyword:this.searchKeyword})
           }
-          this.$router.replace("/searchResult/albumType")
+          this.$router.replace({ path: 'albumType', query: { keyword:this.searchKeyword }})
          break
          case 4:
           if(this.typeMusiclist.length === 0){
             this.$store.dispatch("searchKeywordType",{type:4,keyword:this.searchKeyword})
           }
-          this.$router.replace("/searchResult/musicListType")
+          this.$router.replace({ path: 'musicListType', query: { keyword:this.searchKeyword }})
          break
        }
      }

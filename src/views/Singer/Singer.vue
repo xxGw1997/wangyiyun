@@ -103,6 +103,10 @@
    computed:{
      ...mapState(['singerInfo','songDetail'])
    },
+   mounted(){
+        this.$store.dispatch("getSingerInfo",this.$route.query.id)
+        this.$store.dispatch("getSingerAlbums",this.$route.query.id)
+   },
    watch:{
        scrollY(newVal){
            let Multiple = 1 - newVal/200

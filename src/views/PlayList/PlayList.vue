@@ -9,7 +9,7 @@
           <i class="iconfont icon-back"></i>
         </div>
         <div class="header_center" slot="center">
-          歌单
+          {{playListDetail.type?'专辑':'歌单'}}
         </div>
       </header-top>
       <scroll class="content">
@@ -39,7 +39,13 @@ export default {
   computed: {
     ...mapState(["playListDetail"])
   },
-  created() {}
+  mounted() {
+    if(this.$route.query.type == 'album'){
+      this.$store.dispatch("getAlbumSongs", this.$route.query.id)
+      return
+    }
+    this.$store.dispatch("getPlayListDetail", this.$route.query.id)
+  }
 };
 </script>
 

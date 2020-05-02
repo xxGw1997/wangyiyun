@@ -53,6 +53,8 @@
 </template>
 
 <script>
+ import {getSongDetail,getPlayListDetail} from "@/utils/cache"
+
  import {mapState} from "vuex"
  import Loading from "@/components/Loading/Loading"
  import HeaderTop from "@/components/HeaderTop/Header"
@@ -73,10 +75,16 @@
        Comments
     },
     computed:{
-        ...mapState(["songDetail","playListDetail","commentsCount","comments"]),
+        ...mapState(["commentsCount","comments"]),
+        songDetail(){
+            return getSongDetail()
+        },
+        playListDetail(){
+            return getPlayListDetail()
+        },
         item(){
             let obj = {}
-            if(this.$route.params.type == 'song'){
+            if(this.$route.query.type == 'song'){
                 obj = {
                         picUrl:this.songDetail[0].al.picUrl,
                         name:this.songDetail[0].name,
@@ -90,6 +98,16 @@
                     }
             }
             return obj
+        }
+    },
+    mounted(){
+        let {id,type} = this.$route.query
+        if(type == 'song'){
+            this.$store.dispatch("getSongComments",id)
+        }else if(type == 'album'){
+            this.$store.dispatch("getAlbumComments",id)
+        }else{
+            this.$store.dispatch("getMusiclistComments",id)
         }
     },
     methods: {

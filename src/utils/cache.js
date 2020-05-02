@@ -5,6 +5,9 @@ const SINGER_LIST = '__singer_list__'
 
 const SEARCH_HISTORY = '__search_history__'
 
+const SONG_DETAIL = '__song_detail__'
+const PLAYLIST_DETAIL = '__playlist_detail__'
+
 export function saveUserInfo(token,userDetail){
     storage.set(USER_INFO,{token,userDetail})
     return {token,userDetail}
@@ -79,4 +82,21 @@ export function saveSearchHistory(keyword){
 
 export function clearSearchHistory(){
     storage.set(SEARCH_HISTORY,[])
+}
+
+export function saveSongDetail(songDetail){
+    storage.set(SONG_DETAIL,songDetail)
+}
+
+export function savePlayListDetail(playListDetail){
+    storage.set(PLAYLIST_DETAIL,playListDetail)
+}
+
+
+export function getSongDetail(){
+    return storage.get(SONG_DETAIL,{})
+}
+
+export function getPlayListDetail(){
+    return storage.get(PLAYLIST_DETAIL,{})
 }

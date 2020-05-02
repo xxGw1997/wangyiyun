@@ -27,6 +27,9 @@
    components: {
      SongItem
    },
+   mounted(){
+     this.$store.dispatch("searchKeywordType",{type:1,keyword: this.$route.query.keyword})
+   },
    computed:{
     ...mapState(["typeSong","songDetail"])
    },

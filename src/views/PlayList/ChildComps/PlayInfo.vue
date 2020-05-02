@@ -96,17 +96,21 @@ export default {
   },
   methods:{
     comment(){
-      let id = this.playListDetail.id
+      // let id = this.playListDetail.id
       let type = ''
       if(this.playListDetail.type){
-        this.$store.dispatch("getAlbumComments",id)
+        // this.$store.dispatch("getAlbumComments",id)
         type = 'album'
       }else{
-        this.$store.dispatch("getMusiclistComments",id)
+        // this.$store.dispatch("getMusiclistComments",id)
         type = 'musiclist'
       }
       this.$router.push({
-        path:`/comment/${type}`
+        path:'comment',
+        query:{
+          type,
+          id:this.playListDetail.id
+        }
       })
     },
     share(){

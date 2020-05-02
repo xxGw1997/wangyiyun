@@ -22,7 +22,8 @@
    methods:{
      musicListClick(id){
       this.$store.dispatch("getAlbumSongs", id);
-      this.$router.push("/playlist");
+      // this.$router.push("/playlist");
+      this.$router.push({path:'playlist',query:{type:'album',id}})
      }
    }
  }

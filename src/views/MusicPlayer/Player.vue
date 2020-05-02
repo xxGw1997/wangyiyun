@@ -67,8 +67,7 @@ export default {
   },
   watch: {
     songUrl() {
-      console.log("songDetail:",this.songDetail)
-      this.songName = this.songDetail[0].name;
+       this.songName = this.songDetail[0].name;
       this.songSinger = this.songDetail[0].ar[0].name;
       this.songSingerId = this.songDetail[0].ar[0].id
       this.songCover = this.songDetail[0].al.picUrl;
@@ -80,7 +79,6 @@ export default {
         this.duration = this.$refs.audio.duration;
         if (this.duration) {
           clearInterval(timeStamp);
-          // console.log('dur:',this.$refs.audio.autoplay)
         }
       }, 20);
       this.$refs.audio.volume = this.volume;

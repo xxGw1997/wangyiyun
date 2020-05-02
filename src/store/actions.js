@@ -15,7 +15,10 @@ import { login, getUserDetail, logout } from "@/network/user";
 
 import {singerCategory,topSinger,singerInfo , singerAlbums} from "@/network/singer";
 
-import {saveUserInfo, clearUserInfo,getListOffsetByCode,setSingerList,saveSearchHistory} from "@/utils/cache";
+import {saveUserInfo, clearUserInfo,
+        getListOffsetByCode,setSingerList,
+        saveSearchHistory,
+        saveSongDetail,savePlayListDetail} from "@/utils/cache";
 
 import {transToPlayListDetail} from "@/utils/util"
 
@@ -75,6 +78,7 @@ export default {
     if (res.code === 200) {
       const result = res.playlist;
       commit(PLAY_LIST_DETAIL, { result });
+      savePlayListDetail(result)
     }
   },
 
@@ -130,6 +134,7 @@ export default {
       resSongUrl.code === 200
     ) {
       commit(SONG_DETAIL, { songs });
+      saveSongDetail(songs.song)
     }
   },
 
@@ -137,7 +142,6 @@ export default {
     let timestamp = (new Date()).getTime();
     const res = await recommendSongs(timestamp);
     if(res.code === 200){
-      console.log("suc");
       const recommend = res.recommend
       commit(RECOMMEND_SONGS,{recommend});
     }
@@ -195,8 +199,6 @@ export default {
   async getSingerCategory({commit},data){
     const {cat,offset} = data
     let currOffset = getListOffsetByCode(cat)
-    console.log("offset:",offset)
-    console.log("currOffset:",currOffset)
     if(offset <= currOffset && offset!=0) return//相同数据不需要再请求
     let res = {}
     if(cat == 0){//获取热门歌手数据
@@ -214,7 +216,6 @@ export default {
   },
 
   async getSingerInfo({commit},id){
-    console.log("id:",id)
     const res = await singerInfo(id)
     if(res.code === 200){
       commit(GET_SINGER_INFO,res)

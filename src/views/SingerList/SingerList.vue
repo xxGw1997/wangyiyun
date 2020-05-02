@@ -112,10 +112,8 @@
            //获取对应条件歌手列表...
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
-        //    console.log("language-change:",this.code + '-' + offset)
            if(newVal == 1 && this.checkerSinger == 1) return
            debounce(this.firstSingerList,500)(this.code,offset)
-        //    this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
        },
        checkerSinger(newVal){
            if(newVal.length !== 0 && this.checkerLanguage.length === 0){
@@ -124,8 +122,6 @@
            //获取对应条件歌手列表...
            this.setSingerCode(this.checkerLanguage,this.checkerSinger)
            let offset = this.getCurrOffset(this.code)
-        //    console.log("singer-change:",this.code + '-' + offset)
-        //    this.$store.dispatch('getSingerCategory',{cat:this.code,offset})
             debounce(this.firstSingerList,500)(this.code,offset)
        }
    },
@@ -140,9 +136,7 @@
       this.$store.dispatch("playerShow", true);
     },
     singerInfo(id){
-        this.$store.dispatch("getSingerInfo",id)
-        this.$store.dispatch("getSingerAlbums",id)
-        this.$router.push("/singer");
+        this.$router.push({path:'singer',query:{id}})
     },
     onPullingUp(){
         let cat = this.cat

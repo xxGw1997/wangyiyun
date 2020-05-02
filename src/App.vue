@@ -4,9 +4,7 @@
       <music-player class="music-player" v-show="playerShow" />
     </transition>
     <transition name="page">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
+      <router-view />
     </transition>
     <footer-guide v-show="this.$route.meta.showFooter" />
   </div>

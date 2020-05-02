@@ -20,6 +20,9 @@
    components: {
      AlbumItem
    },
+   mounted(){
+     this.$store.dispatch("searchKeywordType",{type:3,keyword: this.$route.query.keyword})
+   },
    computed:{
     ...mapState(["typeAlbum"])
    },

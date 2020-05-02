@@ -20,6 +20,9 @@
    components: {
      MusiclistItem
    },
+   mounted(){
+     this.$store.dispatch("searchKeywordType",{type:4,keyword: this.$route.query.keyword})
+   },
    computed:{
      ...mapState(["typeMusiclist"])
    },
