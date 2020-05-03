@@ -131,7 +131,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .backgroundImg {
   width: 100%;
   height: 100%;
@@ -139,18 +139,16 @@ export default {
   position: absolute;
   z-index: 10;
   background: rgb(0, 0, 0);
+  img {
+    width: 200%;
+    height: 200%;
+    opacity: 0.6;
+    filter: blur(50px);
+    position: relative;
+    left: -50%;
+    top: -50%;
+  }
 }
-
-.backgroundImg img {
-  width: 200%;
-  height: 200%;
-  opacity: 0.6;
-  filter: blur(50px);
-  position: relative;
-  left: -50%;
-  top: -50%;
-}
-
 .player {
   width: 100%;
   height: 100%;
@@ -159,9 +157,8 @@ export default {
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
-}
-
-.player > div {
-  width: 100%;
+  & > div {
+    width: 100%;
+  }
 }
 </style>

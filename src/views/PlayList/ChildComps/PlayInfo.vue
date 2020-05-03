@@ -135,7 +135,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .play-info {
   width: 90%;
   height: 250px;
@@ -144,146 +144,137 @@ export default {
   flex-wrap: wrap;
   align-content: space-around;
   padding-top: 10px;
-  /* background: rgb(100, 100, 100); */
+  .info {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: space-between;
+    .info-left {
+      width: 40%;
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+    .info-right {
+      width: 55%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-around;
+      .info-title {
+        color: aliceblue;
+        font-size: 15px;
+        line-height: 22px;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .info-author {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .author-img {
+          flex: 0 0 20%;
+          & > img {
+            width: 80%;
+            border-radius: 50%;
+          }
+          & > .author-name {
+            color: rgba(255, 255, 255,.5);
+          }
+        }
+        .author-name {
+          font-size: 13px;
+          color: rgba(255, 255, 255,.9);
+          padding-left: 5px;
+        }
+        .author-icon {
+          flex: 0 0 5%;
+          color: rgba(255, 255, 255,.9);
+        }
+      }
+      .info-intro {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .intro {
+          height: 80%;
+          color: rgba(255, 255, 255,.9);
+          font-size: 10px;
+          line-height: 18px;
+          letter-spacing: 1px;
+          text-overflow: -o-ellipsis-lastline;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .intro-icon {
+          color: rgba(255, 255, 255,.9);
+        }
+      }
+      & > div {
+        width: 100%;
+        height: 30%;
+      }
+    }
+  }
+  .operation {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    .operation-item {
+      width: 25%;
+      height: 100%;
+      color: rgba(255, 255, 255,.9);
+      display: flex;
+      text-align: center;
+      align-content: space-around;
+      flex-wrap: wrap;
+      .operation-icon {
+        width: 100%;
+      }
+      &:nth-of-type(1) {
+        .operation-icon {
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+      &:nth-of-type(2) {
+        .operation-icon {
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+      &:nth-of-type(3) {
+        .operation-icon {
+          i {
+            font-size: 20px;
+          }
+        }
+      }
+      &:nth-of-type(4) {
+        .operation-icon {
+          i {
+            font-size: 20px;
+          }
+        }
+      }
+      .operation-info {
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+  }
 }
 
-.play-info .info {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.play-info .info .info-left {
-  width: 40%;
-}
-
-.play-info .info .info-left img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.play-info .info .info-right {
-  width: 55%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-}
-
-.play-info .info .info-right .info-title {
-  color: aliceblue;
-  font-size: 15px;
-  line-height: 22px;
-  font-weight: bolder;
-  letter-spacing: 2px;
-  /* 2行省略 */
-  text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.play-info .info .info-right .info-author {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.play-info .info .info-right .info-author .author-img {
-  flex: 0 0 20%;
-}
-
-.play-info .info .info-right .info-author .author-img>img {
-  width: 80%;
-  border-radius: 50%;
-}
-
-.play-info .info .info-right .info-author .author-img>.author-name{
-  color: rgba(255, 255, 255,.5);
-}
-
-.play-info .info .info-right .info-author .author-name {
-  font-size: 13px;
-  color: rgba(255, 255, 255,.9);
-  padding-left: 5px;
-}
-
-.play-info .info .info-right .info-author .author-icon {
-  flex: 0 0 5%;
-  color: rgba(255, 255, 255,.9);
-}
-
-.play-info .info .info-right .info-intro {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.play-info .info .info-right .info-intro .intro {
-  height: 80%;
-  color: rgba(255, 255, 255,.9);
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 1px;
-  /* 2行省略 */
-  text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.play-info .info .info-right .info-intro .intro-icon {
-  color: rgba(255, 255, 255,.9);
-}
-
-.play-info .info .info-right > div {
-  width: 100%;
-  height: 30%;
-}
-
-.play-info .operation {
-  width: 100%;
-  height: 20%;
-  display: flex;
-}
-
-.play-info .operation .operation-item {
-  width: 25%;
-  height: 100%;
-  color: rgba(255, 255, 255,.9);
-  display: flex;
-  text-align: center;
-  align-content: space-around;
-  flex-wrap: wrap;
-}
-
-.play-info .operation .operation-item .operation-icon {
-  width: 100%;
-}
-
-.play-info .operation .operation-item:nth-of-type(1) .operation-icon i {
-  font-size: 25px;
-}
-
-.play-info .operation .operation-item:nth-of-type(2) .operation-icon i {
-  font-size: 25px;
-}
-
-.play-info .operation .operation-item:nth-of-type(3) .operation-icon i {
-  font-size: 20px;
-}
-
-.play-info .operation .operation-item:nth-of-type(4) .operation-icon i {
-  font-size: 20px;
-}
-
-.play-info .operation .operation-item .operation-info {
-  width: 100%;
-  font-size: 12px;
-}
 </style>

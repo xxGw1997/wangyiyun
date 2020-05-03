@@ -35,9 +35,8 @@
  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .musiclist-type{
   height: 100%;
 }
- 
 </style>

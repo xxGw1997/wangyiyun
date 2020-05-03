@@ -35,9 +35,8 @@
  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .album-type{
   height: 100%;
 }
- 
 </style>

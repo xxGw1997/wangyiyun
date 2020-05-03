@@ -86,7 +86,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .footer-guide {
   position: fixed;
   bottom: 0;
@@ -96,31 +96,26 @@ export default {
   display: flex;
   flex: 1;
   background: rgb(240, 240, 240);
-}
-
-.footer-guide .guide-item {
-  display: flex;
-  flex-wrap: wrap;
-  flex: auto;
-  color: rgb(100, 100, 100);
-}
-
-.footer-guide .active {
-  color: red;
-}
-
-.footer-guide .guide-item div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-guide .guide-item div i {
-  font-size: 25px;
-}
-
-.footer-guide .guide-item div span {
-  font-size: 12px;
+  .guide-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: auto;
+    color: rgb(100, 100, 100);
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-size: 25px;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+  .active {
+    color: red;
+  }
 }
 </style>

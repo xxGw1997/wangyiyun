@@ -35,36 +35,33 @@
  }
 </script>
 
-<style>
-.history-item{
+<style lang="scss">
+.history-item {
   width: 100%;
   height: 50px;
   line-height: 50px;
+  .horizontal-scroll-list-wrap {
+    border: none;
+    .cube-scroll-content {
+      display: inline-block;
+    }
+    .list-wrapper {
+      line-height: 30px;
+      white-space: nowrap;
+    }
+    .list-item {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px;
+      margin: 0 10px 0 0;
+      background: rgb(223, 223, 223);
+      color: rgb(0, 0, 0);
+      border-radius: 30px;
+      font-size: 13px;
+    }
+  }
 }
 
-.history-item .horizontal-scroll-list-wrap{
-  border: none;
-}
-
-.history-item .horizontal-scroll-list-wrap .cube-scroll-content{
-  display: inline-block;
-}
-
-.history-item .horizontal-scroll-list-wrap .list-wrapper{
-  line-height: 30px;
-  white-space: nowrap;
-}
-
-.history-item .horizontal-scroll-list-wrap .list-item{
-  display: inline-block;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 10px;
-  margin: 0 10px 0 0;
-  background: rgb(223, 223, 223);
-  color: rgb(0, 0, 0);
-  border-radius: 30px;
-  font-size: 13px;
-}
  
 </style>

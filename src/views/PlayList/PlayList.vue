@@ -49,35 +49,32 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .playlist {
   height: 100vh;
 }
-
 .backgroundImg {
+  width: 100%;
   height: 60%;
   overflow: hidden;
   position: absolute;
   z-index: -1;
   background: rgb(0, 0, 0);
+  & > img {
+    width: 200%;
+    height: 200%;
+    opacity: 0.6;
+    filter: blur(50px);
+    position: relative;
+    left: -50%;
+    top: -50%;
+  }
 }
-
-.backgroundImg > img {
-  width: 200%;
-  height: 200%;
-  opacity: 0.6;
-  filter: blur(50px);
-  position: relative;
-  left: -50%;
-  top: -50%;
-}
-
 .header_center {
   text-align: center;
   line-height: 30px;
   color: aliceblue;
 }
-
 .content {
   width: 100%;
   height: calc(100% - 110px);

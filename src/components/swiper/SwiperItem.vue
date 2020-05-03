@@ -10,13 +10,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .slide {
   width: 100%;
   flex-shrink: 0;
-}
-
-.slide img {
-  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 </style>

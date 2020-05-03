@@ -27,57 +27,49 @@
  }
 </script>
 
-<style scoped>
-.musiclist-item{
-    height: 70px;
-    margin: 10px 0;
-    display: flex;
-}
-
-.musiclist-item .musiclist-avatar{
+<style lang="scss" scoped>
+.musiclist-item {
+  height: 70px;
+  margin: 10px 0;
+  display: flex;
+  .musiclist-avatar {
     width: 70px;
     height: 70px;
-}
-
-.musiclist-item .musiclist-avatar>img{
-    width: 70px;
-    height: 70px;
-    border-radius: 5px;
-}
-
-.musiclist-item .musiclist-info{
+    & > img {
+      width: 70px;
+      height: 70px;
+      border-radius: 5px;
+    }
+  }
+  .musiclist-info {
     height: 70px;
     display: flex;
     flex-wrap: wrap;
     margin-left: 10px;
     align-items: center;
     align-content: center;
-}
-
-.musiclist-item .musiclist-info .musiclist-name{
-    width: 90%;
-    height: 20px;
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-.musiclist-item .musiclist-info .musiclist-singer{
-    width: 90%;
-    height: 20px;
-    margin-top: 5px;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.musiclist-item .musiclist-info .musiclist-singer>span{
-    margin-right: 10px;
-}
- 
+    .musiclist-name {
+      width: 90%;
+      height: 20px;
+      font-size: 18px;
+      color: rgb(0, 0, 0);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .musiclist-singer {
+      width: 90%;
+      height: 20px;
+      margin-top: 5px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      & > span {
+        margin-right: 10px;
+      }
+    }
+  }
+} 
 </style>

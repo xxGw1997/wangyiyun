@@ -18,44 +18,32 @@
                return {}
            }
        }
-   },
-   data () {
-     return {
-
-     }
-   },
-   components: {
-
    }
  }
 </script>
 
-<style scoped>
-.singer-item{
-    height: 70px;
-    margin: 10px 0;
-    display: flex;
-}
-
-.singer-item .singer-avatar{
+<style lang="scss" scoped>
+.singer-item {
+  height: 70px;
+  margin: 10px 0;
+  display: flex;
+  .singer-avatar {
     width: 70px;
     height: 70px;
     text-align: center;
-}
-
-.singer-item .singer-avatar>img{
-    position: relative;
-    width: 60px;
-    height: 60px;
-    top:5px;
-    border-radius: 60px;
-}
-
-.singer-item .singer-name{
+    & > img {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      top: 5px;
+      border-radius: 60px;
+    }
+  }
+  .singer-name {
     height: 70px;
     line-height: 70px;
     margin-left: 10px;
-    color: rgba(0, 0, 0);
+    color: rgb(0, 0, 0);
+  }
 }
- 
 </style>

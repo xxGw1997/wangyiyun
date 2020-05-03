@@ -79,50 +79,41 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .content-lyric {
   width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  .volume {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .volume-icon {
+      width: 15%;
+      color: aliceblue;
+      text-align: center;
+      i {
+        font-size: 20px;
+      }
+    }
+    .volume-progressbar {
+      flex: 0 0;
+      flex-basis: 85%;
+      width: 10px;
+      .volume-bar {
+        width: 80%;
+      }
+    }
+  }
+  .lyric {
+    width: 100%;
+    height: 90%;
+  }
 }
-
-.content-lyric .volume {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.content-lyric .volume .volume-icon {
-  width: 15%;
-  color: aliceblue;
-  text-align: center;
-}
-
-.content-lyric .volume .volume-icon i {
-  font-size: 20px;
-}
-
-.content-lyric .volume .volume-progressbar {
-  flex: 0 0;
-  flex-basis: 85%;
-  width: 10px;
-}
-
-.content-lyric .volume .volume-progressbar .volume-bar {
-  width: 80%;
-}
-
-.content-lyric .lyric {
-  width: 100%;
-  height: 90%;
-}
-
-/**/
-
 .root {
   display: inline-block;
   position: absolute;
@@ -131,29 +122,25 @@ export default {
   width: 100%;
   height: 60%;
   overflow: hidden;
-}
-
-.root .lyric-wrapper {
-  width: 80%;
-  margin: 0 auto;
-  overflow: hidden;
-  text-align: center;
-}
-
-.root .lyric-wrapper .text {
-  line-height: 40px;
-  color: #c7c7c7;
-  font-size: 14px;
-}
-
-.root .lyric-wrapper .text.current {
-  color: rgb(212, 68, 57);
-}
-
-.root .lyric-wrapper .no-lyric {
-  line-height: 40px;
-  margin-top: 60%;
-  color: #c7c7c7;
-  font-size: 14px;
+  .lyric-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    .text {
+      line-height: 40px;
+      color: #c7c7c7;
+      font-size: 14px;
+      &.current {
+        color: rgb(212, 68, 57);
+      }
+    }
+    .no-lyric {
+      line-height: 40px;
+      margin-top: 60%;
+      color: #c7c7c7;
+      font-size: 14px;
+    }
+  }
 }
 </style>

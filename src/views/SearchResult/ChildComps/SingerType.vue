@@ -40,9 +40,8 @@
  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .singer-type{
   height: 100%;
-}
- 
+} 
 </style>

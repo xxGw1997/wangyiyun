@@ -63,12 +63,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .player-content {
   height: 70%;
   overflow: hidden;
 }
-
 .cover-enter-active,
 .cover-leave-active,
 .lyric-enter-active,

@@ -108,7 +108,21 @@
  }
 </script>
 
-
+<style lang="scss" scoped>
+.search-result {
+  width: 100%;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+}
+.tab-bar {
+  height: 50px;
+  color: rgb(255, 255, 255);
+}
+.result-content {
+  margin: 15px;
+  height: calc(100vh - 175px);
+}
+</style>
 
 <style>
 /*覆盖原生样式*/
@@ -132,24 +146,6 @@
 
 .cube-tab-bar-slider{
   background-color: red;
-}
-
-</style>
-<style scoped>
-.search-result{
-  width: 100%;
-  height: 100vh;
-  background: rgb(255, 255, 255);
-}
-
-.tab-bar{
-  height: 50px;
-  color: rgba(255, 255, 255);
-}
-
-.result-content{
-  margin: 15px;
-  height: calc(100vh - 175px);
 }
 
 </style>

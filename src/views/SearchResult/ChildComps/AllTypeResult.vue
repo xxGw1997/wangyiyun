@@ -107,21 +107,17 @@
  }
 </script>
 
-<style scoped>
-  .all-type-result{
-    height: 100%;
-  }
-
-  .all-type-result .container{
+<style lang="scss" scoped>
+.all-type-result {
+  height: 100%;
+  .container {
     margin-bottom: 20px;
+    .container-title {
+      color: rgb(0, 0, 0);
+      font-size: 19px;
+      letter-spacing: 1px;
+      padding: 10px 0;
+    }
   }
-
-  .all-type-result .container .container-title{
-    color: rgb(0, 0, 0);
-    font-size: 19px;
-    letter-spacing: 1px;
-    padding: 10px 0;
-  }
-
- 
+} 
 </style>

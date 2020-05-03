@@ -32,54 +32,46 @@
  }
 </script>
 
-<style scoped>
-.album-item{
-    height: 70px;
-    margin: 10px 0;
-    display: flex;
-}
-
-.album-item .album-avatar{
+<style lang="scss" scoped>
+.album-item {
+  height: 70px;
+  margin: 10px 0;
+  display: flex;
+  .album-avatar {
     width: 70px;
     height: 70px;
-}
-
-.album-item .album-avatar>img{
-    width: 70px;
-    height: 70px;
-    border-radius: 5px;
-}
-
-.album-item .album-info{
+    & > img {
+      width: 70px;
+      height: 70px;
+      border-radius: 5px;
+    }
+  }
+  .album-info {
     height: 70px;
     display: flex;
     flex-wrap: wrap;
     margin-left: 10px;
     align-items: center;
     align-content: center;
+    .album-name {
+      width: 100%;
+      height: 20px;
+      font-size: 18px;
+      color: rgb(0, 0, 0);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .album-singer {
+      width: 100%;
+      height: 20px;
+      margin-top: 5px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+      & > span {
+        margin-right: 10px;
+      }
+    }
+  }
 }
-
-.album-item .album-info .album-name{
-    width: 100%;
-    height: 20px;
-    font-size: 18px;
-    color: rgba(0, 0, 0);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-.album-item .album-info .album-singer{
-    width: 100%;
-    height: 20px;
-    margin-top: 5px;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.album-item .album-info .album-singer>span{
-    margin-right: 10px;
-}
- 
 </style>

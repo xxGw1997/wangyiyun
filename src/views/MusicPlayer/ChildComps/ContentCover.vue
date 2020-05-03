@@ -52,38 +52,36 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .content-cover {
   width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.content-cover .cover {
-  width: 100%;
-  height: 85%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content-cover .cover img {
-  width: 70%;
-  border-radius: 50%;
-}
-
-.content-cover .operation {
-  width: 100%;
-  height: 15%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.content-cover .operation .operation-item i {
-  font-size: 30px;
-  color: aliceblue;
+  .cover {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 70%;
+      border-radius: 50%;
+    }
+  }
+  .operation {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .operation-item {
+      i {
+        font-size: 30px;
+        color: aliceblue;
+      }
+    }
+  }
 }
 </style>

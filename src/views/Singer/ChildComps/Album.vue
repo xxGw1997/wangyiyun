@@ -32,57 +32,50 @@
  }
 </script>
 
-<style scoped>
-.album{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-}
-
-.album .album-img{
+<style lang="scss" scoped>
+.album {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  .album-img {
     width: 50px;
     min-width: 50px;
     height: 50px;
     margin: 0 15px;
-}
-
-.album .album-img>img{
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.album .album-info{
+    & > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  .album-info {
     width: 70%;
     flex: 1 0;
     margin-right: 15px;
     height: 40px;
     display: flex;
     flex-wrap: wrap;
+    .album-name {
+      width: 100%;
+      height: 25px;
+      line-height: 25px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .album-time {
+      width: 100%;
+      height: 15px;
+      line-height: 15px;
+      font-size: 12px;
+      color: rgba(100, 100, 100, 0.7);
+      & > span {
+        margin-right: 10px;
+      }
+    }
+  }
 }
-
-.album .album-info .album-name{
-    width: 100%;
-    height: 25px;
-    line-height: 25px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.9);
-}
-
-.album .album-info .album-time{
-    width: 100%;
-    height: 15px;
-    line-height: 15px;
-    font-size: 12px;
-    color: rgba(100, 100, 100, 0.7);
-}
-
-.album .album-info .album-time>span{
-    margin-right: 10px;
-}
-
 </style>

@@ -177,75 +177,70 @@
 
 
 
-<style scoped>
-.singer-list{
-    height: 100vh;
-    background: rgb(255, 255, 255);
-}
-
-.singer-list .header{
+<style lang="scss" scoped>
+.singer-list {
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  .header {
     height: 50px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     background: rgb(255, 255, 255);
-}
-
-.singer-list .header .header-left,
-.singer-list .header .header-right{
-    width: 15%;
-    color: rgb(0, 0, 0);
-    line-height: 50px;
-    text-align: center;
-}
-
-.singer-list .header i{
-    font-size: 25px;
-}
-
-.singer-list .header .header-center{
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    line-height: 50px;
-}
- 
-.singer-list .filter{
+    i {
+      font-size: 25px;
+    }
+    .header-center {
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+      font-weight: bolder;
+      letter-spacing: 1px;
+      line-height: 50px;
+    }
+  }
+  .filter {
     height: 60px;
-}
-
-.singer-list .scroll-list-wrap{
+  }
+  .scroll-list-wrap {
     height: calc(100% - 205px);
-}
-
-.singer-list .list-title{
-    margin-top:10px;
+  }
+  .list-title {
+    margin-top: 10px;
     height: 25px;
-    line-height:25px;
-    font-size:12px;
-    color:rgba(100, 100, 100);
+    line-height: 25px;
+    font-size: 12px;
+    color: rgb(100, 100, 100);
     letter-spacing: 1px;
-    padding-left:10px;
+    padding-left: 10px;
     background: rgb(202, 202, 202);
-
+  }
 }
-
+.singer-list .header .header-left,
+.singer-list .header .header-right {
+  width: 15%;
+  color: rgb(0, 0, 0);
+  line-height: 50px;
+  text-align: center;
+}
 </style>
 
 
-<style>
+<style lang="scss">
 /* 覆盖cube-ui组件css样式 */
-.singer-list .filter .cube-checker .cube-checker-item{
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.singer-list .filter .cube-checker .cube-checker-item_active{
-    color: rgb(255, 0, 0);
-    background: white;
-}
-
-.singer-list .filter .cube-checker .cube-checker-item:after{
-    border: none;
+.singer-list {
+  .filter {
+    .cube-checker {
+      .cube-checker-item {
+        color: rgba(0, 0, 0, 0.7);
+        &:after {
+          border: none;
+        }
+      }
+      .cube-checker-item_active {
+        color: rgb(255, 0, 0);
+        background: white;
+      }
+    }
+  }
 }
 </style>

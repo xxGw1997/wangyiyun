@@ -83,6 +83,7 @@ export default {
 </script>
 
 <style scoped>
+/*
 .loading{
   position: absolute;
   top:25%;
@@ -101,7 +102,6 @@ export default {
 }
 
 .header_center div {
-  /* background: rgb(78, 78, 78); */
   border-radius: 15px;
   border: none;
   color: rgb(184, 184, 184);
@@ -128,6 +128,51 @@ input::-webkit-input-placeholder {
 .search-swiper{
   border-radius: 20px;
   overflow: hidden;
+}*/
+
+</style>
+
+<style lang="scss" scoped>
+.loading {
+  position: absolute;
+  top: 25%;
+}
+.iconfont {
+  color: rgb(99, 99, 99);
+  font-size: 20px;
+}
+.header_center {
+  border-radius: 20px;
+  height: 30px;
+  line-height: 30px;
+  background: rgb(240, 240, 240);
+  div {
+    border-radius: 15px;
+    border: none;
+    color: rgb(184, 184, 184);
+  }
+}
+input {
+  &::-webkit-input-placeholder {
+    text-align: center;
+  }
+}
+.search {
+  height: 100vh;
+}
+.content {
+  width: 95%;
+  height: calc(100% - 110px);
+  position: relative;
+  top: 50px;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.search-swiper {
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 </style>
+

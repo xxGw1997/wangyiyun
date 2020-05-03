@@ -102,9 +102,7 @@
        this.$router.go(-1)
      },
      searchKeyword(keyword){
-      //  this.$store.dispatch("searchKeyword",keyword)
        this.$router.push({ path: 'searchResult', query: { keyword }})
-      //  this.$router.push("/searchResult")
      },
      clearHistory(){
        this.$createDialog({
@@ -131,7 +129,7 @@
  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* .keywords-enter-active,
 .keywords-leave-active {
   transition: all 1s linear;
@@ -142,134 +140,117 @@
   opacity: 0;
 } */
 
-.searchKeywords{
+.searchKeywords {
   width: 100%;
   height: 100vh;
   background: rgb(255, 255, 255);
+  .header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    .search-input {
+      margin-left: 15px;
+      width: 70%;
+      height: 35px;
+      .iconfont {
+        color: rgba(0, 0, 0,.5);
+      }
+    }
+    .cancel {
+      width: 12%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 18px;
+    }
+    .singer {
+      width: 12%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: rgb(0, 0, 0);
+      & > i {
+        font-size: 25px;
+      }
+    }
+  }
+  .search-suggest {
+    width: 100%;
+    height: calc(100vh - 110px);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background: rgb(255, 255, 255);
+    .search-content {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      color: rgb(0, 172, 240);
+      margin: 0px 0px 5px 15px;
+      letter-spacing: 1px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255,.2);
+    }
+    .suggests {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .suggest {
+        width: 100%;
+        height: 40px;
+        line-height: 35px;
+        margin: 0px 0px 10px 15px;
+        display: flex;
+        & > i {
+          color: rgba(0, 0, 0, 0.7);
+          font-size: 16px;
+        }
+        & > div {
+          width: 100%;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          margin-left: 10px;
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+  }
+  .search-hot {
+    height: calc(100vh - 110px);
+    margin: 0 15px;
+    .search-history {
+      width: 100%;
+      height: 120px;
+      .history-title {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        display: flex;
+        justify-content: space-between;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
+        letter-spacing: 1px;
+        i {
+          color: rgb(151, 151, 151);
+          font-size: 20px;
+        }
+      }
+    }
+    .search-recommend {
+      padding: 20px 0;
+      .recommend-title {
+        width: 100%;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+    }
+  }
 }
 
-.searchKeywords .header{
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: rgb(255, 255, 255);
-}
-
-.searchKeywords .header .search-input{
-  margin-left: 15px;
-  width: 70%;
-  height: 35px;
-}
-
-.searchKeywords .header .search-input .iconfont{
-  color: rgba(0, 0, 0,.5);
-}
-
-.searchKeywords .header .cancel{
-  width: 12%;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-}
-
-.searchKeywords .header .singer{
-  width: 12%;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-}
-
-.searchKeywords .header .singer>i{
-  font-size: 25px;
-}
-
-.searchKeywords .search-suggest{
-  width: 100%;
-  height: calc(100vh - 110px);
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  background: rgb(255, 255, 255);
-}
-
-.searchKeywords .search-suggest .search-content{
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  color: rgb(0, 172, 240);
-  margin: 0px 0px 5px 15px;
-  letter-spacing: 1px;
-  font-size: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255,.2);
-}
-
-.searchKeywords .search-suggest .suggests{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.searchKeywords .search-suggest .suggests .suggest{
-  width: 100%;
-  height: 40px;
-  line-height: 35px;
-  margin: 0px 0px 10px 15px;
-  display: flex;
-}
-
-.searchKeywords .search-suggest .suggests .suggest>i{
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 16px;
-}
-
-.searchKeywords .search-suggest .suggests .suggest>div{
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-left: 10px;
-  color: rgb(0, 0, 0);
-}
-
-.searchKeywords .search-hot{
-  height: calc(100vh - 110px);
-  margin: 0 15px;
-}
-
-.searchKeywords .search-hot .search-history{
-  width: 100%;
-  height: 120px;
-}
-
-.searchKeywords .search-hot .search-history .history-title{
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  display: flex;
-  justify-content: space-between;
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-  letter-spacing: 1px;
-}
-
-.searchKeywords .search-hot .search-history .history-title i{
-  color: rgb(151, 151, 151);
-  font-size: 20px;
-}
-
-.searchKeywords .search-hot .search-recommend{
-  padding: 20px 0;
-}
-
-.searchKeywords .search-hot .search-recommend .recommend-title{
-  width: 100%;
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-  letter-spacing: 1px;
-}
 </style>
 
 

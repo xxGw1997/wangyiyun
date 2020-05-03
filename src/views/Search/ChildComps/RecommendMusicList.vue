@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .recommend-music-list {
   margin-top: 15px;
   height: 420px;
@@ -50,13 +50,11 @@ export default {
   flex-wrap: wrap;
   align-content: space-around;
 }
-
 .list-title {
   width: 100%;
   height: 5%;
   font-size: 20px;
 }
-
 .list-content {
   width: 100%;
   height: 90%;
@@ -64,37 +62,33 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-around;
+  .list-item {
+    width: 31%;
+    height: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    .item-img {
+      width: 100%;
+      height: 70%;
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+    .item-name {
+      height: 20%;
+      font-size: 13px;
+      letter-spacing: 1px;
+      line-height: 17px;
+      text-overflow: -o-ellipsis-lastline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
 }
 
-.list-content .list-item {
-  width: 31%;
-  height: 45%;
-
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-}
-
-.list-content .list-item .item-img {
-  width: 100%;
-  height: 70%;
-}
-
-.list-content .list-item .item-img img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.list-content .list-item .item-name {
-  height: 20%;
-  font-size: 13px;
-  letter-spacing: 1px;
-  line-height: 17px;
-  text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
 </style>

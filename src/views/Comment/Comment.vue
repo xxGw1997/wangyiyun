@@ -121,55 +121,47 @@
  }
 </script>
 
-<style scoped>
-.comment{
-    width: 100%;
-    height: 100vh;
-    background: rgb(54, 54, 54);
-}
-
-.comment .iconfont{
+<style lang="scss" scoped>
+.comment {
+  width: 100%;
+  height: 100vh;
+  background: rgb(54, 54, 54);
+  .iconfont {
     color: rgba(255, 255, 255,.8);
     font-size: 25px;
-}
-
-.comment .header{
+  }
+  .header {
     width: 100%;
     height: 50px;
-}
-
-.comment .header .center-title{
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255,.9);
-}
-
-.comment .comment-content{
+    .center-title {
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255,.9);
+    }
+  }
+  .comment-content {
     height: calc(100vh - 50px);
     margin: 0 10px;
-}
-
-.comment .comment-item{
+  }
+  .comment-item {
     width: 100%;
     height: 100px;
-}
-
-.comment .comment-line{
+  }
+  .comment-line {
     width: 100%;
     height: 5px;
     background: rgb(61, 61, 61);
     position: relative;
     transform: scaleX(1.5);
+  }
 }
-
-.comment-sticky{
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    color: rgba(255, 255, 255,.8);
-    letter-spacing: 1px;
-    font-weight: bold;
-    background: rgb(54, 54, 54);
-}
- 
+.comment-sticky {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255,.8);
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: rgb(54, 54, 54);
+} 
 </style>

@@ -77,33 +77,29 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
   margin-left: 20px;
   width: 200px;
 }
-
 .progress-bar {
   width: 100%;
   height: 2px;
   background: aliceblue;
   display: flex;
   align-items: center;
-}
-
-.progress-bar .left-bar {
-  width: 50%;
-  height: 100%;
-  background: rosybrown;
-}
-
-.progress-bar .btn-bar {
-  width: 8px;
-  height: 8px;
-  /* flex-basis: 8px; */
-  flex-shrink: 0;
-  background: white;
-  border-radius: 50%;
-  position: relative;
+  .left-bar {
+    width: 50%;
+    height: 100%;
+    background: rosybrown;
+  }
+  .btn-bar {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+  }
 }
 </style>

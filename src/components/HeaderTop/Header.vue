@@ -27,34 +27,31 @@
  }
 </script>
 
-<style scoped>
-.header{
-    width: 100%;
-    height: 100%;
-    display: flex;
+<style lang="scss" scoped>
+.header {
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
-
-.header-left{
-    width: 20%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-left {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.header-center{
-    width: 80%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-center {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.header-right{
-    width: 20%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-right {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

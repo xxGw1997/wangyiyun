@@ -81,49 +81,43 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .login {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-}
-
-.login .header {
-  width: 100%;
-  height: 50px;
-}
-
-.login .content {
-  width: 100%;
-  height: calc(100vh - 50px);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.login .content > div {
-  width: 100%;
-}
-
-.login .content .phone{
-  width: 100%;
-  margin: 0 20px;
-}
-
-.login .content .pwd{
-  width: 100%;
-  margin: 0 20px;
-}
-
-.login .content .btn{
-  text-align: center;
-  height: 50px;
-  line-height: 50px;
-  background: red;
-  color: aliceblue;
-  margin: 0 50px;
-  border-radius: 50px;
-  opacity: .9;
+  .header {
+    width: 100%;
+    height: 50px;
+  }
+  .content {
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    & > div {
+      width: 100%;
+    }
+    .phone {
+      width: 100%;
+      margin: 0 20px;
+    }
+    .pwd {
+      width: 100%;
+      margin: 0 20px;
+    }
+    .btn {
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      background: red;
+      color: aliceblue;
+      margin: 0 50px;
+      border-radius: 50px;
+      opacity: .9;
+    }
+  }
 }
 </style>

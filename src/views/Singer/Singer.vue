@@ -162,138 +162,136 @@
  }
 </script>
 
-<style scoped>
-.singer{
-  background:rgb(77, 77, 77);
+<style lang="scss" scoped>
+.singer {
+  background: rgb(77, 77, 77);
   height: 100vh;
+  .scroll-list-wrap {
+    .singer-info {
+      .info-right {
+        width: 25%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin-right: 20px;
+        border-radius: 20px;
+        font-size: 15px;
+        background: rgba(255, 0, 0,.9);
+        color: white;
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+    .singer-content {
+      margin-top: 10px;
+      background: rgb(255, 255, 255);
+      .singer-title {
+        height: 40px;
+        background: tomato;
+      }
+    }
+  }
 }
-
-.singer-bg{
-    position: fixed;
-    width: 100%;
-    height: 45%;
-    z-index: 1;
-}
-
-.singer-bg .singer-header{
+.singer-bg {
+  position: fixed;
+  width: 100%;
+  height: 45%;
+  z-index: 1;
+  .singer-header {
     width: 100%;
     height: 50px;
     position: absolute;
     z-index: 1;
     display: flex;
     justify-content: space-between;
-}
-
-.singer-bg .singer-header>div>i{
-    margin: 0 15px;
-    font-size: 25px;
-    color: white;
-    line-height: 50px;
-}
-
-.singer-bg .singer-bg-black{
+    & > div {
+      & > i {
+        margin: 0 15px;
+        font-size: 25px;
+        color: white;
+        line-height: 50px;
+      }
+    }
+  }
+  .singer-bg-black {
     position: absolute;
-    background: rgb(0, 0, 0,.9);
+    background: rgba(0, 0, 0,.9);
     width: 100%;
     height: 100%;
-}
-
-.singer-bg>img{
+  }
+  & > img {
     width: 110%;
     transform: scale(1.1,1.1);
+  }
 }
-
-.scroll-list-wrap{
-    position: relative;
-    top:50px;
-    height: calc(100% - 110px);
-}
-
-.scroll-list-wrap .singer-info{
+.scroll-list-wrap {
+  position: relative;
+  top: 50px;
+  height: calc(100% - 110px);
+  .singer-info {
     width: 100%;
     height: 230px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    .info-left {
+      width: 70%;
+      height: 50px;
+      margin-left: 20px;
+      display: flex;
+      align-content: space-around;
+      flex-wrap: wrap;
+    }
+  }
+}
+.singer-info {
+  .info-left {
+    .singer-name {
+      width: 100%;
+      height: 25px;
+      color: white;
+      font-size: 25px;
+    }
+    .singer-info {
+      width: 100%;
+      height: 15px;
+      color: white;
+      font-size: 12px;
+    }
+  }
+}
+.singer-title-sticky {
+  height: 40px;
+  background: rgb(255, 255, 255);
 }
 
-.scroll-list-wrap .singer-info .info-left{
-    width: 70%;
-    height: 50px;
-    margin-left: 20px;
-    display: flex;
-    align-content: space-around;
-    flex-wrap: wrap;
-}
-
-.singer-info .info-left .singer-name{
-    width: 100%;
-    height: 25px;
-    color: white;
-    font-size: 25px;
-}
-
-.singer-info .info-left .singer-info{
-    width: 100%;
-    height: 15px;
-    color: white;
-    font-size: 12px;
-}
-
-.singer .scroll-list-wrap .singer-info .info-right{
-    width: 25%;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    margin-right: 20px;
-    border-radius: 20px;
-    font-size: 15px;
-    background: rgba(255, 0, 0,.9);
-    color: white;
-}
-
-.singer .scroll-list-wrap .singer-info .info-right span{
-    font-size: 20px;
-}
-
-.singer .scroll-list-wrap .singer-content{
-    margin-top: 10px;
-    background:rgb(255, 255, 255);
-}
-
-.singer .scroll-list-wrap .singer-content .singer-title{
-    height: 40px;
-    background: tomato;
-}
-
-.singer-title-sticky{
-    height: 40px;
-    background: rgb(255, 255, 255);
-}
  
 </style>
 
-<style>
+<style lang="scss">
 /*覆盖原始样式*/
-.singer-title-sticky .singer-title-word .cube-tab-bar{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
+.singer-title-sticky {
+  .singer-title-word {
+    .cube-tab-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .cube-tab {
+        padding: 10px 0px;
+        color: rgb(0, 0, 0);
+        font-weight: bolder;
+        border-bottom: 1px solid rgba(255, 255, 255,.2);
+      }
+      .cube-tab_active {
+        color: red;
+      }
+      .cube-tab-bar-slider {
+        height: 3px;
+        background-color: red;
+      }
+    }
+  }
 }
 
-.singer-title-sticky .singer-title-word .cube-tab-bar .cube-tab{
-    padding:10px 0px;
-    color:rgb(0, 0, 0);
-    font-weight: bolder;
-    border-bottom:1px solid rgba(255, 255, 255,.2);
-}
-
-.singer-title-sticky .singer-title-word .cube-tab-bar .cube-tab_active{
-    color:red;
-}
-
-.singer-title-sticky .singer-title-word .cube-tab-bar .cube-tab-bar-slider{
-    height:3px;
-    background-color:red;
-}
 </style>

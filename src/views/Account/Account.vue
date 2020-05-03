@@ -107,33 +107,150 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .account {
   width: 100%;
   height: 100vh;
+  .account_login {
+    position: absolute;
+    background: salmon;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+  }
+  .content {
+    .login {
+      background: goldenrod;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      & > div {
+        width: 95%;
+        height: 100px;
+      }
+      .login-up {
+        display: flex;
+        & > div {
+          text-align: center;
+          line-height: 100px;
+        }
+        .up-left {
+          width: 20%;
+          display: flex;
+          align-items: center;
+          & > img {
+            width: 90%;
+            border-radius: 50%;
+          }
+        }
+        .up-center {
+          width: 60%;
+          display: flex;
+          flex-wrap: wrap;
+          & > div {
+            width: 100%;
+            height: 50%;
+            text-align: left;
+          }
+          .username {
+            color: aliceblue;
+            font-weight: bolder;
+            font-size: 23px;
+            line-height: 70px;
+          }
+          .lv {
+            color: aliceblue;
+            font-style: italic;
+            font-size: 10px;
+            line-height: 30px;
+          }
+        }
+        .up-right {
+          width: 20%;
+          & > span {
+            padding: 4px 10px 4px 10px;
+            color: beige;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            font-size: 12px;
+          }
+        }
+      }
+      .login-bottom {
+        display: flex;
+        align-items: center;
+        .bottom-item {
+          width: 25%;
+          height: 40%;
+          display: flex;
+          flex-wrap: wrap;
+          &:not(:last-child) {
+            border-right: 1px solid rgba(240, 248, 255, 0.2);
+          }
+          .item-up {
+            width: 100%;
+            text-align: center;
+            color: aliceblue;
+          }
+          .item-title {
+            width: 100%;
+            text-align: center;
+            color: aliceblue;
+            opacity: 0.5;
+            letter-spacing: 1px;
+            font-size: 15px;
+          }
+        }
+      }
+      .logout {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        font-size: 25px;
+        color: red;
+        margin-top: 20px;
+        background: rgb(150, 149, 149);
+      }
+    }
+    .unlogin {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      height: 120px;
+      & > div {
+        color: aliceblue;
+        width: 100%;
+        height: 40px;
+      }
+      .unlogin-text {
+        text-align: center;
+      }
+      .unlogin-btn {
+        width: 95%;
+        text-align: center;
+        letter-spacing: 2px;
+        font-size: 20px;
+        line-height: 40px;
+        border: 1px solid white;
+        border-radius: 20px;
+      }
+    }
+  }
 }
-
 .login-enter-active {
   transition: all 0.2s ease-out;
 }
-
 .login-leave-active {
   transition: all 0.2s linear;
 }
-
 .login-enter,
 .login-leave-to {
   transform: translateY(100vh);
 }
-
-.account .account_login {
-  position: absolute;
-  background: salmon;
-  z-index: 11;
-  width: 100%;
-  height: 100%;
-}
-
 .content {
   width: 100%;
   background: gray;
@@ -142,155 +259,13 @@ export default {
   overflow: hidden;
   position: relative;
 }
-
-/*已登录*/
-.account .content .login {
-  background: goldenrod;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.lv {
+  span {
+    padding: 2px 10px 4px 8px;
+    background: grey;
+    letter-spacing: 1px;
+    border-radius: 20px;
+  }
 }
 
-.account .content .login > div {
-  width: 95%;
-  height: 100px;
-}
-
-.account .content .login .login-up {
-  display: flex;
-}
-
-.account .content .login .login-up > div {
-  text-align: center;
-  line-height: 100px;
-}
-
-.account .content .login .login-up .up-left {
-  width: 20%;
-  display: flex;
-  align-items: center;
-}
-
-.account .content .login .login-up .up-left > img {
-  width: 90%;
-  border-radius: 50%;
-}
-
-.account .content .login .login-up .up-center {
-  width: 60%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.account .content .login .login-up .up-center > div {
-  width: 100%;
-  height: 50%;
-  text-align: left;
-}
-
-.account .content .login .login-up .up-center .username {
-  color: aliceblue;
-  font-weight: bolder;
-  font-size: 23px;
-  line-height: 70px;
-}
-
-.account .content .login .login-up .up-center .lv {
-  color: aliceblue;
-  font-style: italic;
-  font-size: 10px;
-  line-height: 30px;
-}
-
-.lv span {
-  padding: 2px 10px 4px 8px;
-  background: grey;
-  letter-spacing: 1px;
-  border-radius: 20px;
-}
-
-.account .content .login .login-up .up-right {
-  width: 20%;
-}
-
-.account .content .login .login-up .up-right > span {
-  padding: 4px 10px 4px 10px;
-  color: beige;
-  border: 1px solid rgb(255, 255, 255, 0.5);
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.account .content .login .login-bottom {
-  display: flex;
-  align-items: center;
-}
-
-.account .content .login .login-bottom .bottom-item {
-  width: 25%;
-  height: 40%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.account .content .login .login-bottom .bottom-item:not(:last-child) {
-  border-right: 1px solid rgb(240, 248, 255, 0.2);
-}
-
-.account .content .login .login-bottom .bottom-item .item-up {
-  width: 100%;
-  text-align: center;
-  color: aliceblue;
-}
-
-.account .content .login .login-bottom .bottom-item .item-title {
-  width: 100%;
-  text-align: center;
-  color: aliceblue;
-  opacity: 0.5;
-  letter-spacing: 1px;
-  font-size: 15px;
-}
-
-/*未登录*/
-.account .content .unlogin {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  height: 120px;
-}
-
-.account .content .unlogin > div {
-  color: aliceblue;
-  width: 100%;
-  height: 40px;
-}
-
-.account .content .unlogin .unlogin-text {
-  text-align: center;
-}
-
-.account .content .unlogin .unlogin-btn {
-  width: 95%;
-  text-align: center;
-  letter-spacing: 2px;
-  font-size: 20px;
-  line-height: 40px;
-  border: 1px solid white;
-  border-radius: 20px;
-}
-
-.account .content .login .logout{
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  font-size: 25px;
-  color: red;
-  margin-top: 20px;
-  background: rgb(150, 149, 149);
-}
 </style>

@@ -26,48 +26,42 @@
  }
 </script>
 
-<style scoped>
-.header{
+<style lang="scss" scoped>
+.header {
   width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: rgb(255, 255, 255);
+  .back {
+    width: 10%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    & > i {
+      font-size: 25px;
+    }
+  }
+  .search-keyword {
+    width: 80%;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 35px;
+    background: rgb(226, 226, 226);
+    & > i {
+      margin-left: 15px;
+      vertical-align: text-bottom;
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.3);
+    }
+    & > span {
+      margin-left: 10px;
+      vertical-align: text-bottom;
+      color: rgba(0, 0, 0, 0.7);
+      letter-spacing: 1px;
+    }
+  }
 }
-
-.header .back{
-  width: 10%;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-}
-
-.header .back>i{
-  font-size: 25px;
-}
-
-.header .search-keyword{
-  width: 80%;
-  height: 35px;
-  line-height: 35px;
-  border-radius: 35px;
-  background: rgb(226, 226, 226);
-}
-
-.header .search-keyword>i{
-  margin-left: 15px;
-  vertical-align:text-bottom;
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.header .search-keyword>span{
-  margin-left: 10px;
-  vertical-align:text-bottom;
-  color: rgba(0, 0, 0, 0.7);
-  letter-spacing: 1px;
-}
- 
 </style>

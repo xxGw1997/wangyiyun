@@ -60,72 +60,63 @@
  }
 </script>
 
-<style scoped>
-.singer-songs{
-    width: 100%;
-    height: 60px;
-}
-
-.singer-songs .song{
+<style lang="scss" scoped>
+.singer-songs {
+  width: 100%;
+  height: 60px;
+  .song {
     width: 95%;
     height: 60px;
     margin: 5px 7px;
     display: flex;
     align-items: center;
+    .song-item {
+      width: 35px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      flex-shrink: 0;
+      color: rgba(100, 100, 100,.7);
+      & > span {
+        font-size: 20px;
+      }
+      .icon-volume {
+        color: red;
+        font-size: 22px;
+      }
+    }
+    .song-info {
+      width: 70%;
+      height: 45px;
+      text-align: start;
+      flex: 1 0;
+      display: flex;
+      letter-spacing: 1px;
+      flex-wrap: wrap;
+      .song-name {
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        font-size: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+      }
+      .music_checked {
+        color: red;
+      }
+      .song-album {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        font-size: 13px;
+      }
+    }
+  }
 }
-
-.singer-songs .song .song-item{
-    width: 35px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    flex-shrink: 0;
-    color: rgb(100, 100, 100,.7);
-}
-
-.singer-songs .song .song-item>span{
-    font-size: 20px;
-}
-
-.singer-songs .song .song-item .icon-volume{
-    color: red;
-    font-size: 22px;
-}
-
 .singer-songs .song .song-item .icon-video,
-.singer-songs .song .song-item .icon-domore{
-    font-size: 22px;
-}
-
-.singer-songs .song .song-info{
-    width: 70%;
-    height: 45px;
-    text-align: start;
-    flex: 1 0;
-    display: flex;
-    letter-spacing: 1px;
-    flex-wrap: wrap;
-}
-
-.singer-songs .song .song-info .song-name{
-    width: 100%;
-    height: 25px;
-    line-height: 25px;
-    font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: rgba(0, 0, 0);
-}
-
-.singer-songs .song .song-info .music_checked{
-    color:red;
-}
-
-.singer-songs .song .song-info .song-album{
-    width: 100%;
-    height: 20px;
-    line-height: 20px;
-    font-size: 13px;
+.singer-songs .song .song-item .icon-domore {
+  font-size: 22px;
 }
 </style>

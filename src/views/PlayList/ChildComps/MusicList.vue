@@ -112,125 +112,112 @@ export default {
 };
 </script>
 
-<style scoped>
-.music_list{
+<style lang="scss" scoped>
+.music_list {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background: white;
+  .play_all {
+    width: 90%;
+    height: 30px;
+    padding-top: 15px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    span {
+      &:nth-of-type(1) {
+        font-weight: bold;
+        margin-left: 10px;
+        margin-right: 5px;
+      }
+      &:nth-of-type(2) {
+        color: rgb(119, 119, 119);
+        font-size: 13px;
+      }
+    }
+  }
+  .musics {
+    width: 90%;
+    margin: 0 10px;
+    .music {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      margin: 15px 0;
+    }
+    .music_no {
+      width: 10%;
+      text-align: center;
+      color: rgb(119, 119, 119);
+      & > i {
+        color: red;
+      }
+    }
+    .music_info {
+      width: 70%;
+      line-height: 20px;
+      .singer_album {
+        line-height: 15px;
+        display: flex;
+        flex-wrap: nowrap;
+        span {
+          font-size: 10px;
+          margin-right: 5px;
+        }
+        .singer {
+          color: rgb(121, 121, 121);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .music_title {
+          border: 0.5px solid red;
+          width: 20px;
+          font-size: 8px;
+          color: red;
+          font-weight: bold;
+          border-radius: 2px;
+          margin-right: 5px;
+          text-align: center;
+          white-space: nowrap;
+        }
+      }
+      .music_name {
+        line-height: 25px;
+        color: rgb(51, 51, 51);
+        letter-spacing: 1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .music_checked {
+        color: red;
+      }
+    }
+    .music_video {
+      width: 10%;
+      text-align: center;
+      color: rgb(196, 196, 196);
+    }
+    .music_more {
+      width: 10%;
+      text-align: center;
+      color: rgb(196, 196, 196);
+    }
+    .music_item {
+      & > i {
+        font-size: 17px;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
-.music_list .play_all {
-  width: 90%;
-  height: 30px;
-  padding-top: 15px;
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-}
-
-.music_list .play_all i {
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-.music_list .play_all span:nth-of-type(1) {
-  font-weight: bold;
-  margin-left: 10px;
-  margin-right: 5px;
-}
-
-.music_list .play_all span:nth-of-type(2) {
-  color: rgb(119, 119, 119);
-  font-size: 13px;
-}
-
-.music_list .musics{
-  width: 90%;
-  margin: 0 10px;
-}
-
-.music_list .musics .music {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  margin: 15px 0;
-}
-
-.music_list .musics .music_no {
-  width: 10%;
-  text-align: center;
-  color: rgb(119, 119, 119);
-}
-
-.music_list .musics .music_no > i {
-  color: red;
-}
-
-.music_list .musics .music_info {
-  width: 70%;
-  line-height: 20px;
-}
-
-.music_list .musics .music_info .singer_album span {
-  font-size: 10px;
-  margin-right: 5px;
-}
-
-.music_list .musics .music_info .music_name {
-  line-height: 25px;
-  color: rgb(51, 51, 51);
-  letter-spacing: 1px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.music_list .musics .music_info .music_checked {
-  color: red;
-}
-
-.music_list .musics .music_info .singer_album {
-  line-height: 15px;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.music_list .musics .music_info .singer_album .singer {
-  color: rgb(121, 121, 121);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.music_list .musics .music_info .singer_album .music_title {
-  border: 0.5px solid red;
-  width: 20px;
-  font-size: 8px;
-  color: red;
-  font-weight: bold;
-  border-radius: 2px;
-  margin-right: 5px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.music_list .musics .music_video {
-  width: 10%;
-  text-align: center;
-  color: rgb(196, 196, 196);
-}
-
-.music_list .musics .music_more {
-  width: 10%;
-  text-align: center;
-  color: rgb(196, 196, 196);
-}
-
-.music_list .musics .music_item > i {
-  font-size: 17px;
-  font-weight: bold;
-}
 </style>

@@ -115,23 +115,45 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .player-footer {
   height: 15%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  .progess-bar {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    color: aliceblue;
+    .bar-center {
+      flex: 0 0 70%;
+      width: 100px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .music-operation {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .operation-item {
+      i {
+        font-size: 30px;
+        color: aliceblue;
+      }
+    }
+    .play {
+      & > i {
+        font-size: 60px;
+      }
+    }
+  }
 }
-
-.player-footer .progess-bar {
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: space-around;
-  color: aliceblue;
-}
-
 .player-footer .progess-bar .bar-left,
 .player-footer .progess-bar .bar-right {
   flex: 0 0 15%;
@@ -140,29 +162,5 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.player-footer .progess-bar .bar-center {
-  flex: 0 0 70%;
-  width: 100px;
-  display: flex;
-  align-items: center;
-}
-
-.player-footer .music-operation {
-  width: 100%;
-  height: 70%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.player-footer .music-operation .operation-item i {
-  font-size: 30px;
-  color: aliceblue;
-}
-
-.player-footer .music-operation .play > i {
-  font-size: 60px;
 }
 </style>

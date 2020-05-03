@@ -141,133 +141,113 @@
  }
 </script>
 
-<style scoped>
-
-.daily-recommend-songs{
-    height: 100vh;
+<style lang="scss" scoped>
+.daily-recommend-songs {
+  height: 100vh;
 }
-
-.scroll-list-wrap{
-    position: relative;
-    top:50px;
-    height: calc(100% - 110px);
-}
-
-.drs-bg{
-    position: fixed;
-    width: 100%;
-    height: 30%;
-    z-index: 1;
-}
-
-.drs-bg .drs-header{
-    width: 100%;
-    height: 50px;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-}
-
-.drs-bg .drs-header>div>i{
-    margin: 0 15px;
-    font-size: 25px;
-    color: white;
-    line-height: 50px;
-}
-
-.drs-bg .drs-bg-black{
-    position: absolute;
-    background: rgb(0, 0, 0,.2);
-    width: 100%;
-    height: 100%;
-}
-
-.drs-bg>img{
-    width: 110%;
-    height: 100%;
-    transform: scale(1.1,1.1);
-}
-
-.scroll-list-wrap .drs-title{
+.scroll-list-wrap {
+  position: relative;
+  top: 50px;
+  height: calc(100% - 110px);
+  .drs-title {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-end;
     margin-left: 20px;
     height: 120px;
-}
-
-.scroll-list-wrap .drs-title .title-up{
-    width: 100%;
-    height: 40px;
-    color: white;
-    font-size: 30px;
-}
-
-.scroll-list-wrap .drs-title .title-up>span:nth-of-type(2){
-    font-size: 20px;
-}
-
-.scroll-list-wrap .drs-title .title-down{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 25px;
-    color: rgb(255, 255, 255,.8);
-    letter-spacing: 1px;
-    font-size: 10px;
-}
-
-.scroll-list-wrap .drs-title .title-down .recommend-word{
-    line-height: 25px;
-}
-
-.scroll-list-wrap .drs-title .title-down .recommend-user{
-    display: flex;
-    width: 25%;
-    line-height: 25px;
-    margin-right: 20px;
-}
-
-.scroll-list-wrap .drs-title .title-down .recommend-user>div{
-    width: 33%;
-}
-
-.scroll-list-wrap .drs-title .title-down .recommend-user>div>img{
-    width: 90%;
-    border-radius: 50%;
-}
-
-.scroll-list-wrap .drs-content{
+    .title-up {
+      width: 100%;
+      height: 40px;
+      color: white;
+      font-size: 30px;
+      & > span {
+        &:nth-of-type(2) {
+          font-size: 20px;
+        }
+      }
+    }
+    .title-down {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 25px;
+      color: rgba(255, 255, 255,.8);
+      letter-spacing: 1px;
+      font-size: 10px;
+      .recommend-word {
+        line-height: 25px;
+      }
+      .recommend-user {
+        display: flex;
+        width: 25%;
+        line-height: 25px;
+        margin-right: 20px;
+        & > div {
+          width: 33%;
+          & > img {
+            width: 90%;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+  .drs-content {
     margin-top: 15px;
     background: rgb(66, 66, 66);
+  }
 }
-
-.title-sticky{
+.drs-bg {
+  position: fixed;
+  width: 100%;
+  height: 30%;
+  z-index: 1;
+  .drs-header {
     width: 100%;
     height: 50px;
-    background: rgb(66, 66, 66);
+    position: absolute;
+    z-index: 1;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    & > div {
+      & > i {
+        margin: 0 15px;
+        font-size: 25px;
+        color: white;
+        line-height: 50px;
+      }
+    }
+  }
+  .drs-bg-black {
+    position: absolute;
+    background: rgba(0, 0, 0,.2);
+    width: 100%;
+    height: 100%;
+  }
+  & > img {
+    width: 110%;
+    height: 100%;
+    transform: scale(1.1,1.1);
+  }
 }
-
-.title-sticky .title-icon{
+.title-sticky {
+  width: 100%;
+  height: 50px;
+  background: rgb(66, 66, 66);
+  display: flex;
+  align-items: center;
+  .title-icon {
     width: 10%;
     margin-left: 15px;
-}
-
-.title-sticky .title-icon>i{
-    font-size: 20px;
-    color: white;
-}
-
-.title-sticky .title-word{
+    & > i {
+      font-size: 20px;
+      color: white;
+    }
+  }
+  .title-word {
     font-size: 20px;
     color: white;
     letter-spacing: 1px;
-}
-
-.content-list{
-
+  }
 }
 </style>
