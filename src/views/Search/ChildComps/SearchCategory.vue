@@ -3,25 +3,25 @@
     <div class="search-category">
       <div class="category-item" @click="recommentSongs">
         <div class="item-i">
-          <i class="iconfont icon-rili" />
+          <i class="iconfont icon-rili"/>
         </div>
         <div>每日推荐</div>
       </div>
       <div class="category-item" @click="playlist">
         <div class="item-i">
-          <i class="iconfont icon-gedan" />
+          <i class="iconfont icon-gedan"/>
         </div>
         <div>歌单</div>
       </div>
       <div class="category-item" @click="rank">
         <div class="item-i">
-          <i class="iconfont icon-paixingbang" />
+          <i class="iconfont icon-paixingbang"/>
         </div>
         <div>排行榜</div>
       </div>
       <div class="category-item" @click="singer">
         <div class="item-i">
-          <i class="iconfont icon-singer" />
+          <i class="iconfont icon-singer"/>
         </div>
         <div>歌手</div>
       </div>
@@ -30,32 +30,32 @@
           <i class="iconfont icon-live_icon" />
         </div>
         <div>直播</div>
-      </div> -->
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
-  computed:{
+  computed: {
     ...mapState(['token'])
   },
-  methods:{
-    recommentSongs(){
-      if(this.token === ''){
+  methods: {
+    recommentSongs() {
+      if (this.token === '') {
         this.$createDialog({
-          type:'confirm',
-          title:'艾欧尼亚搜早点睡咯，一起打LOL',
-          content:'请先登录',
+          type: 'confirm',
+          title: '艾欧尼亚搜早点睡咯，一起打LOL',
+          content: '请先登录',
           confirmBtn: {
-            text: '现在就去',
+            text: '现在就去'
           },
           cancelBtn: {
-            text: '下次一定',
+            text: '下次一定'
           },
-          onConfirm:() => {
+          onConfirm: () => {
             this.$router.push('/dailyrecommendsongs')
             return
           },
@@ -63,27 +63,28 @@ export default {
             return
           }
         }).show()
-      }else{
+      } else {
         this.$router.push('/dailyrecommendsongs')
       }
     },
-    playlist(){
+    playlist() {
       this.$createToast({
         type: 'txt',
         txt: '这个还没做'
       }).show()
     },
-    rank(){
+    rank() {
       this.$createToast({
         type: 'txt',
         txt: '这个也没做'
       }).show()
+      this.$router.push('/musiclistrank')
     },
-    singer(){
+    singer() {
       this.$router.push('/singerlist')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -112,5 +113,4 @@ export default {
     }
   }
 }
-
 </style>

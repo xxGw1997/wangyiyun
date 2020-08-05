@@ -8,7 +8,7 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-import {getUserInfo} from "@/utils/cache"
+import { getUserInfo } from "@/utils/cache"
 
 Vue.use(VueRouter);
 
@@ -37,43 +37,43 @@ const routes = [
   {
     path: "/searchResult",
     component: () => import("@/views/SearchResult/SearchResult"),
-    redirect:"/searchResult/allTypeResult",
-    children:[
+    redirect: "/searchResult/allTypeResult",
+    children: [
       {
-        path:"allTypeResult",
-        component:AllTypeResult,
+        path: "allTypeResult",
+        component: AllTypeResult,
         meta: {
           showFooter: true
         }
       },
       {
-        path:"songType",
-        name:"songType",
-        component:()=>import("@/views/SearchResult/ChildComps/SongType"),
+        path: "songType",
+        name: "songType",
+        component: () => import("@/views/SearchResult/ChildComps/SongType"),
         meta: {
           showFooter: true
         }
       },
       {
-        path:"singerType",
-        name:"singerType",
-        component:()=>import("@/views/SearchResult/ChildComps/SingerType"),
+        path: "singerType",
+        name: "singerType",
+        component: () => import("@/views/SearchResult/ChildComps/SingerType"),
         meta: {
           showFooter: true
         }
       },
       {
-        path:"albumType",
-        name:"albumType",
-        component:()=>import("@/views/SearchResult/ChildComps/AlbumType"),
+        path: "albumType",
+        name: "albumType",
+        component: () => import("@/views/SearchResult/ChildComps/AlbumType"),
         meta: {
           showFooter: true
         }
       },
       {
-        path:"musicListType",
-        name:"musicListType",
-        component:()=>import("@/views/SearchResult/ChildComps/MusicListType"),
+        path: "musicListType",
+        name: "musicListType",
+        component: () => import("@/views/SearchResult/ChildComps/MusicListType"),
         meta: {
           showFooter: true
         }
@@ -129,31 +129,39 @@ const routes = [
     component: () => import("@/views/DailyRecommendSongs/DailyRecommendSongs"),
     meta: {
       showFooter: true,
-      needLogin:true
+      needLogin: true
     }
   },
   {
-    path:"/singer",
-    name:"singer",
+    path: "/musiclistrank",
+    name: "musiclistrank",
+    component: () => import("@/views/MusicListRank/MusicListRank"),
+    meta: {
+      showFooter: true
+    }
+  },
+  {
+    path: "/singer",
+    name: "singer",
     component: () => import("@/views/Singer/Singer"),
-    meta:{
-      showFooter:true
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/singerlist",
-    name:"singerlist",
+    path: "/singerlist",
+    name: "singerlist",
     component: () => import("@/views/SingerList/SingerList"),
-    meta:{
-      showFooter:true
+    meta: {
+      showFooter: true
     }
   },
   {
-    path:"/comment",
-    name:"comment",
+    path: "/comment",
+    name: "comment",
     component: () => import("@/views/Comment/Comment"),
-    meta:{
-      showFooter:false
+    meta: {
+      showFooter: false
     }
   }
 ];
@@ -164,17 +172,17 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to,from,next)=>{
-  if(to.meta.needLogin){
-    if(getUserInfo().token !== ''){
+router.beforeEach((to, from, next) => {
+  if (to.meta.needLogin) {
+    if (getUserInfo().token !== '') {
       next()
-    }else{
+    } else {
       // next({
       //   path:'/account'
       // },()=>{})
       router.push('/account')
     }
-  }else{
+  } else {
     next()
   }
 })
