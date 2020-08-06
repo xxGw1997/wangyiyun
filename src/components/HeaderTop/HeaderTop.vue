@@ -3,27 +3,23 @@
     <slot name="left" class="header_left"></slot>
     <slot name="center" class="header_center"></slot>
     <div class="header_right">
-      <i
-        class="iconfont icon-zhengzaibofang"
-        v-show="this.songDetail[0]"
-        @click="playerShow"
-      />
+      <i class="iconfont icon-zhengzaibofang" v-show="this.songDetail[0]" @click="playerShow"/>
     </div>
   </header>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState(["songDetail"])
+    ...mapState(['songDetail'])
   },
   methods: {
     playerShow() {
-      this.$store.dispatch("playerShow", true);
+      this.$store.dispatch('playerShow', true)
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
