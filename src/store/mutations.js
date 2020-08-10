@@ -22,6 +22,7 @@ import {
   SEARCH_ALL_TYPE,
   SEARCH_KEYWORD_BY_TYPE,
   RANK_LIST,
+  SCROLL_REFRESH,
   /* 评论 */
   COMMENTS,
 } from "./mutations-types";

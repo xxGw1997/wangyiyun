@@ -1,13 +1,14 @@
 <template>
   <div class="rank-item-cover">
     <div class="cover">
-      <img :src="coverImgUrl">
+      <img :src="coverImgUrl" @load="imgLoad">
       <div class="update-time">{{updateFrequency}}</div>
     </div>
   </div>
 </template>
 
 <script>
+import { debounce } from '@/utils/util'
 export default {
   props: {
     updateFrequency: {
@@ -25,6 +26,11 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    imgLoad: debounce(function() {
+      this.$emit('imgLoad')
+    }, 100)
   }
 }
 </script>

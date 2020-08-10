@@ -4,6 +4,7 @@
       <rank-item-cover
         :coverImgUrl="rankItem.coverImgUrl"
         :updateFrequency="rankItem.updateFrequency"
+        @imgLoad="imgLoad"
       />
       <div class="item-title">{{rankItem.name}}</div>
     </div>
@@ -20,9 +21,20 @@ export default {
         return {}
       }
     }
+    // imgLoad: {
+    //   type: Function,
+    //   default() {
+    //     return () => {}
+    //   }
+    // }
   },
   data() {
     return {}
+  },
+  methods: {
+    imgLoad() {
+      this.$emit('imgLoad')
+    }
   },
   components: {
     RankItemCover

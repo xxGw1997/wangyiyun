@@ -14,7 +14,7 @@
       </header-top>
     </div>
     <div class="rank-content">
-      <cube-scroll>
+      <cube-scroll ref="refresh">
         <div class="recommend-rank type-item">
           <span class="title">榜单推荐</span>
           <div class="rank-list">
@@ -54,7 +54,12 @@
         <div class="more-rank type-item">
           <span class="title">更多榜单</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in moreRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in moreRank"
+              :key="index"
+              :rankItem="item"
+              @imgLoad="imgLoad"
+            />
           </div>
         </div>
       </cube-scroll>
@@ -102,6 +107,11 @@ export default {
   methods: {
     playerShow() {
       this.$store.dispatch('playerShow', true)
+    },
+    imgLoad() {
+      this.$nextTick(() => {
+        this.$refs.refresh.refresh()
+      })
     }
   }
 }
