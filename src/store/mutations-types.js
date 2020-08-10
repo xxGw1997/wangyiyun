@@ -9,6 +9,7 @@ export const UPDATE_PLAY_STATUS = "update_play_status";
 export const PLAYER_SHOW = "player_show";
 export const UPDATE_VOLUME = "update_volume";
 export const RECOMMEND_SONGS = 'recommend_songs';
+export const RANK_LIST = 'rank_list';
 
 /** 评论 */
 export const COMMENTS = "comments";

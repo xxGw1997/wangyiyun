@@ -1,12 +1,17 @@
 <template>
   <div class="rank-list-official">
     <div class="rank-item-left">
-      <rank-item-cover/>
+      <rank-item-cover
+        :coverImgUrl="rankItem.coverImgUrl"
+        :updateFrequency="rankItem.updateFrequency"
+      />
     </div>
     <div class="rank-item-right">
-      <div class="item-info ellipsis">1.啊是的撒粉丝发阿斯顿撒旦撒旦热发热</div>
-      <div class="item-info ellipsis">2.为分为氛围分为氛围分为</div>
-      <div class="item-info ellipsis">3.为分为氛围分为氛围</div>
+      <div
+        class="item-info ellipsis"
+        v-for="(item,index) in rankItem.tracks"
+        :key="index"
+      >{{index +1 }}.{{item.first}} - {{item.second}}</div>
     </div>
   </div>
 </template>
@@ -14,6 +19,14 @@
 <script>
 import RankItemCover from './RankItemCover'
 export default {
+  props: {
+    rankItem: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
   data() {
     return {}
   },
@@ -28,18 +41,18 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
   .rank-item-left {
     width: 30%;
   }
   .rank-item-right {
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 10px;
+    padding: 10px;
     align-content: space-around;
     .item-info {
       width: 100%;
-      border: 1px solid red;
       font-size: 16px;
       letter-spacing: 1px;
       color: rgba(0, 0, 0, 0.7);

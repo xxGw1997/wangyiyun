@@ -6,21 +6,26 @@ import {
   searchAllTypeKeyword,
   searchHot,
   searchKeywordByType,
+  rankList
 } from "@/network/search";
 
-import { getSongDetail, getSongLyric, getSongUrl, recommendSongs, albumSongs,
-        commentAlbum, commentMusiclist, commentSong} from "@/network/song";
+import {
+  getSongDetail, getSongLyric, getSongUrl, recommendSongs, albumSongs,
+  commentAlbum, commentMusiclist, commentSong
+} from "@/network/song";
 
 import { login, getUserDetail, logout } from "@/network/user";
 
-import {singerCategory,topSinger,singerInfo , singerAlbums} from "@/network/singer";
+import { singerCategory, topSinger, singerInfo, singerAlbums } from "@/network/singer";
 
-import {saveUserInfo, clearUserInfo,
-        getListOffsetByCode,setSingerList,
-        saveSearchHistory,
-        saveSongDetail,savePlayListDetail} from "@/utils/cache";
+import {
+  saveUserInfo, clearUserInfo,
+  getListOffsetByCode, setSingerList,
+  saveSearchHistory,
+  saveSongDetail, savePlayListDetail
+} from "@/utils/cache";
 
-import {transToPlayListDetail} from "@/utils/util"
+import { transToPlayListDetail } from "@/utils/util"
 
 import {
   SEARCH_BANNER,
@@ -34,6 +39,7 @@ import {
   PLAYER_SHOW,
   UPDATE_VOLUME,
   RECOMMEND_SONGS,
+  RANK_LIST,
   /* 评论 */
   COMMENTS,
   /* 用户相关 */
@@ -82,36 +88,36 @@ export default {
     }
   },
 
-  async getAlbumComments({commit},id){
+  async getAlbumComments({ commit }, id) {
     const res = await commentAlbum(id);
-    if(res.code === 200){
+    if (res.code === 200) {
       const hotComments = res.hotComments
       const length = 20 - hotComments.length
-      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const comments = hotComments.concat(res.comments.slice(0, length - 1))
       const commentsCount = res.total
-      commit(COMMENTS,{comments,commentsCount})
+      commit(COMMENTS, { comments, commentsCount })
     }
   },
 
-  async getMusiclistComments({commit},id){
+  async getMusiclistComments({ commit }, id) {
     const res = await commentMusiclist(id);
-    if(res.code === 200){
+    if (res.code === 200) {
       const hotComments = res.hotComments
       const length = 20 - hotComments.length
-      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const comments = hotComments.concat(res.comments.slice(0, length - 1))
       const commentsCount = res.total
-      commit(COMMENTS,{comments,commentsCount})
+      commit(COMMENTS, { comments, commentsCount })
     }
   },
 
-  async getSongComments({commit},id){
+  async getSongComments({ commit }, id) {
     const res = await commentSong(id);
-    if(res.code === 200){
+    if (res.code === 200) {
       const hotComments = res.hotComments
       const length = 20 - hotComments.length
-      const comments = hotComments.concat(res.comments.slice(0,length-1))
+      const comments = hotComments.concat(res.comments.slice(0, length - 1))
       const commentsCount = res.total
-      commit(COMMENTS,{comments,commentsCount})
+      commit(COMMENTS, { comments, commentsCount })
     }
   },
 
@@ -138,12 +144,21 @@ export default {
     }
   },
 
-  async getRecommendSongs({commit}){
+  async getRecommendSongs({ commit }) {
     let timestamp = (new Date()).getTime();
     const res = await recommendSongs(timestamp);
-    if(res.code === 200){
+    if (res.code === 200) {
       const recommend = res.recommend
-      commit(RECOMMEND_SONGS,{recommend});
+      commit(RECOMMEND_SONGS, { recommend });
+    }
+  },
+
+  /** 获取排行榜榜单列表 */
+  async getRankList({ commit }) {
+    const res = await rankList();
+    if (res.code === 200) {
+      const ranklist = res.list
+      commit(RANK_LIST, { ranklist });
     }
   },
 
@@ -187,85 +202,85 @@ export default {
     }
   },
 
-  async logout(){
+  async logout() {
     const res = await logout()
-    if(res.code === 200){
+    if (res.code === 200) {
       clearUserInfo()
     }
   },
 
 
   /* 歌手相关 */
-  async getSingerCategory({commit},data){
-    const {cat,offset} = data
+  async getSingerCategory({ commit }, data) {
+    const { cat, offset } = data
     let currOffset = getListOffsetByCode(cat)
-    if(offset <= currOffset && offset!=0) return//相同数据不需要再请求
+    if (offset <= currOffset && offset != 0) return//相同数据不需要再请求
     let res = {}
-    if(cat == 0){//获取热门歌手数据
+    if (cat == 0) {//获取热门歌手数据
       res = await topSinger(offset)
-    }else{
-      res = await singerCategory(cat,offset)
+    } else {
+      res = await singerCategory(cat, offset)
     }
-    if(res.code === 200){
-      commit(GET_SINGER_LIST,setSingerList(cat,offset,res.artists))
+    if (res.code === 200) {
+      commit(GET_SINGER_LIST, setSingerList(cat, offset, res.artists))
     }
   },
 
-  updateCat({commit},code){
-    commit(UPDATE_CAT,{code})
+  updateCat({ commit }, code) {
+    commit(UPDATE_CAT, { code })
   },
 
-  async getSingerInfo({commit},id){
+  async getSingerInfo({ commit }, id) {
     const res = await singerInfo(id)
-    if(res.code === 200){
-      commit(GET_SINGER_INFO,res)
+    if (res.code === 200) {
+      commit(GET_SINGER_INFO, res)
     }
   },
 
-  async getSingerAlbums({commit},id){
+  async getSingerAlbums({ commit }, id) {
     const res = await singerAlbums(id)
-    if(res.code === 200){
+    if (res.code === 200) {
       let result = res.hotAlbums
-      commit(GET_SINGER_ALBUMS,result)
+      commit(GET_SINGER_ALBUMS, result)
     }
   },
 
-  async getAlbumSongs({commit},id){
+  async getAlbumSongs({ commit }, id) {
     const res = await albumSongs(id)
-    if(res.code === 200){
-      commit(ALBUMS_SONGS,transToPlayListDetail(res))
+    if (res.code === 200) {
+      commit(ALBUMS_SONGS, transToPlayListDetail(res))
     }
   },
 
   /* 搜索相关 */
-  async getSearchSuggest({commit},keyword){
+  async getSearchSuggest({ commit }, keyword) {
     const res = await searchSuggest(keyword)
-    if(res.code === 200){
+    if (res.code === 200) {
       let result = []
-      if(res.result.allMatch){
-        res.result.allMatch.forEach(ele=>{
+      if (res.result.allMatch) {
+        res.result.allMatch.forEach(ele => {
           result.push(ele.keyword)
         })
       }
-      commit(SEARCH_SUGGEST,result)
-    }else{
+      commit(SEARCH_SUGGEST, result)
+    } else {
       return
     }
   },
 
-  async searchKeyword({commit},keyword){
+  async searchKeyword({ commit }, keyword) {
     const res = await searchAllTypeKeyword(keyword)
     saveSearchHistory(keyword)
-    if(res.code === 200){
+    if (res.code === 200) {
       let result = res.result
-      commit(UPDATE_TIME,keyword)
-      commit(SEARCH_ALL_TYPE,result)
+      commit(UPDATE_TIME, keyword)
+      commit(SEARCH_ALL_TYPE, result)
     }
   },
 
-  async searchKeywordType({commit},data){
-    let {type,keyword} = data
-    switch(type){
+  async searchKeywordType({ commit }, data) {
+    let { type, keyword } = data
+    switch (type) {
       case 1: break
       case 2:
         type = 100
@@ -278,18 +293,18 @@ export default {
         break
       default: break
     }
-    const res = await searchKeywordByType(keyword,type)
-    if(res.code === 200){
-      let result =  res.result
-      commit(SEARCH_KEYWORD_BY_TYPE,{result,type})
+    const res = await searchKeywordByType(keyword, type)
+    if (res.code === 200) {
+      let result = res.result
+      commit(SEARCH_KEYWORD_BY_TYPE, { result, type })
     }
   },
 
-  async getSearchHot({commit}){
+  async getSearchHot({ commit }) {
     const res = await searchHot()
-    if(res.code === 200){
+    if (res.code === 200) {
       let result = res.data
-      commit(SEARCH_TOP,result)
+      commit(SEARCH_TOP, result)
     }
   },
 

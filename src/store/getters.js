@@ -1,8 +1,8 @@
 const getters = {
     /*用户信息相关 */
-    userInfo(state){
+    userInfo(state) {
         let userInfo = {}
-        if(Object.keys(state.userDetail).length !== 0){
+        if (Object.keys(state.userDetail).length !== 0) {
             userInfo.avatarUrl = state.userDetail.profile.avatarUrl
             userInfo.nickname = state.userDetail.profile.nickname;
             userInfo.level = state.userDetail.level;
@@ -10,9 +10,14 @@ const getters = {
             userInfo.follows = state.userDetail.profile.follows;
             userInfo.followers = state.userDetail.profile.followeds;
         }
-        
+
         return userInfo
     },
+
+    /* 排行榜推荐榜单 */
+    recommendRandomList(state) {
+        return state.rankList.slice(4, 7)
+    }
 
     /* 搜索历史 */
     // searchHistoryUpdateTime(state){
@@ -33,7 +38,7 @@ const getters = {
     //     return state.artlist[state.code].list
     // }
 
-    
+
 
 };
 

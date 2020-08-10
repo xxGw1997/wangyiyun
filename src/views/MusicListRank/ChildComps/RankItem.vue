@@ -1,8 +1,11 @@
 <template>
   <div class="rank-item">
     <div class="item">
-      <rank-item-cover/>
-      <div class="item-title">这是一啊实打实adasdsad</div>
+      <rank-item-cover
+        :coverImgUrl="rankItem.coverImgUrl"
+        :updateFrequency="rankItem.updateFrequency"
+      />
+      <div class="item-title">{{rankItem.name}}</div>
     </div>
   </div>
 </template>
@@ -10,6 +13,14 @@
 <script>
 import RankItemCover from './RankItemCover'
 export default {
+  props: {
+    rankItem: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
   data() {
     return {}
   },
@@ -29,6 +40,8 @@ export default {
       margin-left: 3px;
       width: 100%;
       font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 1px;
     }
   }
 }

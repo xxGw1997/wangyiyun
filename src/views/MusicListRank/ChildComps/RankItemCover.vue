@@ -1,14 +1,28 @@
 <template>
   <div class="rank-item-cover">
     <div class="cover">
-      <img src="https://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg" alt>
-      <div class="update-time">每周更新</div>
+      <img :src="coverImgUrl">
+      <div class="update-time">{{updateFrequency}}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    updateFrequency: {
+      type: String,
+      default() {
+        return ''
+      }
+    },
+    coverImgUrl: {
+      type: String,
+      default() {
+        return ''
+      }
+    }
+  },
   data() {
     return {}
   }
