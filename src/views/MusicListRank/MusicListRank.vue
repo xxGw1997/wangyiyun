@@ -22,6 +22,7 @@
               v-for="(item,index) in recommendRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -33,6 +34,7 @@
               v-for="(item,index) in officialRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -44,6 +46,7 @@
               v-for="(item,index) in characteristicRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -55,6 +58,7 @@
               v-for="(item,index) in globalRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -66,6 +70,7 @@
               v-for="(item,index) in regionRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -77,6 +82,7 @@
               v-for="(item,index) in styleRank"
               :key="index"
               :rankItem="item"
+              @imgLoad="imgLoad"
               @click.native="MusciListClick(item.id)"
             />
           </div>
@@ -149,7 +155,7 @@ export default {
       this.$store.dispatch('playerShow', true)
     },
     MusciListClick(id) {
-      this.$router.push({ path: 'playlist', query: { id } })
+      this.$router.push({ path: 'playlist', query: { type: 'rank', id } })
     },
     imgLoad() {
       this.$nextTick(() => {

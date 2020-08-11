@@ -7,7 +7,7 @@
     </div>
     <!-- <div v-if="playlist.tracks.length === 0">
       <loading/>
-    </div> -->
+    </div>-->
     <div class="musics">
       <div
         class="music"
@@ -23,15 +23,11 @@
           <div
             class="music_name"
             :class="currentPlay(item.id) ? 'music_checked' : ''"
-          >
-            {{ item.name }}
-          </div>
+          >{{ item.name }}</div>
           <div class="singer_album">
             <span class="music_title">独家</span>
             <span class="music_title">SQ</span>
-            <span class="singer">
-              {{ item.ar[0].name }} - {{ item.al.name }}
-            </span>
+            <span class="singer">{{ item.ar[0].name }} - {{ item.al.name }}</span>
           </div>
         </div>
         <div class="music_video music_item">
@@ -46,57 +42,57 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
-import Loading from "@/components/Loading/Loading"
+import Loading from '@/components/Loading/Loading'
 export default {
   props: {
     playlist: {
       type: Object,
       default() {
-        return {};
+        return {}
       }
     }
   },
-  components:{
+  components: {
     Loading
   },
   computed: {
-    ...mapState(["musicList", "songDetail"]),
+    ...mapState(['musicList', 'songDetail']),
 
     singer(singers) {
-      console.log(typeof singers);
-      let ar = "";
+      console.log(typeof singers)
+      let ar = ''
       singers.forEach(ele => {
-        ar = ar + ele.name + "/";
-      });
-      if (ar !== "") {
-        ar.splice(-1);
+        ar = ar + ele.name + '/'
+      })
+      if (ar !== '') {
+        ar.splice(-1)
       }
-      return ar;
+      return ar
     }
   },
   methods: {
     playMusic(playlist, songId, index) {
-      let list = [];
+      let list = []
       playlist.trackIds.forEach(ele => {
-        list.push(ele.id);
-      });
+        list.push(ele.id)
+      })
       //如果当前音乐列表id与点击音乐列表id不同，则把当前的音乐播放列表更新
-        this.$store.dispatch("updateMusicList", {
-          id: playlist.id,
-          list,
-          index
-        });
+      this.$store.dispatch('updateMusicList', {
+        id: playlist.id,
+        list,
+        index
+      })
       // }
       //把当前播放音乐更新
-      this.$store.dispatch("getSongDetail", songId);
+      this.$store.dispatch('getSongDetail', songId)
       //更新当前播放状态
-      this.$store.dispatch("updatePlayStatus", true);
+      this.$store.dispatch('updatePlayStatus', true)
       //显示player
-      this.$store.dispatch("playerShow", true);
+      this.$store.dispatch('playerShow', true)
     },
-    playAll(){
+    playAll() {
       this.$createToast({
         type: 'txt',
         txt: '这个简单,以后有时间就做'
@@ -104,12 +100,12 @@ export default {
     },
     currentPlay(id) {
       if (this.songDetail.length) {
-        return id == this.songDetail[0].id;
+        return id == this.songDetail[0].id
       }
-      return false;
+      return false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -219,5 +215,4 @@ export default {
     }
   }
 }
-
 </style>

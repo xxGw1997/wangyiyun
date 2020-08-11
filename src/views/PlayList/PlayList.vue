@@ -8,7 +8,7 @@
         <div class="header_left" slot="left" @click="$router.go(-1)">
           <i class="iconfont icon-back"></i>
         </div>
-        <div class="header_center" slot="center">{{playListDetail.type?'专辑':'歌单'}}</div>
+        <div class="header_center" slot="center">{{headerTitle}}</div>
       </header-top>
       <scroll class="content">
         <play-info :playListDetail="playListDetail"/>
@@ -35,7 +35,14 @@ export default {
     MusicList
   },
   computed: {
-    ...mapState(['playListDetail'])
+    ...mapState(['playListDetail']),
+    headerTitle() {
+      console.log(this.$route.query.type)
+      if (this.$route.query.type) {
+        if (this.$route.query.type === 'rank') return '排行榜'
+        else return '专辑'
+      } else return '歌单'
+    }
   },
   mounted() {
     if (this.$route.query.type == 'album') {

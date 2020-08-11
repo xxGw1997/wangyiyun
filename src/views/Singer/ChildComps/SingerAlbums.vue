@@ -1,30 +1,31 @@
 <template>
-    <div>
-        <album
-          v-for="(item, index) in singerAlbums" 
-          :key="index"
-          :album="item"
-          @click.native="musicListClick(item.id)"/>
-    </div>
+  <div>
+    <album
+      v-for="(item, index) in singerAlbums"
+      :key="index"
+      :album="item"
+      @click.native="musicListClick(item.id)"
+    />
+  </div>
 </template>
 
 <script>
- import {mapState} from "vuex"
+import { mapState } from 'vuex'
 
- import Album from "./Album"
- export default {
-   components: {
+import Album from './Album'
+export default {
+  components: {
     Album
-   },
-   computed:{
-     ...mapState(["singerAlbums"])
-   },
-   methods:{
-     musicListClick(id){
-      this.$store.dispatch("getAlbumSongs", id);
+  },
+  computed: {
+    ...mapState(['singerAlbums'])
+  },
+  methods: {
+    musicListClick(id) {
+      this.$store.dispatch('getAlbumSongs', id)
       // this.$router.push("/playlist");
-      this.$router.push({path:'playlist',query:{type:'album',id}})
-     }
-   }
- }
+      this.$router.push({ path: 'playlist', query: { type: 'album', id } })
+    }
+  }
+}
 </script>
