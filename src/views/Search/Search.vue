@@ -6,17 +6,15 @@
       </div>
       <div class="header_center" slot="center">
         <i class="iconfont icon-iconfonticonfontsousuo1"></i>
-        <div @click="searchKeywords">
-          搜索歌曲、歌手
-        </div>
+        <div @click="searchKeywords">搜索歌曲、歌手</div>
       </div>
     </header-top>
     <div v-if="recommendMusicList.length === 0" class="loading">
       <loading/>
     </div>
     <scroll class="content" ref="search_scroll" v-else>
-      <search-swiper :banner="searchBanner" class="search-swiper" />
-      <search-category class="search-category" />
+      <search-swiper :banner="searchBanner" class="search-swiper"/>
+      <search-category class="search-category"/>
       <recommend-music-list
         :musicList="recommendMusicList"
         class="recommend-music-list"
@@ -28,19 +26,19 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
-import HeaderTop from "@/components/HeaderTop/HeaderTop";
-import Scroll from "@/components/Scroll/Scroll";
-import Loading from "@/components/Loading/Loading";
+import HeaderTop from '@/components/HeaderTop/HeaderTop'
+import Scroll from '@/components/Scroll/Scroll'
+import Loading from '@/components/Loading/Loading'
 
-import SearchSwiper from "./ChildComps/SearchSwiper";
-import SearchCategory from "./ChildComps/SearchCategory";
-import RecommendMusicList from "./ChildComps/RecommendMusicList";
+import SearchSwiper from './ChildComps/SearchSwiper'
+import SearchCategory from './ChildComps/SearchCategory'
+import RecommendMusicList from './ChildComps/RecommendMusicList'
 
 export default {
   data() {
-    return {};
+    return {}
   },
   components: {
     HeaderTop,
@@ -51,35 +49,35 @@ export default {
     RecommendMusicList
   },
   created() {
-    this.$store.dispatch("getSearchBanner");
-    this.$store.dispatch("getRecommendMusicList");
+    this.$store.dispatch('getSearchBanner')
+    this.$store.dispatch('getRecommendMusicList')
   },
   computed: {
     ...mapState([
-      "searchBanner",
-      "recommendMusicList",
-      "playListId",
-      "playListDetail"
+      'searchBanner',
+      'recommendMusicList',
+      'playListId',
+      'playListDetail'
     ])
   },
   methods: {
     musicListClick(id) {
-      this.$router.push({ path: 'playlist', query: { id }})
+      this.$router.push({ path: 'playlist', query: { id } })
     },
-    searchKeywords(){
-      this.$router.push("/searchKeywords")
+    searchKeywords() {
+      this.$router.push('/searchKeywords')
     },
-    load(){
+    load() {
       this.$refs.search_scroll.refresh()
     },
-    mic(){
+    mic() {
       this.$createToast({
         type: 'txt',
         txt: '这个做不了'
       }).show()
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -129,7 +127,6 @@ input::-webkit-input-placeholder {
   border-radius: 20px;
   overflow: hidden;
 }*/
-
 </style>
 
 <style lang="scss" scoped>
@@ -173,6 +170,5 @@ input {
   border-radius: 20px;
   overflow: hidden;
 }
-
 </style>
 

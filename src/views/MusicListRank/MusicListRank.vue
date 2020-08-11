@@ -14,41 +14,71 @@
       </header-top>
     </div>
     <div class="rank-content">
-      <cube-scroll ref="refresh">
+      <cube-scroll ref="refresh" :scroll-events="['scroll']" @scroll="onScrollHandle">
         <div class="recommend-rank type-item">
           <span class="title">榜单推荐</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in recommendRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in recommendRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="official-rank type-item">
           <span class="title">官方榜</span>
           <div class="official-rank-list">
-            <rank-list-official v-for="(item,index) in officialRank" :key="index" :rankItem="item"/>
+            <rank-list-official
+              v-for="(item,index) in officialRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="characteristic-rank type-item">
           <span class="title">特色榜</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in characteristicRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in characteristicRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="global-rank type-item">
           <span class="title">全球榜</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in globalRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in globalRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="region-rank type-item">
           <span class="title">地区榜</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in regionRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in regionRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="style-rank type-item">
           <span class="title">曲风榜</span>
           <div class="rank-list">
-            <rank-item v-for="(item,index) in styleRank" :key="index" :rankItem="item"/>
+            <rank-item
+              v-for="(item,index) in styleRank"
+              :key="index"
+              :rankItem="item"
+              @click.native="MusciListClick(item.id)"
+            />
           </div>
         </div>
         <div class="more-rank type-item">
@@ -59,6 +89,7 @@
               :key="index"
               :rankItem="item"
               @imgLoad="imgLoad"
+              @click.native="MusciListClick(item.id)"
             />
           </div>
         </div>
@@ -74,6 +105,7 @@ import RankItem from './ChildComps/RankItem'
 import RankListOfficial from './ChildComps/RankListOfficial'
 
 import { getSongDetail } from '@/utils/cache'
+import { debounce } from '@/utils/util'
 import { mapState, mapGetters } from 'vuex'
 export default {
   data() {
@@ -89,6 +121,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('getRankList')
+    this.$nextTick(() => {
+      this.$refs.refresh.scrollTo(0, this.scrollTop, 0)
+    })
   },
   computed: {
     ...mapState([
@@ -98,15 +133,23 @@ export default {
       'globalRank',
       'regionRank',
       'styleRank',
-      'moreRank'
+      'moreRank',
+      'scrollTop'
     ]),
     songDetail() {
       return getSongDetail()
     }
   },
   methods: {
+    onScrollHandle: debounce(function({ y }) {
+      this.$store.dispatch('updateRankScrollTop', y)
+    }, 100),
+
     playerShow() {
       this.$store.dispatch('playerShow', true)
+    },
+    MusciListClick(id) {
+      this.$router.push({ path: 'playlist', query: { id } })
     },
     imgLoad() {
       this.$nextTick(() => {

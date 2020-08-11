@@ -32,7 +32,7 @@ const state = {
   regionRank: [],  //地区榜
   styleRank: [],   //曲风榜
   moreRank: [],  //更多榜单
-
+  scrollTop: 0,  //排行榜高度
   /* 歌手相关 */
   artlist: getSingerList(),
   cat: 0,

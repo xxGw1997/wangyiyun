@@ -74,10 +74,7 @@ export default {
       }).show()
     },
     rank() {
-      this.$createToast({
-        type: 'txt',
-        txt: '这个也没做'
-      }).show()
+      this.$store.dispatch('updateRankScrollTop', 0)
       this.$router.push('/musiclistrank')
     },
     singer() {

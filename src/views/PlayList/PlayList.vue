@@ -2,32 +2,30 @@
   <div>
     <div class="playlist">
       <div class="backgroundImg">
-        <img :src="playListDetail.coverImgUrl" alt="">
+        <img :src="playListDetail.coverImgUrl" alt>
       </div>
       <header-top class="header-top">
         <div class="header_left" slot="left" @click="$router.go(-1)">
           <i class="iconfont icon-back"></i>
         </div>
-        <div class="header_center" slot="center">
-          {{playListDetail.type?'专辑':'歌单'}}
-        </div>
+        <div class="header_center" slot="center">{{playListDetail.type?'专辑':'歌单'}}</div>
       </header-top>
       <scroll class="content">
-        <play-info :playListDetail="playListDetail" />
-        <music-list :playlist="playListDetail" />
+        <play-info :playListDetail="playListDetail"/>
+        <music-list :playlist="playListDetail"/>
       </scroll>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
-import HeaderTop from "@/components/HeaderTop/HeaderTop";
-import Scroll from "@/components/Scroll/Scroll";
+import HeaderTop from '@/components/HeaderTop/HeaderTop'
+import Scroll from '@/components/Scroll/Scroll'
 
-import PlayInfo from "./ChildComps/PlayInfo";
-import MusicList from "./ChildComps/MusicList";
+import PlayInfo from './ChildComps/PlayInfo'
+import MusicList from './ChildComps/MusicList'
 
 export default {
   components: {
@@ -37,16 +35,16 @@ export default {
     MusicList
   },
   computed: {
-    ...mapState(["playListDetail"])
+    ...mapState(['playListDetail'])
   },
   mounted() {
-    if(this.$route.query.type == 'album'){
-      this.$store.dispatch("getAlbumSongs", this.$route.query.id)
+    if (this.$route.query.type == 'album') {
+      this.$store.dispatch('getAlbumSongs', this.$route.query.id)
       return
     }
-    this.$store.dispatch("getPlayListDetail", this.$route.query.id)
+    this.$store.dispatch('getPlayListDetail', this.$route.query.id)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

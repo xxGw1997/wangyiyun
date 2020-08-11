@@ -40,6 +40,7 @@ import {
   UPDATE_VOLUME,
   RECOMMEND_SONGS,
   RANK_LIST,
+  UPDATE_RANK_SCROLL_TOP,
   /* 评论 */
   COMMENTS,
   /* 用户相关 */
@@ -160,6 +161,10 @@ export default {
       const ranklist = res.list
       commit(RANK_LIST, { ranklist });
     }
+  },
+
+  updateRankScrollTop({ commit }, topOffset) {
+    commit(UPDATE_RANK_SCROLL_TOP, { topOffset });
   },
 
   updateMusicList({ commit }, data) {

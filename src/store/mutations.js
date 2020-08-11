@@ -22,7 +22,7 @@ import {
   SEARCH_ALL_TYPE,
   SEARCH_KEYWORD_BY_TYPE,
   RANK_LIST,
-  SCROLL_REFRESH,
+  UPDATE_RANK_SCROLL_TOP,
   /* 评论 */
   COMMENTS,
 } from "./mutations-types";
@@ -138,6 +138,10 @@ export default {
         return true
       }
     })
+  },
+
+  [UPDATE_RANK_SCROLL_TOP](state, { topOffset }) {
+    state.scrollTop = topOffset
   },
 
   /**用户相关 */
