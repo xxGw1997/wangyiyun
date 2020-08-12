@@ -133,6 +133,14 @@ const routes = [
     }
   },
   {
+    path: "/musiclists",
+    name: "musiclists",
+    component: () => import("@/views/MusicLists/MusicLists"),
+    meta: {
+      showFooter: true
+    }
+  },
+  {
     path: "/musiclistrank",
     name: "musiclistrank",
     component: () => import("@/views/MusicListRank/MusicListRank"),

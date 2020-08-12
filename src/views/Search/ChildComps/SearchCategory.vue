@@ -72,8 +72,10 @@ export default {
         type: 'txt',
         txt: '这个还没做'
       }).show()
+      this.$router.push('/musiclists')
     },
     rank() {
+      //将排行榜页面高度重置为0
       this.$store.dispatch('updateRankScrollTop', 0)
       this.$router.push('/musiclistrank')
     },
